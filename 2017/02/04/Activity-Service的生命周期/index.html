@@ -5,30 +5,21 @@
   
   <title>Activity/Service的生命周期 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android Activity/Service 生命周期介绍
-##Activity的生命周期
-###1.Activity生命周期图
-###2.Activity生命周期相关方法Activity继承了ApplicationContext，可以重写方法：123456789101112131415public class Activity extends ApplicationContext &amp;#123">
+  <meta name="description" content="Android Activity/Service 生命周期介绍">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Activity/Service的生命周期">
 <meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Android Activity/Service 生命周期介绍
-##Activity的生命周期
-###1.Activity生命周期图
-###2.Activity生命周期相关方法Activity继承了ApplicationContext，可以重写方法：123456789101112131415public class Activity extends ApplicationContext &amp;#123">
+<meta property="og:description" content="Android Activity/Service 生命周期介绍">
 <meta property="og:image" content="http://stormzhang.com/image/activity_lifecycle.png">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201007/28/0_1280324212Y5nt.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201007/28/0_1280324618Bqxb.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201007/28/0_1280325044k0c7.gif">
 <meta property="og:image" content="http://img.blog.csdn.net/20141021233945682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV1dHU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2017-02-04T06:34:06.000Z">
+<meta property="og:updated_time" content="2017-02-04T06:43:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activity/Service的生命周期">
-<meta name="twitter:description" content="Android Activity/Service 生命周期介绍
-##Activity的生命周期
-###1.Activity生命周期图
-###2.Activity生命周期相关方法Activity继承了ApplicationContext，可以重写方法：123456789101112131415public class Activity extends ApplicationContext &amp;#123">
+<meta name="twitter:description" content="Android Activity/Service 生命周期介绍">
 <meta name="twitter:image" content="http://stormzhang.com/image/activity_lifecycle.png">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
@@ -273,7 +264,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Android Activity/Service 生命周期介绍</p>
+        <p>Android Activity/Service 生命周期介绍<br><a id="more"></a></p>
 <p>##Activity的生命周期</p>
 <p>###1.Activity生命周期图<br><img src="http://stormzhang.com/image/activity_lifecycle.png" alt="生命周期"></p>
 <p>###2.Activity生命周期相关方法<br>Activity继承了ApplicationContext，可以重写方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">extends</span> <span class="title">ApplicationContext</span> </span>&#123; </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>;  </div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span></span>;     </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;  </div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
@@ -311,7 +302,7 @@
         <p><span>本文标题:</span><a href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
         <p><span>发布时间:</span>2017年02月04日 - 14时33分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 14时34分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时43分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/04/Activity-Service的生命周期/" title="Activity/Service的生命周期">https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
