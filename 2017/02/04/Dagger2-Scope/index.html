@@ -5,18 +5,18 @@
   
   <title>Dagger2-Scope | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Scope的用法介绍">
+  <meta name="description" content="Dagger2的@Scope的用法介绍">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dagger2-Scope">
 <meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Dagger2-Scope/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Scope的用法介绍">
+<meta property="og:description" content="Dagger2的@Scope的用法介绍">
 <meta property="og:image" content="http://frogermcs.github.io/images/15/dagger-scopes.png">
 <meta property="og:image" content="http://frogermcs.github.io/images/15/scopes-lifecycle.png">
-<meta property="og:updated_time" content="2017-02-04T06:10:36.000Z">
+<meta property="og:updated_time" content="2017-02-04T06:14:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2-Scope">
-<meta name="twitter:description" content="Scope的用法介绍">
+<meta name="twitter:description" content="Dagger2的@Scope的用法介绍">
 <meta name="twitter:image" content="http://frogermcs.github.io/images/15/dagger-scopes.png">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
@@ -147,7 +147,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Android框架-Dagger2/" style="font-size: 10px;">Android框架 Dagger2</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                        <a href="/tags/Android框架/" style="font-size: 20px;">Android框架</a> <a href="/tags/Dagger2/" style="font-size: 20px;">Dagger2</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
                     </div>
                 </section>
                 
@@ -251,7 +251,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android框架-Dagger2/">Android框架 Dagger2</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android框架/">Android框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dagger2/">Dagger2</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -261,7 +261,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Scope的用法介绍<br><a id="more"></a></p>
+        <p>Dagger2的<code>@Scope</code>的用法介绍<br><a id="more"></a></p>
 <p>##Scope–能为我们提供什么<br>几乎所有的项目都会使用单例-比如API Client，DatabaseHelper，Analytic Manager等。因为依赖注入，所以我们不用关心实例化。我们不应该在代码里考虑如何获取这些对象。取而代之的是<code>@Inject</code>会给我们提供应该要提供的实例。<br>在Dagger2的Scope机制使得让一个类保持单例让他的存活周期跟Scope一样长。例如在实际中一个在<code>@ApplicationScope</code>的实例的存货周期跟Application的生命周期是一样的。<code>@ActivityScope</code>的存活周期跟Activity的生命周期相同（比如我们可以在同一个Activity下所有的Fragment共享单例）。</p>
 <p>简单说：Scopes给我们创建了一种”局部单例“，生命周期取决于Scope自己。</p>
 <p>但是，Dagger2并没有提供<code>@ActivityScope</code>和<code>@ApplicationScope</code>,这些都是要通过<code>@Scope</code>来自定义。Dagger2默认只提供<code>@Singleton</code>的Scope注解。</p>
@@ -301,7 +301,7 @@
         <p><span>本文标题:</span><a href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
         <p><span>发布时间:</span>2017年02月04日 - 14时09分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 14时10分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时14分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/04/Dagger2-Scope/" title="Dagger2-Scope">https://github.com/iBotasky/2017/02/04/Dagger2-Scope/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Dagger2-Scope/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -316,6 +316,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2017/02/04/Dagger2-Dagger-API/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Dagger2-Dagger API
+        
+      </div>
+    </a>
   
   
     <a href="/2017/02/04/Markdown语法/" id="article-nav-older" class="article-nav-link-wrap">
@@ -401,7 +410,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/02/04/Dagger2-Dagger-API/" title="上一篇: Dagger2-Dagger API">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -410,7 +421,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

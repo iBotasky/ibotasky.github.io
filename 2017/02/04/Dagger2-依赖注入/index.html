@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Dagger2-依赖注入 | Botasky的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍依赖注入的相关知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dagger2-依赖注入">
+<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Dagger2-依赖注入/index.html">
+<meta property="og:site_name" content="Botasky的博客">
+<meta property="og:description" content="介绍依赖注入的相关知识">
+<meta property="og:image" content="http://frogermcs.github.io/images/13/user_manager_no_di.png">
+<meta property="og:image" content="http://frogermcs.github.io/images/13/user_manager_di.png">
+<meta property="og:image" content="http://frogermcs.github.io/images/13/login_activity_diagram.png">
+<meta property="og:updated_time" content="2017-02-04T06:17:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dagger2-依赖注入">
+<meta name="twitter:description" content="介绍依赖注入的相关知识">
+<meta name="twitter:image" content="http://frogermcs.github.io/images/13/user_manager_no_di.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Botasky</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ESMoICYmISknJFFgYD9yfnw" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/iBotasky" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/lu-kuo-si/activities" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/u/2309486597" title="weibo">weibo</a>
+                            
+                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/67017881/" title="douban">douban</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Android框架/" style="font-size: 20px;">Android框架</a> <a href="/tags/Dagger2/" style="font-size: 20px;">Dagger2</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/iBotasky">name</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">星辰大海的征程。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Botasky</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Botasky</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ESMoICYmISknJFFgYD9yfnw" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/iBotasky" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/lu-kuo-si/activities" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/2309486597" title="weibo">weibo</a>
+                    
+                        <a class="douban" target="_blank" href="https://www.douban.com/people/67017881/" title="douban">douban</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Dagger2-依赖注入" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/04/Dagger2-依赖注入/" class="article-date">
+      <time datetime="2017-02-04T06:16:16.000Z" itemprop="datePublished">2017-02-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dagger2-依赖注入
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android框架/">Android框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dagger2/">Dagger2</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>介绍依赖注入的相关知识<br><a id="more"></a></p>
+<p>##依赖注入 Dependency injection<br>依赖注入，就是构建对象并在我们需要时把他们传入。<br>想象有一个简单的类，<code>UserManager</code>, 他依赖<code>UserStore</code>与<code>ApiService</code>。如果没有依赖注入，这个类看起来会是这个样子：<br><code>UserStore</code>和<code>ApiServie</code>两者都是在<code>UserManager</code>中创建和提供的：<br><img src="http://frogermcs.github.io/images/13/user_manager_no_di.png" alt="示意图"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserManager</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> ApiService apiService;</div><div class="line">    <span class="keyword">private</span> UserStore userStore;</div><div class="line"></div><div class="line">    <span class="comment">//No-args constructor. Dependencies are created inside.</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserManager</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.apiService = <span class="keyword">new</span> ApiSerivce();</div><div class="line">        <span class="keyword">this</span>.userStore = <span class="keyword">new</span> UserStore();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">registerUser</span><span class="params">()</span> </span>&#123;<span class="comment">/*  */</span>&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegisterActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> UserManager userManager;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle b)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(b);</div><div class="line">        <span class="keyword">this</span>.userManager = <span class="keyword">new</span> UserManager();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRegisterClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        userManager.registerUser();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的代码会出现一些问题，想象一下，我们需要改变<code>UserStore</code>的实现，用<code>SharedPreferences</code>来作为他的存储机制，他需要至少一个<code>Context</code>对象来创建实例，所以我们需要通过<code>UserStore</code>的构造函数传入。他意味着，<code>UserManager</code>类中也需要被修改来使用新的<code>UserStore</code>构造器。如果有很多类使用了<code>UserStore</code>，他们需要全部被修改。</p>
+<p>但是如果用了依赖注入：<br>他的依赖类是在外面创建和提供的：<br><img src="http://frogermcs.github.io/images/13/user_manager_di.png" alt=""><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserManager</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> ApiService apiService;</div><div class="line">    <span class="keyword">private</span> UserStore userStore;</div><div class="line"></div><div class="line">    <span class="comment">//Dependencies are passed as arguments</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserManager</span><span class="params">(ApiService apiService, UserStore userStore)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.apiService = apiService;</div><div class="line">        <span class="keyword">this</span>.userStore = userStore;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">registerUser</span><span class="params">()</span> </span>&#123;<span class="comment">/*  */</span>&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegisterActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> UserManager userManager;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle b)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(b);</div><div class="line">        ApiService api = ApiService.getInstance();</div><div class="line">        UserStore store = UserStore.getInstance();</div><div class="line">        </div><div class="line">        <span class="keyword">this</span>.userManager = <span class="keyword">new</span> UserManager(api, store);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRegisterClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">        userManager.registerUser();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在相似的情况下，我们改变<code>UserStore</code>或者<code>ApiService</code>两个依赖的实现方式，我们不需要修改<code>UserManager</code>的代码。两个依赖的对象都是通过外面提供的。</p>
+<p>所以使用依赖注入的优势是什么？？？</p>
+<p>##优势</p>
+<p>###<strong>构造/使用 的分离</strong><br>当我们构造类实例，通常这些对象会在其他地方使用到，多亏这个方法让我们的代码更加模块化，所有依赖都可以很简单的被替换掉，并且不会与我们应用的逻辑产生冲突，想要改变<code>DataBaseUserStore</code>为<code>SharedPrefesUserStore</code>？好的，我们只需要关心公开的API（与<code>DataBaseUserStore</code>相同的）或者实现相同的接口。</p>
+<p>###单元测试<br>真正的单元测试假设一个类完全可以被隔离进行测试的，不需要了解他的相关依赖。在实践中，基于我们的<code>UserManager</code>类编写一个单元测试类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserManagerTests</span> </span>&#123;</div><div class="line"></div><div class="line">    UserManager userManager;</div><div class="line"></div><div class="line">    <span class="meta">@Mock</span></div><div class="line">    ApiService apiServiceMock;</div><div class="line">    <span class="meta">@Mock</span></div><div class="line">    UserStore userStoreMock;</div><div class="line"></div><div class="line">    <span class="meta">@Before</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> </span>&#123;</div><div class="line">        MockitoAnnotations.initMocks(<span class="keyword">this</span>);</div><div class="line">        userManager = <span class="keyword">new</span> UserManager(apiServiceMock, userStoreMock);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@After</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tearDown</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSomething</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//Test our userManager here - all its dependencies are satisfied</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>它只能使用DI，多亏<code>UserManger</code>是完全独立于<code>UserStore</code>与<code>ApiService</code>实现的。我们可以提供这些类的Mock，（简单的说Mock是一些拥有相同API的类，它在方法中不做任何事情，并且返回我们期望的值），然后在真实的依赖的实现对<code>UserManager</code>测试隔离。</p>
+<p>###独立/并行开发<br>因为模块化的代码设计（<code>UserStore</code> 的实现可以完全独立与<code>UserManager</code>之外）。这样让程序间的代码更容易分离，（其实就是解耦）。只有<code>UserStore</code>的接口能被其他类调用，（尤其是被<code>UserManager</code>调用的<code>UserStore</code>的public方法）。其余的实现和逻辑可以用单元测试来做测试。</p>
+<p>##依赖注入的框架<br>除了上面的优势之外，依赖注入模式也有一些弊端。一个就是会产生更多的模块代码。想象一个简单的<code>LoginActivity</code>类，他在MVP模式中被实现。这个类看起来就像这样。<br>唯一有问题的部分代码就是<code>LoginPresenter</code>的初始化：<br><img src="http://frogermcs.github.io/images/13/login_activity_diagram.png" alt=""><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    LoginActivityPresenter presenter;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        <span class="comment">//这边需要把需要依赖的类全部手动先初始化一遍</span></div><div class="line">        OkHttpClient okHttpClient = <span class="keyword">new</span> OkHttpClient();</div><div class="line">        RestAdapter.Builder builder = <span class="keyword">new</span> RestAdapter.Builder();</div><div class="line">        builder.setClient(<span class="keyword">new</span> OkClient(okHttpClient));</div><div class="line">        RestAdapter restAdapter = builder.build();</div><div class="line">        ApiService apiService = restAdapter.create(ApiService.class);</div><div class="line">        UserManager userManager = UserManager.getInstance(apiService);</div><div class="line">        </div><div class="line">        UserDataStore userDataStore = UserDataStore.getInstance(</div><div class="line">                getSharedPreferences(<span class="string">"prefs"</span>, MODE_PRIVATE)</div><div class="line">        );</div><div class="line"></div><div class="line">        <span class="comment">//Presenter is initialized here</span></div><div class="line">        presenter = <span class="keyword">new</span> LoginActivityPresenter(<span class="keyword">this</span>, userManager, userDataStore);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>他看起来不太友好不是吗？<br>这就是DI框架需要解决的问题，相同功能的代码看起来像这样:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="comment">//通过@Inject标注来获取初始化这个类需要注入的依赖</span></div><div class="line">    <span class="meta">@Inject</span></div><div class="line">    LoginActivityPresenter presenter;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        </div><div class="line">        <span class="comment">//Satisfy all dependencies requested by @Inject annotation</span></div><div class="line">        getDependenciesGraph().inject(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单多了对吧！当然，DI框架也不是说不用去创建依赖类的对象实例，这些实例需要我们在一些恰当的地方去初始化和配置。但是这些对象的构建会从使用中分离出来（这个就是DI的准则）。DI框架关心的是怎么把他们联系起来（如何传递对象，并把他们放入到需要的位置）。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
+        <p><span>发布时间:</span>2017年02月04日 - 14时16分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时17分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Dagger2-依赖注入/" title="Dagger2-依赖注入">https://github.com/iBotasky/2017/02/04/Dagger2-依赖注入/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Dagger2-依赖注入/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/04/Dagger2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Dagger2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/04/Dagger2-Dagger-API/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Dagger2-Dagger API</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/02/04/Dagger2-依赖注入/" data-title="Dagger2-依赖注入" data-url="https://github.com/iBotasky/2017/02/04/Dagger2-依赖注入/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ibotasky"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/04/Dagger2/" title="上一篇: Dagger2">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/04/Dagger2-Dagger-API/" title="下一篇: Dagger2-Dagger API">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Botasky
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >狼崽到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
