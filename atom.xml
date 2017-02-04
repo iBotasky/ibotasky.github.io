@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-02-04T06:19:57.000Z</updated>
+  <updated>2017-02-04T06:41:27.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -14,6 +14,391 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android进程优先级</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Android%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Android进程优先级/</id>
+    <published>2017-02-04T06:40:37.000Z</published>
+    <updated>2017-02-04T06:41:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>进程优先级介绍<br><a id="more"></a><br>查看命令当前进程优先级：adb shell cat /proc/<strong><em>process_id</em></strong>/oom_adj</p>
+<p><a href="http://blog.csdn.net/wangliang198901/article/details/12342845" target="_blank" rel="external">文章地址</a><br>一个进程可以做一个前台的ForegroundService做通知栏，或<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;进程优先级介绍&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Android进阶" scheme="https://github.com/iBotasky/tags/Android%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android保活</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Android%E4%BF%9D%E6%B4%BB/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Android保活/</id>
+    <published>2017-02-04T06:38:22.000Z</published>
+    <updated>2017-02-04T06:39:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>平常接触到的保活<br><a id="more"></a><br>自启动保活 系统通知权限<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyNotificationService</span> <span class="keyword">extends</span> <span class="title">NotificationListenerService</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String TAG = MyNotificationService.class.getName();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationPosted</span><span class="params">(StatusBarNotification sbn)</span> </span>&#123;</div><div class="line">        Log.d(TAG, <span class="string">"onNotificationPosted: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationRemoved</span><span class="params">(StatusBarNotification sbn)</span> </span>&#123;</div><div class="line">        Log.d(TAG, <span class="string">"onNotificationRemoved: "</span>);</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, BackgroundService.class);</div><div class="line">        startService(intent);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>跳转<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">goNLPermission</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"</span>);</div><div class="line">           context.startActivity(intent);</div><div class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   </div><div class="line">   <span class="comment">/**</span></div><div class="line">        * Notification keep live</div><div class="line">        */</div><div class="line">       goNLPermission(<span class="keyword">this</span>);</div><div class="line">       Intent notificationService = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyNotificationService.class);</div><div class="line">       startService(notificationService);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平常接触到的保活&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Android进阶" scheme="https://github.com/iBotasky/tags/Android%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android动画相关</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Android%E5%8A%A8%E7%94%BB%E7%9B%B8%E5%85%B3/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Android动画相关/</id>
+    <published>2017-02-04T06:37:15.000Z</published>
+    <updated>2017-02-04T06:37:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>平常用到的一些比较机智的动画</p>
+<p>##1.ViewCompat<br>ServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//ViewCompat.setAlpha(rlBlur, 0);先设置看不见，并且GONE</span></div><div class="line"><span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.tv_qr_scan:</div><div class="line">                <span class="keyword">if</span> (!tvQrScan.isSelected()) &#123;</div><div class="line">                    tvCodeInput.setSelected(<span class="keyword">false</span>);</div><div class="line">                    tvQrScan.setSelected(<span class="keyword">true</span>);</div><div class="line">                    ViewCompat.animate(llInput).alpha(<span class="number">0</span>).setDuration(<span class="number">400</span>).setListener(<span class="keyword">new</span> ViewPropertyAnimatorListener() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                            llInput.setVisibility(View.GONE);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line"></div><div class="line"></div><div class="line">                    mQRCodeView.startSpot();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.tv_code_input:</div><div class="line">                <span class="keyword">if</span> (!tvCodeInput.isSelected()) &#123;</div><div class="line">                    tvQrScan.setSelected(<span class="keyword">false</span>);</div><div class="line">                    tvCodeInput.setSelected(<span class="keyword">true</span>);</div><div class="line">                    ViewCompat.animate(llInput).alpha(<span class="number">1</span>).setDuration(<span class="number">400</span>).setListener(<span class="keyword">new</span> ViewPropertyAnimatorListener() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                            llInput.setVisibility(View.VISIBLE);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line"></div><div class="line">                    mQRCodeView.stopSpot();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
+<p>感觉用起来还不错，有需要可以用这个，在两个VIEW切换的时候用，显得切换不会那么生硬。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平常用到的一些比较机智的动画&lt;/p&gt;
+&lt;p&gt;##1.ViewCompat&lt;br&gt;ServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，&lt;br&gt;&lt;figure class=&quot;h
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android系统架构</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Android%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Android系统架构/</id>
+    <published>2017-02-04T06:34:45.000Z</published>
+    <updated>2017-02-04T06:35:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android系统架构</p>
+<p><a id="more"></a>##Android框架分层自顶向下</p>
+<blockquote>
+<p><em>应用程序层                       (Applications)
+</em>应用程序框架                     (Application Frameworks)<br><em>系统运行库与Android运行环境      (Library&amp;Runtime)
+</em>Linux内核                        (Linux Kernel)</p>
+</blockquote>
+<hr>
+<p>##Android结构示意图<br><img src="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png" alt="Android结构示意图"></p>
+<hr>
+<p>##1.应用程序层(Applications)<br>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
+<p>##2.Application Framework<br>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
+<p>开发者可以完全使用核心应用程序所使用的框架APIs。应用程序的体系结构旨在简化组件的重用，任何应用程序都能发布他的功能且任何其他应用程序可以使用这些功能（需要服从框架执行的安全限制）。这一机制允许用户替换组件。</p>
+<p>所有的应用程序其实是一组服务和系统，包括：</p>
+<blockquote>
+<p>*视图（View）——丰富的、可扩展的视图集合，可用于构建一个应用程序。包括包括列表、网格、文本框、按钮，甚至是内嵌的网页浏览器</p>
+<ul>
+<li>内容提供者（Content Providers）——使应用程序能访问其他应用程序（如通讯录）的数据，或共享自己的数据<br><em>资源管理器（Resource Manager）——提供访问非代码资源，如本地化字符串、图形和布局文件
+</em>通知管理器（Notification Manager）——使所有的应用程序能够在状态栏显示自定义警告<br>*活动管理器（Activity Manager）——管理应用程序生命周期,提供通用的导航回退功能</li>
+</ul>
+</blockquote>
+<p>##3.Library<br>Android包含一个C/C++库的集合，供Android系统的各个组件使用。这些功能通过Android的应用程序框架（application framework）暴露给开发者。下面列出一些核心库：</p>
+<blockquote>
+<p><em>系统C库——标准C系统库（libc）的BSD衍生，调整为基于嵌入式Linux设备
+</em>媒体库——基于PacketVideo的OpenCORE。这些库支持播放和录制许多流行的音频和视频格式，以及静态图像文件，包括MPEG4、 H.264、 MP3、 AAC、 AMR、JPG、 PNG<br><em>界面管理——管理访问显示子系统和无缝组合多个应用程序的二维和三维图形层
+</em>LibWebCore——新式的Web浏览器引擎,驱动Android 浏览器和内嵌的web视图<br><em>SGL——基本的2D图形引擎
+</em>3D库——基于OpenGL ES 1.0 APIs的实现。库使用硬件3D加速或包含高度优化的3D软件光栅<br><em>FreeType ——位图和矢量字体渲染
+</em>SQLite ——所有应用程序都可以使用的强大而轻量级的关系数据库引擎</p>
+</blockquote>
+<p>##4.Runtime<br>Android包含一个核心库的集合，提供大部分在Java编程语言核心类库中可用的功能。每一个Android应用程序是Dalvik虚拟机中的实例，运行在他们自己的进程中。Dalvik虚拟机设计成，在一个设备可以高效地运行多个虚拟机。Dalvik虚拟机可执行文件格式是.dex，dex格式是专为Dalvik设计的一种压缩格式，适合内存和处理器速度有限的系统。</p>
+<p>大多数虚拟机包括JVM都是基于栈的，而Dalvik虚拟机则是基于寄存器的。两种架构各有优劣，一般而言，基于栈的机器需要更多指令，而基于寄存器的机器指令更大。dx 是一套工具，可以將 Java .class 转换成 .dex 格式。一个dex文件通常会有多个.class。由于dex有時必须进行最佳化，会使文件大小增加1-4倍，以ODEX结尾。</p>
+<p>Dalvik虚拟机依赖于Linux 内核提供基本功能，如线程和底层内存管理。</p>
+<p>##5.Linux Kernel<br>Android基于Linux 2.6提供核心系统服务，例如：安全、内存管理、进程管理、网络堆栈、驱动模型。Linux Kernel也作为硬件和软件之间的抽象层，它隐藏具体硬件细节而为上层提供统一的服务。</p>
+<p>如果你学过计算机网络知道OSI/RM，就会知道分层的好处就是使用下层提供的服务而为上层提供统一的服务，屏蔽本层及以下层的差异，当本层及以下层发生了变化不会影响到上层。也就是说各层各司其职，各层提供固定的SAP（Service Access Point），专业点可以说是高内聚、低耦合。</p>
+<p>如果你只是做应用开发，就不需要深入了解Linux Kernel层。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android系统架构&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Activity/Service的生命周期</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Activity-Service%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/</id>
+    <published>2017-02-04T06:33:13.000Z</published>
+    <updated>2017-02-04T06:34:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android Activity/Service 生命周期介绍</p>
+<p>##Activity的生命周期</p>
+<p>###1.Activity生命周期图<br><img src="http://stormzhang.com/image/activity_lifecycle.png" alt="生命周期"></p>
+<p>###2.Activity生命周期相关方法<br>Activity继承了ApplicationContext，可以重写方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">extends</span> <span class="title">ApplicationContext</span> </span>&#123; </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>;  </div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span></span>;     </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;  </div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>通过重写，存为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.tutor.activitydemo;  </div><div class="line"><span class="keyword">import</span> android.app.Activity;  </div><div class="line"><span class="keyword">import</span> android.os.Bundle;  </div><div class="line"><span class="keyword">import</span> android.util.Log;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityDemo</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;  </div><div class="line">     </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"ActivityDemo"</span>;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.main);  </div><div class="line">          </div><div class="line">        Log.e(TAG, <span class="string">"start onCreate~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onStart();  </div><div class="line">        Log.e(TAG, <span class="string">"start onStart~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onRestart();  </div><div class="line">        Log.e(TAG, <span class="string">"start onRestart~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onResume();  </div><div class="line">        Log.e(TAG, <span class="string">"start onResume~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onPause();  </div><div class="line">        Log.e(TAG, <span class="string">"start onPause~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onStop();  </div><div class="line">        Log.e(TAG, <span class="string">"start onStop~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onDestroy();  </div><div class="line">        Log.e(TAG, <span class="string">"start onDestroy~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###3.相关操作的的生命周期流程</p>
+<p>####3.1 启动Activity<br><img src="http://hi.csdn.net/attachment/201007/28/0_1280324212Y5nt.gif" alt="启动"><br>onCreate()-&gt;onStart()-&gt;onResume</p>
+<p>####3.2 按BACK键：<br><img src="http://hi.csdn.net/attachment/201007/28/0_1280324618Bqxb.gif" alt="按返回键"><br>onPause()-&gt;onStop()-&gt;onDestory()</p>
+<p>####3.3 按HOME键:<br><img src="http://hi.csdn.net/attachment/201007/28/0_1280325044k0c7.gif" alt="按Home键"><br>onPause()-&gt;onStop()</p>
+<p>####3.4 从3.3操作后，从桌面进入ActivityDemo:<br>onRestart()-&gt;onStart()-&gt;onResume()</p>
+<p>###4.关于其他<br>如果用户将当前的App切换为其他App，就可能会导致当前App被杀掉。所以在某些比较重要的Activity中需要做好保存数据的操作。避免Activity被系统回收，再次进入时是非正确的状态。<strong><em>这里需要关注Activity另外两个比较重要的方法，onSaveInstanceState()与onRestoreInstanceState();</em></strong> <a href="http://www.cnblogs.com/hanyonglu/archive/2012/03/28/2420515.html" target="_blank" rel="external">相关链接</a></p>
+<hr>
+<p>##Service的生命周期</p>
+<p>###1.Service的概念及用途<br>Service与Activity不同，他是不能与用户交互的，不能自己启动的，运行在后台的程序，如果我们退出应用时，Service进程并没有结束，仍在后台运行。</p>
+<p>###2.Service的生命周期<br>生命周期图：<br><img src="http://img.blog.csdn.net/20141021233945682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV1dHU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="Service生命周期"></p>
+<p>####2.1使用context.startService() 启动Service<br>其生命周期为context.startService() -&gt;onCreate()- &gt;onStart()-&gt;onStartCommand()-&gt;Service running–&gt;(如果调用context.stopService() )-&gt;onDestroy() -&gt;Service shut down</p>
+<blockquote>
+<p><em>如果Service还没有运行，则android先调用onCreate()然后调用onStart()；
+</em>如果Service已经运行，则只调用onStart()，所以一个Service的onStart方法可能会重复调用多次。 </p>
+</blockquote>
+<p><strong><em>onStartCommand()可以接收在前台startService传入的Intent参数。</em></strong></p>
+<p>调用stopService的时候直接onDestroy，如果是调用者自己直接退出而没有调用stopService的话，Service会一直在后台运行。<br>该Service的调用者再启动起来后可以通过stopService关闭Service。</p>
+<p><strong><em>所以调用startService的生命周期为：onCreate –&gt; onStart(可多次调用) –&gt; onDestroy</em></strong></p>
+<p>####2.2对于bindService()启动Service会经历：<br>context.bindService()-&gt;onCreate()-&gt;onBind()-&gt;Service running–&gt;onUnbind() -&gt; onDestroy() -&gt;Service stop</p>
+<p>onBind将返回给客户端一个IBind接口实例，IBind允许客户端回调服务的方法，比如得到Service运行的状态或其他操作。<br>这个时候把调用者（Context，例如Activity）会和Service绑定在一起，Context退出了，<br>Srevice就会调用onUnbind-&gt;onDestroy相应退出。 </p>
+<p><strong><em>所以调用bindService的生命周期为：onCreate –&gt; onBind(只一次，不可多次绑定) –&gt; onUnbind –&gt; onDestory。<br>一但销毁activity它就结束，如果按home把它放到后台，那他就不退出。</em></strong></p>
+<p>PS：<br>在Service每一次的开启关闭过程中，只有onStart可被多次调用(通过多次startService调用)，其他onCreate，onBind，onUnbind，onDestory在一个生命周期中只能被调用一次。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android Activity/Service 生命周期介绍&lt;/p&gt;
+&lt;p&gt;##Activity的生命周期&lt;/p&gt;
+&lt;p&gt;###1.Activity生命周期图&lt;br&gt;&lt;img src=&quot;http://stormzhang.com/image/activity_lifecy
+    
+    </summary>
+    
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android常见的内存泄漏</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Android%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Android常见的内存泄漏/</id>
+    <published>2017-02-04T06:31:30.000Z</published>
+    <updated>2017-02-04T06:32:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/xitu/gold-miner/blob/master/TODO/Eight-Ways-Your-Android-App-Can-Leak-Memory.md">原文地址</a></p>
+<a id="more"></a>
+<hr>
+<p>##1.单例造成的内存泄漏<br>单例的静态特性使得单例的生命周期和应用的生命周期一样长，如果一个对象已经不需要使用了，而单例对该对象还持有对象的引用，那么这个对象不能被正常回收，导致内存泄露！<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppManager</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AppManager instance;</div><div class="line">    <span class="keyword">private</span> Context context;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">AppManager</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.context = context;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AppManager <span class="title">getInstance</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance != <span class="keyword">null</span>) &#123;</div><div class="line">            instance = <span class="keyword">new</span> AppManager(context);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###分析：<br>这是一个普通的单例模式，当创建这个单例的时候需要传入一个Context，所以Context的生命周期的长短至关重要：<br>1.传入的是Application的Context：不会有问题！<br>2.传入的是Activity的Context：当Activity退出时，由于该Context和Activity的生命周期一样长，（Activity间接继承于Context），所以当Activity退出时，他的内存并不会被回收，因为单例对象持有改Activity的引用。</p>
+<p>###正确做法：<br>所以单例正确引用Context应该改为下面的方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppManager</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AppManager instance;</div><div class="line">    <span class="keyword">private</span> Context context;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">AppManager</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="comment">//直接拿取Application的Context</span></div><div class="line">        <span class="keyword">this</span>.context = context.getApplicationContext();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AppManager <span class="title">getInstance</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance != <span class="keyword">null</span>) &#123;</div><div class="line">            instance = <span class="keyword">new</span> AppManager(context);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>##2.非静态内部类创建实例造成的内存泄漏<br><strong><em>匿名内部类跟非静态内部类持会持有外部类的强引用</em></strong></p>
+<p>有的时候我们可能会在启动频繁的Activity中，为了避免重复创建相同的数据资源，可能会出现下面的写法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> TestResource mResource = <span class="keyword">null</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="keyword">if</span>(mManager == <span class="keyword">null</span>)&#123;</div><div class="line">            mManager = <span class="keyword">new</span> TestResource();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">TestResource</span> </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###分析：<br>上面的代码在Activity内部创建了一个非静态内部类（TestResource.class）的单例(mResource)，每次启动Activity时都会使用该单例的数据，这样虽然避免了资源的重复创建，不过这种写法却会造成内存泄漏，<strong><em>因为非静态内部类默认会持有外部类的引用</em></strong>，而又使用了该非静态内部类创建了一个静态实例，该实例的生命周期和应用的一样长，这就导致了该静态实例一直会持有该Activity的引用，导致Activity不能正常回收。</p>
+<p>###正确的做法为：<br>将该内部类设为静态内部类或将该内部类抽取出来封装成一个单例，如果需要使用Context,请使用ApplicationContext。</p>
+<hr>
+<p>##3.Handler造成的内存泄漏<br>Handler的使用造成的内存泄漏问题应该说是最为常见了，平时在处理网络任务等都应该会借助Handler来处理，对于Handler的使用代码编写不规范有可能造成泄漏：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">            <span class="comment">//...</span></div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        loadData();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadData</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="comment">//...request</span></div><div class="line">        Message message = Message.obtain();</div><div class="line">        mHandler.sendMessage(message);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###分析：<br>这种创建Handler的方式会造成内存泄漏，<strong><em>由于mHandler是Handler的非静态匿名内部类的实例，所以他持有外部类Activity的引用</em></strong>，我们知道消息队列是在一个Looper线程中不断轮询处理消息，那么当这个Activity退出时消息队列中海油未处理或者正在处理的消息， 而消息队列中的Message持有mHandler实例的引用， mHandler又持有Activity的引用， 所以导致该Activity的内存无法及时回收， 引发内存泄漏，所以另外一种做法为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyHandler mHandler = <span class="keyword">new</span> MyHandler(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">private</span> TextView mTextView ;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> WeakReference&lt;Context&gt; reference;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">            reference = <span class="keyword">new</span> WeakReference&lt;&gt;(context);</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">            MainActivity activity = (MainActivity) reference.get();</div><div class="line">            <span class="keyword">if</span>(activity != <span class="keyword">null</span>)&#123;</div><div class="line">                activity.mTextView.setText(<span class="string">""</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        mTextView = (TextView)findViewById(R.id.textview);</div><div class="line">        loadData();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadData</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//...request</span></div><div class="line">        Message message = Message.obtain();</div><div class="line">        mHandler.sendMessage(message);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>创建一个静态的Handler内部类，然后对Handler持有的对象使用弱引用，这样在回收时也可以回收Handler持有的对象，这样虽然避免了Activity的泄漏，不过Looper线程的消息队列中还是可能会有待处理的消息，所以我们Activity的Destory时或者OnStop应该移除消息队列中的消息。</p>
+<p>###正确的做法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyHandler mHandler = <span class="keyword">new</span> MyHandler(<span class="keyword">this</span>);</div><div class="line">    <span class="keyword">private</span> TextView mTextView ;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> WeakReference&lt;Context&gt; reference;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">            reference = <span class="keyword">new</span> WeakReference&lt;&gt;(context);</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">            MainActivity activity = (MainActivity) reference.get();</div><div class="line">            <span class="keyword">if</span>(activity != <span class="keyword">null</span>)&#123;</div><div class="line">                activity.mTextView.setText(<span class="string">""</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        mTextView = (TextView)findViewById(R.id.textview);</div><div class="line">        loadData();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadData</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//...request</span></div><div class="line">        Message message = Message.obtain();</div><div class="line">        mHandler.sendMessage(message);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        mHandler.removeCallbacksAndMessages(<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用mHandler.removeCallbacksAndMessages(null);移除消息队列中所有消息和所有Runnable,当然也可以使用mHandler.removeCallbacks()或mHandler.removeMessages();来一出指定的Runnable和Message。</p>
+<p>###在简书上看到的比较好理解的写法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Instances of static inner classes do not hold an implicit</div><div class="line">   * reference to their outer class.</div><div class="line">   */</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> WeakReference&lt;SampleActivity&gt; mActivity;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(SampleActivity activity)</span> </span>&#123;</div><div class="line">      mActivity = <span class="keyword">new</span> WeakReference&lt;SampleActivity&gt;(activity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">      SampleActivity activity = mActivity.get();</div><div class="line">      <span class="keyword">if</span> (activity != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="comment">// ...</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> MyHandler mHandler = <span class="keyword">new</span> MyHandler(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Instances of anonymous classes do not hold an implicit</div><div class="line">   * reference to their outer class when they are "static".</div><div class="line">   */</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Runnable sRunnable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">      <span class="meta">@Override</span></div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; <span class="comment">/* ... */</span> &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line"></div><div class="line">    <span class="comment">// Post a message and delay its execution for 10 minutes.</span></div><div class="line">    mHandler.postDelayed(sRunnable, <span class="number">1000</span> * <span class="number">60</span> * <span class="number">10</span>);</div><div class="line"></div><div class="line">    <span class="comment">// Go back to the previous Activity.</span></div><div class="line">    finish();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>##4.线程造成的内存泄漏</p>
+<p>对于线程造成的内存泄漏也比较常见，如下两个示例：<br>示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//——————test1</span></div><div class="line">        <span class="keyword">new</span> AsyncTask&lt;Void, Void, Void&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">                SystemClock.sleep(<span class="number">10000</span>);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;.execute();</div><div class="line"><span class="comment">//——————test2</span></div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                SystemClock.sleep(<span class="number">10000</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div></pre></td></tr></table></figure></p>
+<p>###分析：<br>上面的异步任务和Runnable都是一个匿名内部类， 因此他们对当前Activity都有一个隐式引用。<strong><em>如果Activity在销毁之前，任务还未完成，那么将导致Activity的内存无法回收，造成内存泄漏</em></strong>，正确的做法还是使用静态内部类的方式，</p>
+<p>###正确做法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAsyncTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123;</div><div class="line">        <span class="keyword">private</span> WeakReference&lt;Context&gt; weakReference;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyAsyncTask</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">            weakReference = <span class="keyword">new</span> WeakReference&lt;&gt;(context);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</div><div class="line">            SystemClock.sleep(<span class="number">10000</span>);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Void aVoid)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.onPostExecute(aVoid);</div><div class="line">            MainActivity activity = (MainActivity) weakReference.get();</div><div class="line">            <span class="keyword">if</span> (activity != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="comment">//...</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        SystemClock.sleep(<span class="number">10000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//——————</span></div><div class="line"><span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable()).start();</div><div class="line"><span class="keyword">new</span> MyAsyncTask(<span class="keyword">this</span>).execute();</div></pre></td></tr></table></figure></p>
+<p>这就避免了Activity的内存资源泄漏，当然在Activity销毁的时候也应该取消相应的任务AsyncTask::cancel()，避免任务在后台执行浪费资源。</p>
+<hr>
+<p>##5.资源未关闭造成的内存泄漏<br>对于使用了BroadcastReceiver, ContentObserver, File, Cursor, Stream, Bitmap等资源的使用，应该在Activity被销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄露。</p>
+<hr>
+<p>##<strong><em>一些建议</em></strong><br>1.对于生命周期比Activity长的对象如果需要应该使用ApplicationContext.<br>2.在涉及到Context时先考虑ApplicationContext，当然他不是万能的，对于有些地方则必须使用ActivityContext，对于Application，Service,Activity三者的Context的应用场景如下：<br><img src="http://img.blog.csdn.net/20151123144226349" alt="应用场景"></p>
+<p><strong><em>其中</em></strong>：NO1表示Application和Service可以启动一个Activity，不过需要创建一个新的Task任务队列。而对于Dialog而言，只有Activity中才能创建</p>
+<p>3.对于需要在静态内部类中使用非静态外部成员变量（如Context，View），可以在静态内部类中使用弱引用来引用外部类的变量来避免内存泄漏。<br>4.对于生命周期比Activity长的内部类对象，并且内部来使用了外部类的成员变量，可以这样避免内存泄漏：</p>
+<blockquote>
+<p><em>将内部类改为静态内部类
+</em>静态内部类中使用弱引用来引用外部类的成员变量</p>
+</blockquote>
+<p>5.对于不在需要使用的对象，显示的将其赋值为NULL，比如使用完Bitmap后县调用recycle(),在赋值为NULL。<br>6.保持对对象生命周期的敏感，特别注意单例，静态对象，全局性集合等的生命周期。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/xitu/gold-miner/blob/master/TODO/Eight-Ways-Your-Android-App-Can-Leak-Memory.md&quot;&gt;原文地址&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Studio Mac环境下面的配置流程</title>
+    <link href="https://github.com/iBotasky/2017/02/04/AndroidStudio-Mac%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%9D%A2%E7%9A%84%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/"/>
+    <id>https://github.com/iBotasky/2017/02/04/AndroidStudio-Mac环境下面的配置流程/</id>
+    <published>2017-02-04T06:29:58.000Z</published>
+    <updated>2017-02-04T06:30:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android Studio配置<br><a id="more"></a></p>
+<p>###0.到<a href="https://developer.android.google.cn/index.html" target="_blank" rel="external">Google中国开发者网站</a>下载最新的AndroidStudio</p>
+<p>###1.下载jdk 是jdk不是jre</p>
+<p>###2.导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入  <code>./gradlew clean</code>会重新下载gradle，然后在打开AndroidStudio，重新载入项目。</p>
+<p>###3.点击SDK的按钮，需要下载ndk就在SDK Tools上面选择，查找然后装NDK。</p>
+<p>###3.关于Android安装谷歌<br>0.去应用市场查找<code>谷歌服务框架</code>的应用然后安装。<br>1.翻墙</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android Studio配置&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java内存区域与Java垃圾回收</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8EJava%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Java内存区域与Java垃圾回收/</id>
+    <published>2017-02-04T06:25:49.000Z</published>
+    <updated>2017-02-04T06:26:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>阐述Java内存区域与Java回收机制的关联</p>
+<a id="more"></a>
+<p><a href="http://www.cnblogs.com/kkcheng/archive/2011/02/25/1964521.html" target="_blank" rel="external">原文地址</a><br><a href="http://www.cnblogs.com/zhguang/p/3257367.html" target="_blank" rel="external">JavaGC与内存区域</a></p>
+<hr>
+<p>##Java内存区域</p>
+<p>###1.JVM管理的内存区域<br><img src="http://www.2cto.com/uploadfile/Collfiles/20161118/20161118081416891.jpg" alt=""></p>
+<p>####1.程序计数器<br>程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行到了第几行。（线程私有）不存在内存溢出的情况，是JVM中唯一一个没有定义OOM的区域。<br>线程私有</p>
+<p>####2.JVM Stack 虚拟机栈<br>一个线程每个方法执行的同时，都会创建一个栈帧（Stack Frame），栈帧中存储局部变量表，操作站，动态链接，方法出口等，当方法被调用时，栈帧在JVM中入栈，当方法执行完成，栈帧出栈。<br>局部变量表中存储着方法相关局部变量，包括基本数据类型，对象的引用，返回地址等。Java虚拟机允许动态扩展栈的大小，所以线程一直申请栈，知道内存不足，抛出OOM。<br>每个线程对应一个JVM Stack，所以也是线程私有。</p>
+<p>####3.Native Method Stack 本地方法栈<br>本地方法栈在作用，运行机制，异常类型等方面都与虚拟机栈相同，唯一的区别是：虚拟机栈是执行Java方法的，而本地方法栈是用来执行native方法的，在很多虚拟机中（如Sun的JDK默认的HotSpot虚拟机），会将本地方法栈与虚拟机栈放在一起使用。<br>本地方法栈也是线程私有的。</p>
+<p>####4.Heap 堆区<br>Heap 是Java GC机制最重要的区域，没有之一。在JVM管理的内存中，堆区是最大的一块，堆区也是Java GC机制所管理的主要区域。<strong><em>堆区所有线程共享</em></strong>，在虚拟机启动时创建。<strong><em>堆区的纯在是为了存储对象实例</em></strong>。<br>堆内存需要在逻辑上是连续的，物理上不需要，并且可扩展，如果在执行垃圾回收之后仍没有足够内存分配就会OOM。</p>
+<p>####5.Method Area 方法区<br><strong><em>方法区并不是堆区。</em></strong><br><strong><em>方法区是各个线程共享的，用于存储已经被虚拟机加载的类信息（加载类的信息，方法、接口、field等），final常量，静态变量等</em></strong>。<br>方法区可以选择性做GC，一般方法区上执行GC很少，因此常被称为永久代。也会抛出OOM。</p>
+<hr>
+<p>##Java的对象访问方式<br>一般来说，一个Java对象的引用访问涉及到3个区域内存区域：JVM栈， 堆区，方法区</p>
+<pre><code>Object object = new Object()
+</code></pre><blockquote>
+<p><em>Object object表示一个本地引用，存储在JVM栈的本地变量表中，表示一个reference类型数据
+</em>new Object()表示作为实例存储在堆中<br>*堆中的实例还记录了Object类型信息的地址，指向方法区中存储的类的信息</p>
+</blockquote>
+<p>目前有两种主流访问方式<br>1.通过句柄访问<br><img src="http://images.cnitblog.com/blog/406312/201309/21174354-8e55a4e6b6284153b8ac40cfeab3062d.png" alt=""></p>
+<p>通过句柄访问的实现方式中，JVM堆中会专门有一块区域用来作为句柄池，存储相关句柄所执行的实例数据地址（包括在堆中地址和在方法区中的地址）。这种实现方法由于用句柄表示地址，因此十分稳定。</p>
+<p>2.通过直接指针访问<br><img src="http://images.cnitblog.com/blog/406312/201309/21174413-e7b4a7cdec984c2881a56ad776d54354.png" alt=""></p>
+<p>通过直接指针访问的方式中，reference中存储的就是对象在堆中的实际地址，在堆中存储的对象信息中包含了在方法区中的相应类型数据。这种方法最大的优势是速度快，在HotSpot虚拟机中用的就是这种方式。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;阐述Java内存区域与Java回收机制的关联&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java基础" scheme="https://github.com/iBotasky/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java垃圾回收机制</title>
+    <link href="https://github.com/iBotasky/2017/02/04/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/"/>
+    <id>https://github.com/iBotasky/2017/02/04/Java垃圾回收机制/</id>
+    <published>2017-02-04T06:23:49.000Z</published>
+    <updated>2017-02-04T06:26:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>详细阐述Java垃圾回收机制</p>
+<a id="more"></a>
+<p><strong><em>开投注：JAVA的GC主要区域是堆区。JVM有堆、栈、方法区，详情参考基础另一篇文章</em></strong></p>
+<p>##垃圾回收的意义</p>
+<p>垃圾回收可以有效的防止内存泄露，有效的使用空闲的内存。<br>内存泄露：内存使用完后没有进行回收，Java的内存泄漏表现为一个内存对象的生命周期超出了程序需要他的时间长度，也叫“对象游离”。</p>
+<p>PS: <a href="https://github.com/xitu/gold-miner/blob/master/TODO/Eight-Ways-Your-Android-App-Can-Leak-Memory.md">关于Android常见的内存泄漏</a></p>
+<hr>
+<p>##垃圾回收机制的算法</p>
+<p>###<strong>1.引用计数器</strong><br>1.1算法分析<br>    垃圾收集器早起的策略，堆中每个对象实例都有一个引用计数，当一个对象被创建时，并且该对象实例被赋值给另一个变量，该变量计数设置为1， 当任何其他变量被赋值为这个对象的引用时，计数加1，例如（<code>a = b; //b的引用计数+1</code>）；但是当一个对象的某个引用超过了生命周期或者被设置为一个新值时，对象实例的引用计数器-1。任何引用计数器为0的对象实例可以被当做垃圾收集，例如（a引用b，a=c,b的引用计数器-1）；当一个对象实例被垃圾收集时，他引用的任何对象实例的引用计数器-1，例如（a引用b,a被回收，b的计数器-1）。<br>1.2优缺点<br>优点：</p>
+<blockquote>
+<ul>
+<li>引用计数收集器可以很快执行，交织在程序运行中，对程序不需要长时间被打断的实现环境比较有利。</li>
+</ul>
+</blockquote>
+<p>缺点:</p>
+<blockquote>
+<ul>
+<li><strong><em>无法检测出循环引用</em></strong>。 如父对象有一个子对象的引用，子对象反过来引用父对象。这样，他们的引用计数永远不肯能为0。</li>
+</ul>
+</blockquote>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buidDog</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Dog newDog = <span class="keyword">new</span> Dog();</div><div class="line">    Tail newTail = <span class="keyword">new</span> Tail();</div><div class="line">    newDog.tail = newTail;</div><div class="line">    newTail.dog = newDog;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong><em>在上面，newTail中拿着对newDog的引用，newDog反过来拿着newTail的引用，如果newDog要被回收，前提是newTail要先被回收，这样才能释放newDog对象。反过来，newTail要被回收前提是释放newDog对象。当bulidDog()方法执行完后，引用计数器无法回收这两个对象。</em></strong></p>
+<hr>
+<p>###<strong>2.标记-清除算法</strong><br>2.1 根搜索算法<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141050566294022.jpg" alt="根搜索算法"><br>根搜索算法是从离散数学中的图论引入的， 程序把所有的引用看做一张图， 从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。</p>
+<p>Java中可被作为GC ROOT的对象有：</p>
+<blockquote>
+<ul>
+<li>虚拟机栈中引用的对象（本地变量表）</li>
+<li>方法区中静态属性引用的对象</li>
+<li>方法区中常量的引用对象 </li>
+<li>本地方法栈中引用的对象（Naive对象）</li>
+</ul>
+</blockquote>
+<p>2.2 标记-清除算法的示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141048430359736.jpg" alt="标记清除算法"></p>
+<p>2.3 标记清除算法分析<br>    标记-清除算法采用从根集合进行扫描，对存活的对象进行标记，标记完毕后再扫描整个空间中未被标记的对象，进行回收， 如上图所示， 标记清除算法不需要进行对象的移动，并且仅对不存活的对象进行处理， 在存活对象比较多的情况下极为高效，但由于标记清除算法直接回收不存活的对象，会造成内存碎片。</p>
+<hr>
+<p>###<strong>3.标记-整理算法</strong><br>3.1 标记整理算法示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141120037076681.jpg" alt="标记整理算法"></p>
+<p>3.2 标记整理算法分析<br>    标记整理算法采用标记清除算法的方式进行对象的标记，但在清除时不同，再回收不存活的对象占用的空间后，会将所有的存活对象往左端空间移动， 并更新对应的指针。标记整理算法是在标记清除的基础上，又进行了对象的移动，因此成本更高，但是解决了内存碎片的问题。在实现上，一般增加句柄和句柄表。</p>
+<hr>
+<p>###<strong>4.Copying算法</strong><br>4.1 Copying算法示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141112115351233.jpg" alt="Copying算法"></p>
+<p>4.2 Copying算法分析<br>    Copying算法是为了克服句柄的开销和解决堆碎片的垃圾回收。它开始时把堆分为一个对象面和多个空闲面，程序从对象面为对象分配空间，当对象面满了，基于copying算法的垃圾收集就从根集扫描活动对象，并将每个活动对象复制到空闲面，这样空闲变成了对象面，原来的对象面变成了空闲面，程序会在新的对象面中分配内存。一种典型的基于copying算法的垃圾回收是stop-and-copy算法，他将堆分成对象面和空闲区域面，在对象面与空闲区域面的切换过程中，程序暂停执行。</p>
+<hr>
+<p>###<strong>5.分代收集器</strong><br>5.1 分代收集器示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141332429573819.jpg" alt="分代收集器"></p>
+<p>5.2 分代收集器分析<br>分代的垃圾回收策略，是基于这样一个事实：<strong><em>不同的对象的生命周期是不一样的。</em></strong>因此，不同生命周期的对象可以采取不同的回收算法，以便提高回收效率。</p>
+<p>5.2.1 年轻代（Young Generation）<br>1.<strong><em>所有的新生成的对象首先都是放在新生代。</em></strong>年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。<br>2.新生代的内存按照<strong><em>8:1:1</em></strong>的比例分为一个Eden区和两个Survivor(survivor0,survivor1)区。大部分对象在Eden区生成。回收时先将Eden区存活的对象复制到一个survivor0区，然后清空eden，当这个survivor0区也存满了，则将eden与survivor0存活的对象复制到另一个survivor1，然后清空eden与survivor0，此时survivor0是空的，然后将survivor0与survivor1交换，即保持survivor1为空，如此往复。<br>3.当survivor1区域不足以存放eden和survivor0的存活对象时，就将存活的对象放到老年代。若是老年代也满了就会触发一次Full GC, 也就是新生代，旧生代都进行回收。<br>4.新生代的GC也叫作Minor GC，Minor GC发生的频率比较高（不一定等Eden满了才触发）。</p>
+<p>5.2.2 老年代（Old Generation）<br>1.在年轻代经历了N次回收还存活的对象会被放到老年代。因此，可以认为老年代中存放的都是一些生命周期较长的对象。<br>2.<strong><em>内存也比新生代大很多（大概是1：2）</em></strong>，当老年代内存满了会触发Full GC， Full Gc发生频率比较低，老年代存活时间比较长，存活率标记高。</p>
+<p>5.2.3 持久代（Permanent Generation）<br><strong><em>用于存放静态文件，如Java类、方法等。</em></strong></p>
+<hr>
+<p>##GC（垃圾收集器）</p>
+<p>###新生代收集器：</p>
+<blockquote>
+<p><em>Serial收集器（复制算法):单线程收集器，标记和清理都是单线程，优点是简单高效。
+</em>ParNew收集器(停止-复制算法):Serial收集器的多线程版本,在多核CPU环境下有着比Serial更好的表现。<br>*Parallel Scavenge收集器(停止-复制算法):并行收集器，追求高吞吐量，高效利用CPU。吞吐量一般为99%， 吞吐量= 用户线程时间/(用户线程时间+GC线程时间)。适合后台应用等对交互相应要求不高的场景。</p>
+</blockquote>
+<p>###老年代收集器：</p>
+<blockquote>
+<p><em>Serial Old收集器(标记-整理算法):老年代单线程收集器，Serial收集器的老年代版本。
+</em>Parallel Old收集器(停止-复制算法):Parallel Scavenge收集器的老年代版本，并行收集器，吞吐量优先<br>*CMS(Concurrent Mark Sweep)收集器（标记-清理算法）:高并发、低停顿，追求最短GC回收停顿时间，cpu占用比较高，响应时间快，停顿时间短，多核cpu 追求高响应时间的选择</p>
+</blockquote>
+<hr>
+<p>##GC的执行<br>系统空闲的时候会进行GC<br>由于对象进行了分代处理，因此垃圾回收区域、时间也不一样。GC有两种类型：Scavenge GC和Full GC。</p>
+<p>###Scavenge GC<br>一般情况下，当新对象生成，并且在Eden区申请空间失败时，就会触发Scavenge Gc,对Eden区进行GC，然后整理Survivor区。因为Eden区不会分配很大，所以Eden的GC会频繁进行。因而，一般在这里需要使用速度快，效率高的算法，使Eden尽快空闲。</p>
+<p>###Full GC<br>对整个堆进行整理，包括Young，Old，Perm。因为工作量大，所以更加耗时，要尽可能减少FUll Gc次数。触发Full GC的有下面的原因：<br>1.老年代被写满<br>2.持久代被写满<br>3.System.gc()被显示调用<br>4.上一次GC后Heap的各域分配策略动态变化</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;详细阐述Java垃圾回收机制&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java基础" scheme="https://github.com/iBotasky/tags/Java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>Dagger2</title>
@@ -250,7 +635,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Markdown%E8%AF%AD%E6%B3%95/"/>
     <id>https://github.com/iBotasky/2017/02/04/Markdown语法/</id>
     <published>2017-02-04T03:34:01.000Z</published>
-    <updated>2017-02-04T04:12:50.000Z</updated>
+    <updated>2017-02-04T06:22:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，<a id="more"></a><strong>Cmd Markdown</strong> 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：</p>
 <blockquote>
@@ -341,6 +726,8 @@
     
     </summary>
     
+    
+      <category term="Markdown" scheme="https://github.com/iBotasky/tags/Markdown/"/>
     
   </entry>
   

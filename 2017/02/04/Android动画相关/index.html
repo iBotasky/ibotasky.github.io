@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>2017新希望 | Botasky的博客</title>
+  <title>Android动画相关 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="新的一年开始了，希望大家2017一切顺利！">
+  <meta name="description" content="平常用到的一些比较机智的动画
+##1.ViewCompatServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017新希望">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/‘2017新希望’/index.html">
+<meta property="og:title" content="Android动画相关">
+<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Android动画相关/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="新的一年开始了，希望大家2017一切顺利！">
-<meta property="og:updated_time" content="2017-02-04T03:39:32.000Z">
+<meta property="og:description" content="平常用到的一些比较机智的动画
+##1.ViewCompatServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
+<meta property="og:updated_time" content="2017-02-04T06:37:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017新希望">
-<meta name="twitter:description" content="新的一年开始了，希望大家2017一切顺利！">
+<meta name="twitter:title" content="Android动画相关">
+<meta name="twitter:description" content="平常用到的一些比较机智的动画
+##1.ViewCompatServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -220,11 +223,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-‘2017新希望’" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android动画相关" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/‘2017新希望’/" class="article-date">
-      <time datetime="2017-02-04T03:33:34.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/02/04/Android动画相关/" class="article-date">
+      <time datetime="2017-02-04T06:37:15.000Z" itemprop="datePublished">2017-02-04</time>
 </a>
     </div>
   
@@ -237,7 +240,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2017新希望
+      Android动画相关
     </h1>
   
 
@@ -248,7 +251,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -258,7 +261,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>新的一年开始了，希望大家2017一切顺利！<br><a id="more"></a></p>
+        <p>平常用到的一些比较机智的动画</p>
+<p>##1.ViewCompat<br>ServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//ViewCompat.setAlpha(rlBlur, 0);先设置看不见，并且GONE</span></div><div class="line"><span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.tv_qr_scan:</div><div class="line">                <span class="keyword">if</span> (!tvQrScan.isSelected()) &#123;</div><div class="line">                    tvCodeInput.setSelected(<span class="keyword">false</span>);</div><div class="line">                    tvQrScan.setSelected(<span class="keyword">true</span>);</div><div class="line">                    ViewCompat.animate(llInput).alpha(<span class="number">0</span>).setDuration(<span class="number">400</span>).setListener(<span class="keyword">new</span> ViewPropertyAnimatorListener() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                            llInput.setVisibility(View.GONE);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line"></div><div class="line"></div><div class="line">                    mQRCodeView.startSpot();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.tv_code_input:</div><div class="line">                <span class="keyword">if</span> (!tvCodeInput.isSelected()) &#123;</div><div class="line">                    tvQrScan.setSelected(<span class="keyword">false</span>);</div><div class="line">                    tvCodeInput.setSelected(<span class="keyword">true</span>);</div><div class="line">                    ViewCompat.animate(llInput).alpha(<span class="number">1</span>).setDuration(<span class="number">400</span>).setListener(<span class="keyword">new</span> ViewPropertyAnimatorListener() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                            llInput.setVisibility(View.VISIBLE);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line"></div><div class="line">                    mQRCodeView.stopSpot();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
+<p>感觉用起来还不错，有需要可以用这个，在两个VIEW切换的时候用，显得切换不会那么生硬。</p>
 
       
     </div>
@@ -267,13 +272,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/04/‘2017新希望’/">2017新希望</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/04/Android动画相关/">Android动画相关</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 11时39分</p>
+        <p><span>发布时间:</span>2017年02月04日 - 14时37分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时37分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/‘2017新希望’/" title="2017新希望">https://github.com/iBotasky/2017/02/04/‘2017新希望’/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/‘2017新希望’/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Android动画相关/" title="Android动画相关">https://github.com/iBotasky/2017/02/04/Android动画相关/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Android动画相关/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -286,15 +291,20 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/04/Hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/04/Android保活/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Hello world
+          Android保活
         
       </div>
     </a>
   
+  
+    <a href="/2017/02/04/Android系统架构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android系统架构</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -351,7 +361,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/04/‘2017新希望’/" data-title="2017新希望" data-url="https://github.com/iBotasky/2017/02/04/‘2017新希望’/"></div>
+    <div class="ds-thread" data-thread-key="2017/02/04/Android动画相关/" data-title="Android动画相关" data-url="https://github.com/iBotasky/2017/02/04/Android动画相关/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -374,13 +384,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/04/Hello-world/" title="上一篇: Hello world">
+            <a href="/2017/02/04/Android保活/" title="上一篇: Android保活">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/02/04/Android系统架构/" title="下一篇: Android系统架构">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android进程优先级/">Android进程优先级</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android保活/">Android保活</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android动画相关/">Android动画相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android系统架构/">Android系统架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android常见的内存泄漏/">Android常见的内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/">Android Studio Mac环境下面的配置流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java垃圾回收机制/">Java垃圾回收机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>

@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>2017新希望 | Botasky的博客</title>
+  <title>Android系统架构 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="新的一年开始了，希望大家2017一切顺利！">
+  <meta name="description" content="Android系统架构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017新希望">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/‘2017新希望’/index.html">
+<meta property="og:title" content="Android系统架构">
+<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Android系统架构/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="新的一年开始了，希望大家2017一切顺利！">
-<meta property="og:updated_time" content="2017-02-04T03:39:32.000Z">
+<meta property="og:description" content="Android系统架构">
+<meta property="og:image" content="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png">
+<meta property="og:updated_time" content="2017-02-04T06:35:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017新希望">
-<meta name="twitter:description" content="新的一年开始了，希望大家2017一切顺利！">
+<meta name="twitter:title" content="Android系统架构">
+<meta name="twitter:description" content="Android系统架构">
+<meta name="twitter:image" content="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -220,11 +222,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-‘2017新希望’" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android系统架构" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/‘2017新希望’/" class="article-date">
-      <time datetime="2017-02-04T03:33:34.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/02/04/Android系统架构/" class="article-date">
+      <time datetime="2017-02-04T06:34:45.000Z" itemprop="datePublished">2017-02-04</time>
 </a>
     </div>
   
@@ -237,7 +239,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2017新希望
+      Android系统架构
     </h1>
   
 
@@ -248,7 +250,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -258,7 +260,41 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>新的一年开始了，希望大家2017一切顺利！<br><a id="more"></a></p>
+        <p>Android系统架构</p>
+<p><a id="more"></a>##Android框架分层自顶向下</p>
+<blockquote>
+<p><em>应用程序层                       (Applications)
+</em>应用程序框架                     (Application Frameworks)<br><em>系统运行库与Android运行环境      (Library&amp;Runtime)
+</em>Linux内核                        (Linux Kernel)</p>
+</blockquote>
+<hr>
+<p>##Android结构示意图<br><img src="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png" alt="Android结构示意图"></p>
+<hr>
+<p>##1.应用程序层(Applications)<br>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
+<p>##2.Application Framework<br>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
+<p>开发者可以完全使用核心应用程序所使用的框架APIs。应用程序的体系结构旨在简化组件的重用，任何应用程序都能发布他的功能且任何其他应用程序可以使用这些功能（需要服从框架执行的安全限制）。这一机制允许用户替换组件。</p>
+<p>所有的应用程序其实是一组服务和系统，包括：</p>
+<blockquote>
+<p>*视图（View）——丰富的、可扩展的视图集合，可用于构建一个应用程序。包括包括列表、网格、文本框、按钮，甚至是内嵌的网页浏览器</p>
+<ul>
+<li>内容提供者（Content Providers）——使应用程序能访问其他应用程序（如通讯录）的数据，或共享自己的数据<br><em>资源管理器（Resource Manager）——提供访问非代码资源，如本地化字符串、图形和布局文件
+</em>通知管理器（Notification Manager）——使所有的应用程序能够在状态栏显示自定义警告<br>*活动管理器（Activity Manager）——管理应用程序生命周期,提供通用的导航回退功能</li>
+</ul>
+</blockquote>
+<p>##3.Library<br>Android包含一个C/C++库的集合，供Android系统的各个组件使用。这些功能通过Android的应用程序框架（application framework）暴露给开发者。下面列出一些核心库：</p>
+<blockquote>
+<p><em>系统C库——标准C系统库（libc）的BSD衍生，调整为基于嵌入式Linux设备
+</em>媒体库——基于PacketVideo的OpenCORE。这些库支持播放和录制许多流行的音频和视频格式，以及静态图像文件，包括MPEG4、 H.264、 MP3、 AAC、 AMR、JPG、 PNG<br><em>界面管理——管理访问显示子系统和无缝组合多个应用程序的二维和三维图形层
+</em>LibWebCore——新式的Web浏览器引擎,驱动Android 浏览器和内嵌的web视图<br><em>SGL——基本的2D图形引擎
+</em>3D库——基于OpenGL ES 1.0 APIs的实现。库使用硬件3D加速或包含高度优化的3D软件光栅<br><em>FreeType ——位图和矢量字体渲染
+</em>SQLite ——所有应用程序都可以使用的强大而轻量级的关系数据库引擎</p>
+</blockquote>
+<p>##4.Runtime<br>Android包含一个核心库的集合，提供大部分在Java编程语言核心类库中可用的功能。每一个Android应用程序是Dalvik虚拟机中的实例，运行在他们自己的进程中。Dalvik虚拟机设计成，在一个设备可以高效地运行多个虚拟机。Dalvik虚拟机可执行文件格式是.dex，dex格式是专为Dalvik设计的一种压缩格式，适合内存和处理器速度有限的系统。</p>
+<p>大多数虚拟机包括JVM都是基于栈的，而Dalvik虚拟机则是基于寄存器的。两种架构各有优劣，一般而言，基于栈的机器需要更多指令，而基于寄存器的机器指令更大。dx 是一套工具，可以將 Java .class 转换成 .dex 格式。一个dex文件通常会有多个.class。由于dex有時必须进行最佳化，会使文件大小增加1-4倍，以ODEX结尾。</p>
+<p>Dalvik虚拟机依赖于Linux 内核提供基本功能，如线程和底层内存管理。</p>
+<p>##5.Linux Kernel<br>Android基于Linux 2.6提供核心系统服务，例如：安全、内存管理、进程管理、网络堆栈、驱动模型。Linux Kernel也作为硬件和软件之间的抽象层，它隐藏具体硬件细节而为上层提供统一的服务。</p>
+<p>如果你学过计算机网络知道OSI/RM，就会知道分层的好处就是使用下层提供的服务而为上层提供统一的服务，屏蔽本层及以下层的差异，当本层及以下层发生了变化不会影响到上层。也就是说各层各司其职，各层提供固定的SAP（Service Access Point），专业点可以说是高内聚、低耦合。</p>
+<p>如果你只是做应用开发，就不需要深入了解Linux Kernel层。</p>
 
       
     </div>
@@ -267,13 +303,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/04/‘2017新希望’/">2017新希望</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/04/Android系统架构/">Android系统架构</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 11时39分</p>
+        <p><span>发布时间:</span>2017年02月04日 - 14时34分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时35分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/‘2017新希望’/" title="2017新希望">https://github.com/iBotasky/2017/02/04/‘2017新希望’/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/‘2017新希望’/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Android系统架构/" title="Android系统架构">https://github.com/iBotasky/2017/02/04/Android系统架构/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Android系统架构/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -286,15 +322,20 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/04/Hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/04/Android动画相关/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Hello world
+          Android动画相关
         
       </div>
     </a>
   
+  
+    <a href="/2017/02/04/Activity-Service的生命周期/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Activity/Service的生命周期</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -351,7 +392,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/04/‘2017新希望’/" data-title="2017新希望" data-url="https://github.com/iBotasky/2017/02/04/‘2017新希望’/"></div>
+    <div class="ds-thread" data-thread-key="2017/02/04/Android系统架构/" data-title="Android系统架构" data-url="https://github.com/iBotasky/2017/02/04/Android系统架构/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -374,13 +415,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/04/Hello-world/" title="上一篇: Hello world">
+            <a href="/2017/02/04/Android动画相关/" title="上一篇: Android动画相关">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/02/04/Activity-Service的生命周期/" title="下一篇: Activity/Service的生命周期">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android进程优先级/">Android进程优先级</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android保活/">Android保活</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android动画相关/">Android动画相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android系统架构/">Android系统架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android常见的内存泄漏/">Android常见的内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/">Android Studio Mac环境下面的配置流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java垃圾回收机制/">Java垃圾回收机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>

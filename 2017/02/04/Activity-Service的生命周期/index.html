@@ -3,17 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Botasky的博客</title>
+  <title>Activity/Service的生命周期 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Botasky iBotasky botasky ibotasky">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Botasky的博客">
-<meta property="og:url" content="https://github.com/iBotasky/index.html">
+  <meta name="description" content="Android Activity/Service 生命周期介绍
+##Activity的生命周期
+###1.Activity生命周期图
+###2.Activity生命周期相关方法Activity继承了ApplicationContext，可以重写方法：123456789101112131415public class Activity extends ApplicationContext &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity/Service的生命周期">
+<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Botasky iBotasky botasky ibotasky">
+<meta property="og:description" content="Android Activity/Service 生命周期介绍
+##Activity的生命周期
+###1.Activity生命周期图
+###2.Activity生命周期相关方法Activity继承了ApplicationContext，可以重写方法：123456789101112131415public class Activity extends ApplicationContext &amp;#123">
+<meta property="og:image" content="http://stormzhang.com/image/activity_lifecycle.png">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201007/28/0_1280324212Y5nt.gif">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201007/28/0_1280324618Bqxb.gif">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201007/28/0_1280325044k0c7.gif">
+<meta property="og:image" content="http://img.blog.csdn.net/20141021233945682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV1dHU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2017-02-04T06:34:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Botasky的博客">
-<meta name="twitter:description" content="Botasky iBotasky botasky ibotasky">
+<meta name="twitter:title" content="Activity/Service的生命周期">
+<meta name="twitter:description" content="Android Activity/Service 生命周期介绍
+##Activity的生命周期
+###1.Activity生命周期图
+###2.Activity生命周期相关方法Activity继承了ApplicationContext，可以重写方法：123456789101112131415public class Activity extends ApplicationContext &amp;#123">
+<meta name="twitter:image" content="http://stormzhang.com/image/activity_lifecycle.png">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -27,9 +43,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -41,8 +54,8 @@
           rootUrl: '/',
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -222,256 +235,7 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Android进程优先级" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Android进程优先级/" class="article-date">
-      <time datetime="2017-02-04T06:40:37.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Android进程优先级/">Android进程优先级</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>进程优先级介绍<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android进阶/">Android进阶</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Android进程优先级/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android保活" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Android保活/" class="article-date">
-      <time datetime="2017-02-04T06:38:22.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Android保活/">Android保活</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>平常接触到的保活<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android进阶/">Android进阶</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Android保活/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android动画相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Android动画相关/" class="article-date">
-      <time datetime="2017-02-04T06:37:15.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Android动画相关/">Android动画相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>平常用到的一些比较机智的动画</p>
-<p>##1.ViewCompat<br>ServiceApp里面看到一个二维码扫描/条形码输入的一个界面，两个界面放在一个Activity里面，切换二维码扫描跟条形码输入的时候会有一个过渡动画，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//ViewCompat.setAlpha(rlBlur, 0);先设置看不见，并且GONE</span></div><div class="line"><span class="keyword">switch</span> (v.getId()) &#123;</div><div class="line">            <span class="keyword">case</span> R.id.tv_qr_scan:</div><div class="line">                <span class="keyword">if</span> (!tvQrScan.isSelected()) &#123;</div><div class="line">                    tvCodeInput.setSelected(<span class="keyword">false</span>);</div><div class="line">                    tvQrScan.setSelected(<span class="keyword">true</span>);</div><div class="line">                    ViewCompat.animate(llInput).alpha(<span class="number">0</span>).setDuration(<span class="number">400</span>).setListener(<span class="keyword">new</span> ViewPropertyAnimatorListener() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                            llInput.setVisibility(View.GONE);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line"></div><div class="line"></div><div class="line">                    mQRCodeView.startSpot();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> R.id.tv_code_input:</div><div class="line">                <span class="keyword">if</span> (!tvCodeInput.isSelected()) &#123;</div><div class="line">                    tvQrScan.setSelected(<span class="keyword">false</span>);</div><div class="line">                    tvCodeInput.setSelected(<span class="keyword">true</span>);</div><div class="line">                    ViewCompat.animate(llInput).alpha(<span class="number">1</span>).setDuration(<span class="number">400</span>).setListener(<span class="keyword">new</span> ViewPropertyAnimatorListener() &#123;</div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                            llInput.setVisibility(View.VISIBLE);</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        <span class="meta">@Override</span></div><div class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(View view)</span> </span>&#123;</div><div class="line"></div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line"></div><div class="line">                    mQRCodeView.stopSpot();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
-<p>感觉用起来还不错，有需要可以用这个，在两个VIEW切换的时候用，显得切换不会那么生硬。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android系统架构" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Android系统架构/" class="article-date">
-      <time datetime="2017-02-04T06:34:45.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Android系统架构/">Android系统架构</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Android系统架构</p>
-<p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Android系统架构/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Activity-Service的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Activity-Service的生命周期" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/02/04/Activity-Service的生命周期/" class="article-date">
@@ -487,12 +251,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a>
+    <h1 class="article-title" itemprop="name">
+      Activity/Service的生命周期
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -529,347 +304,158 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Android常见的内存泄漏" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Android常见的内存泄漏/" class="article-date">
-      <time datetime="2017-02-04T06:31:30.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Android常见的内存泄漏/">Android常见的内存泄漏</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="https://github.com/xitu/gold-miner/blob/master/TODO/Eight-Ways-Your-Android-App-Can-Leak-Memory.md">原文地址</a></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Android常见的内存泄漏/#more">阅读全文 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
+        <p><span>发布时间:</span>2017年02月04日 - 14时33分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时34分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Activity-Service的生命周期/" title="Activity/Service的生命周期">https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-AndroidStudio-Mac环境下面的配置流程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/" class="article-date">
-      <time datetime="2017-02-04T06:29:58.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/">Android Studio Mac环境下面的配置流程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Android Studio配置<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/#more">阅读全文 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
+
+
+
+<nav id="article-nav">
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java内存区域与Java垃圾回收" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Java内存区域与Java垃圾回收/" class="article-date">
-      <time datetime="2017-02-04T06:25:49.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <a href="/2017/02/04/Android系统架构/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>阐述Java内存区域与Java回收机制的关联</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Java内存区域与Java垃圾回收/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java垃圾回收机制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Java垃圾回收机制/" class="article-date">
-      <time datetime="2017-02-04T06:23:49.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+          Android系统架构
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Java垃圾回收机制/">Java垃圾回收机制</a>
-    </h1>
   
+    <a href="/2017/02/04/Android常见的内存泄漏/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android常见的内存泄漏</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>详细阐述Java垃圾回收机制</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Java垃圾回收机制/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-Dagger2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Dagger2/" class="article-date">
-      <time datetime="2017-02-04T06:19:09.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
     
-      <input type="hidden" class="isFancy" />
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
     
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/02/04/Activity-Service的生命周期/" data-title="Activity/Service的生命周期" data-url="https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ibotasky"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
     
-      <header class="article-header">
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Dagger2/">Dagger2</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>介绍Dagger2</p>
-          
-      
+            <a href="/2017/02/04/Android系统架构/" title="上一篇: Android系统架构">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/04/Android常见的内存泄漏/" title="下一篇: Android常见的内存泄漏">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android框架/">Android框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dagger2/">Dagger2</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Dagger2/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android进程优先级/">Android进程优先级</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android保活/">Android保活</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android动画相关/">Android动画相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android系统架构/">Android系统架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android常见的内存泄漏/">Android常见的内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/">Android Studio Mac环境下面的配置流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java垃圾回收机制/">Java垃圾回收机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

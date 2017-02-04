@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>2017新希望 | Botasky的博客</title>
+  <title>Java内存区域与Java垃圾回收 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="新的一年开始了，希望大家2017一切顺利！">
+  <meta name="description" content="阐述Java内存区域与Java回收机制的关联">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017新希望">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/‘2017新希望’/index.html">
+<meta property="og:title" content="Java内存区域与Java垃圾回收">
+<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Java内存区域与Java垃圾回收/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="新的一年开始了，希望大家2017一切顺利！">
-<meta property="og:updated_time" content="2017-02-04T03:39:32.000Z">
+<meta property="og:description" content="阐述Java内存区域与Java回收机制的关联">
+<meta property="og:image" content="http://www.2cto.com/uploadfile/Collfiles/20161118/20161118081416891.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/406312/201309/21174354-8e55a4e6b6284153b8ac40cfeab3062d.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/406312/201309/21174413-e7b4a7cdec984c2881a56ad776d54354.png">
+<meta property="og:updated_time" content="2017-02-04T06:26:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017新希望">
-<meta name="twitter:description" content="新的一年开始了，希望大家2017一切顺利！">
+<meta name="twitter:title" content="Java内存区域与Java垃圾回收">
+<meta name="twitter:description" content="阐述Java内存区域与Java回收机制的关联">
+<meta name="twitter:image" content="http://www.2cto.com/uploadfile/Collfiles/20161118/20161118081416891.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -220,11 +224,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-‘2017新希望’" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Java内存区域与Java垃圾回收" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/‘2017新希望’/" class="article-date">
-      <time datetime="2017-02-04T03:33:34.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/02/04/Java内存区域与Java垃圾回收/" class="article-date">
+      <time datetime="2017-02-04T06:25:49.000Z" itemprop="datePublished">2017-02-04</time>
 </a>
     </div>
   
@@ -237,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2017新希望
+      Java内存区域与Java垃圾回收
     </h1>
   
 
@@ -248,7 +252,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java基础/">Java基础</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -258,7 +262,28 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>新的一年开始了，希望大家2017一切顺利！<br><a id="more"></a></p>
+        <p>阐述Java内存区域与Java回收机制的关联</p>
+<a id="more"></a>
+<p><a href="http://www.cnblogs.com/kkcheng/archive/2011/02/25/1964521.html" target="_blank" rel="external">原文地址</a><br><a href="http://www.cnblogs.com/zhguang/p/3257367.html" target="_blank" rel="external">JavaGC与内存区域</a></p>
+<hr>
+<p>##Java内存区域</p>
+<p>###1.JVM管理的内存区域<br><img src="http://www.2cto.com/uploadfile/Collfiles/20161118/20161118081416891.jpg" alt=""></p>
+<p>####1.程序计数器<br>程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行到了第几行。（线程私有）不存在内存溢出的情况，是JVM中唯一一个没有定义OOM的区域。<br>线程私有</p>
+<p>####2.JVM Stack 虚拟机栈<br>一个线程每个方法执行的同时，都会创建一个栈帧（Stack Frame），栈帧中存储局部变量表，操作站，动态链接，方法出口等，当方法被调用时，栈帧在JVM中入栈，当方法执行完成，栈帧出栈。<br>局部变量表中存储着方法相关局部变量，包括基本数据类型，对象的引用，返回地址等。Java虚拟机允许动态扩展栈的大小，所以线程一直申请栈，知道内存不足，抛出OOM。<br>每个线程对应一个JVM Stack，所以也是线程私有。</p>
+<p>####3.Native Method Stack 本地方法栈<br>本地方法栈在作用，运行机制，异常类型等方面都与虚拟机栈相同，唯一的区别是：虚拟机栈是执行Java方法的，而本地方法栈是用来执行native方法的，在很多虚拟机中（如Sun的JDK默认的HotSpot虚拟机），会将本地方法栈与虚拟机栈放在一起使用。<br>本地方法栈也是线程私有的。</p>
+<p>####4.Heap 堆区<br>Heap 是Java GC机制最重要的区域，没有之一。在JVM管理的内存中，堆区是最大的一块，堆区也是Java GC机制所管理的主要区域。<strong><em>堆区所有线程共享</em></strong>，在虚拟机启动时创建。<strong><em>堆区的纯在是为了存储对象实例</em></strong>。<br>堆内存需要在逻辑上是连续的，物理上不需要，并且可扩展，如果在执行垃圾回收之后仍没有足够内存分配就会OOM。</p>
+<p>####5.Method Area 方法区<br><strong><em>方法区并不是堆区。</em></strong><br><strong><em>方法区是各个线程共享的，用于存储已经被虚拟机加载的类信息（加载类的信息，方法、接口、field等），final常量，静态变量等</em></strong>。<br>方法区可以选择性做GC，一般方法区上执行GC很少，因此常被称为永久代。也会抛出OOM。</p>
+<hr>
+<p>##Java的对象访问方式<br>一般来说，一个Java对象的引用访问涉及到3个区域内存区域：JVM栈， 堆区，方法区</p>
+<pre><code>Object object = new Object()
+</code></pre><blockquote>
+<p><em>Object object表示一个本地引用，存储在JVM栈的本地变量表中，表示一个reference类型数据
+</em>new Object()表示作为实例存储在堆中<br>*堆中的实例还记录了Object类型信息的地址，指向方法区中存储的类的信息</p>
+</blockquote>
+<p>目前有两种主流访问方式<br>1.通过句柄访问<br><img src="http://images.cnitblog.com/blog/406312/201309/21174354-8e55a4e6b6284153b8ac40cfeab3062d.png" alt=""></p>
+<p>通过句柄访问的实现方式中，JVM堆中会专门有一块区域用来作为句柄池，存储相关句柄所执行的实例数据地址（包括在堆中地址和在方法区中的地址）。这种实现方法由于用句柄表示地址，因此十分稳定。</p>
+<p>2.通过直接指针访问<br><img src="http://images.cnitblog.com/blog/406312/201309/21174413-e7b4a7cdec984c2881a56ad776d54354.png" alt=""></p>
+<p>通过直接指针访问的方式中，reference中存储的就是对象在堆中的实际地址，在堆中存储的对象信息中包含了在方法区中的相应类型数据。这种方法最大的优势是速度快，在HotSpot虚拟机中用的就是这种方式。</p>
 
       
     </div>
@@ -267,13 +292,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/04/‘2017新希望’/">2017新希望</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 11时39分</p>
+        <p><span>发布时间:</span>2017年02月04日 - 14时25分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时26分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/‘2017新希望’/" title="2017新希望">https://github.com/iBotasky/2017/02/04/‘2017新希望’/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/‘2017新希望’/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Java内存区域与Java垃圾回收/" title="Java内存区域与Java垃圾回收">https://github.com/iBotasky/2017/02/04/Java内存区域与Java垃圾回收/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Java内存区域与Java垃圾回收/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -286,15 +311,20 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/04/Hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Hello world
+          Android Studio Mac环境下面的配置流程
         
       </div>
     </a>
   
+  
+    <a href="/2017/02/04/Java垃圾回收机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java垃圾回收机制</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -351,7 +381,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/04/‘2017新希望’/" data-title="2017新希望" data-url="https://github.com/iBotasky/2017/02/04/‘2017新希望’/"></div>
+    <div class="ds-thread" data-thread-key="2017/02/04/Java内存区域与Java垃圾回收/" data-title="Java内存区域与Java垃圾回收" data-url="https://github.com/iBotasky/2017/02/04/Java内存区域与Java垃圾回收/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -374,13 +404,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/04/Hello-world/" title="上一篇: Hello world">
+            <a href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/" title="上一篇: Android Studio Mac环境下面的配置流程">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/02/04/Java垃圾回收机制/" title="下一篇: Java垃圾回收机制">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android进程优先级/">Android进程优先级</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android保活/">Android保活</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android动画相关/">Android动画相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android系统架构/">Android系统架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android常见的内存泄漏/">Android常见的内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/">Android Studio Mac环境下面的配置流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java垃圾回收机制/">Java垃圾回收机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>
