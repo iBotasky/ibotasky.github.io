@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Botasky的博客">
 <meta property="og:description" content="Android系统架构">
 <meta property="og:image" content="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png">
-<meta property="og:updated_time" content="2017-02-04T06:35:48.000Z">
+<meta property="og:updated_time" content="2017-02-04T07:01:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android系统架构">
 <meta name="twitter:description" content="Android系统架构">
@@ -268,10 +268,10 @@
 </em>Linux内核                        (Linux Kernel)</p>
 </blockquote>
 <hr>
-<p>##Android结构示意图<br><img src="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png" alt="Android结构示意图"></p>
+<h2 id="Android结构示意图"><a href="#Android结构示意图" class="headerlink" title="Android结构示意图"></a>Android结构示意图</h2><p><img src="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png" alt="Android结构示意图"></p>
 <hr>
-<p>##1.应用程序层(Applications)<br>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
-<p>##2.Application Framework<br>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
+<h2 id="1-应用程序层-Applications"><a href="#1-应用程序层-Applications" class="headerlink" title="1.应用程序层(Applications)"></a>1.应用程序层(Applications)</h2><p>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
+<h2 id="2-Application-Framework"><a href="#2-Application-Framework" class="headerlink" title="2.Application Framework"></a>2.Application Framework</h2><p>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
 <p>开发者可以完全使用核心应用程序所使用的框架APIs。应用程序的体系结构旨在简化组件的重用，任何应用程序都能发布他的功能且任何其他应用程序可以使用这些功能（需要服从框架执行的安全限制）。这一机制允许用户替换组件。</p>
 <p>所有的应用程序其实是一组服务和系统，包括：</p>
 <blockquote>
@@ -281,7 +281,7 @@
 </em>通知管理器（Notification Manager）——使所有的应用程序能够在状态栏显示自定义警告<br>*活动管理器（Activity Manager）——管理应用程序生命周期,提供通用的导航回退功能</li>
 </ul>
 </blockquote>
-<p>##3.Library<br>Android包含一个C/C++库的集合，供Android系统的各个组件使用。这些功能通过Android的应用程序框架（application framework）暴露给开发者。下面列出一些核心库：</p>
+<h2 id="3-Library"><a href="#3-Library" class="headerlink" title="3.Library"></a>3.Library</h2><p>Android包含一个C/C++库的集合，供Android系统的各个组件使用。这些功能通过Android的应用程序框架（application framework）暴露给开发者。下面列出一些核心库：</p>
 <blockquote>
 <p><em>系统C库——标准C系统库（libc）的BSD衍生，调整为基于嵌入式Linux设备
 </em>媒体库——基于PacketVideo的OpenCORE。这些库支持播放和录制许多流行的音频和视频格式，以及静态图像文件，包括MPEG4、 H.264、 MP3、 AAC、 AMR、JPG、 PNG<br><em>界面管理——管理访问显示子系统和无缝组合多个应用程序的二维和三维图形层
@@ -289,10 +289,10 @@
 </em>3D库——基于OpenGL ES 1.0 APIs的实现。库使用硬件3D加速或包含高度优化的3D软件光栅<br><em>FreeType ——位图和矢量字体渲染
 </em>SQLite ——所有应用程序都可以使用的强大而轻量级的关系数据库引擎</p>
 </blockquote>
-<p>##4.Runtime<br>Android包含一个核心库的集合，提供大部分在Java编程语言核心类库中可用的功能。每一个Android应用程序是Dalvik虚拟机中的实例，运行在他们自己的进程中。Dalvik虚拟机设计成，在一个设备可以高效地运行多个虚拟机。Dalvik虚拟机可执行文件格式是.dex，dex格式是专为Dalvik设计的一种压缩格式，适合内存和处理器速度有限的系统。</p>
+<h2 id="4-Runtime"><a href="#4-Runtime" class="headerlink" title="4.Runtime"></a>4.Runtime</h2><p>Android包含一个核心库的集合，提供大部分在Java编程语言核心类库中可用的功能。每一个Android应用程序是Dalvik虚拟机中的实例，运行在他们自己的进程中。Dalvik虚拟机设计成，在一个设备可以高效地运行多个虚拟机。Dalvik虚拟机可执行文件格式是.dex，dex格式是专为Dalvik设计的一种压缩格式，适合内存和处理器速度有限的系统。</p>
 <p>大多数虚拟机包括JVM都是基于栈的，而Dalvik虚拟机则是基于寄存器的。两种架构各有优劣，一般而言，基于栈的机器需要更多指令，而基于寄存器的机器指令更大。dx 是一套工具，可以將 Java .class 转换成 .dex 格式。一个dex文件通常会有多个.class。由于dex有時必须进行最佳化，会使文件大小增加1-4倍，以ODEX结尾。</p>
 <p>Dalvik虚拟机依赖于Linux 内核提供基本功能，如线程和底层内存管理。</p>
-<p>##5.Linux Kernel<br>Android基于Linux 2.6提供核心系统服务，例如：安全、内存管理、进程管理、网络堆栈、驱动模型。Linux Kernel也作为硬件和软件之间的抽象层，它隐藏具体硬件细节而为上层提供统一的服务。</p>
+<h2 id="5-Linux-Kernel"><a href="#5-Linux-Kernel" class="headerlink" title="5.Linux Kernel"></a>5.Linux Kernel</h2><p>Android基于Linux 2.6提供核心系统服务，例如：安全、内存管理、进程管理、网络堆栈、驱动模型。Linux Kernel也作为硬件和软件之间的抽象层，它隐藏具体硬件细节而为上层提供统一的服务。</p>
 <p>如果你学过计算机网络知道OSI/RM，就会知道分层的好处就是使用下层提供的服务而为上层提供统一的服务，屏蔽本层及以下层的差异，当本层及以下层发生了变化不会影响到上层。也就是说各层各司其职，各层提供固定的SAP（Service Access Point），专业点可以说是高内聚、低耦合。</p>
 <p>如果你只是做应用开发，就不需要深入了解Linux Kernel层。</p>
 
@@ -306,7 +306,7 @@
         <p><span>本文标题:</span><a href="/2017/02/04/Android系统架构/">Android系统架构</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
         <p><span>发布时间:</span>2017年02月04日 - 14时34分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 14时35分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 15时01分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/04/Android系统架构/" title="Android系统架构">https://github.com/iBotasky/2017/02/04/Android系统架构/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Android系统架构/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -344,7 +344,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android结构示意图"><span class="toc-number">1.</span> <span class="toc-text">Android结构示意图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-应用程序层-Applications"><span class="toc-number">2.</span> <span class="toc-text">1.应用程序层(Applications)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Application-Framework"><span class="toc-number">3.</span> <span class="toc-text">2.Application Framework</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Library"><span class="toc-number">4.</span> <span class="toc-text">3.Library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Runtime"><span class="toc-number">5.</span> <span class="toc-text">4.Runtime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Linux-Kernel"><span class="toc-number">6.</span> <span class="toc-text">5.Linux Kernel</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 

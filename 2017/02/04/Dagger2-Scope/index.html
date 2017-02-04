@@ -13,7 +13,7 @@
 <meta property="og:description" content="Dagger2的@Scope的用法介绍">
 <meta property="og:image" content="http://frogermcs.github.io/images/15/dagger-scopes.png">
 <meta property="og:image" content="http://frogermcs.github.io/images/15/scopes-lifecycle.png">
-<meta property="og:updated_time" content="2017-02-04T06:14:51.000Z">
+<meta property="og:updated_time" content="2017-02-04T06:57:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2-Scope">
 <meta name="twitter:description" content="Dagger2的@Scope的用法介绍">
@@ -262,10 +262,10 @@
       
           
         <p>Dagger2的<code>@Scope</code>的用法介绍<br><a id="more"></a></p>
-<p>##Scope–能为我们提供什么<br>几乎所有的项目都会使用单例-比如API Client，DatabaseHelper，Analytic Manager等。因为依赖注入，所以我们不用关心实例化。我们不应该在代码里考虑如何获取这些对象。取而代之的是<code>@Inject</code>会给我们提供应该要提供的实例。<br>在Dagger2的Scope机制使得让一个类保持单例让他的存活周期跟Scope一样长。例如在实际中一个在<code>@ApplicationScope</code>的实例的存货周期跟Application的生命周期是一样的。<code>@ActivityScope</code>的存活周期跟Activity的生命周期相同（比如我们可以在同一个Activity下所有的Fragment共享单例）。</p>
+<h2 id="Scope–能为我们提供什么"><a href="#Scope–能为我们提供什么" class="headerlink" title="Scope–能为我们提供什么"></a>Scope–能为我们提供什么</h2><p>几乎所有的项目都会使用单例-比如API Client，DatabaseHelper，Analytic Manager等。因为依赖注入，所以我们不用关心实例化。我们不应该在代码里考虑如何获取这些对象。取而代之的是<code>@Inject</code>会给我们提供应该要提供的实例。<br>在Dagger2的Scope机制使得让一个类保持单例让他的存活周期跟Scope一样长。例如在实际中一个在<code>@ApplicationScope</code>的实例的存货周期跟Application的生命周期是一样的。<code>@ActivityScope</code>的存活周期跟Activity的生命周期相同（比如我们可以在同一个Activity下所有的Fragment共享单例）。</p>
 <p>简单说：Scopes给我们创建了一种”局部单例“，生命周期取决于Scope自己。</p>
 <p>但是，Dagger2并没有提供<code>@ActivityScope</code>和<code>@ApplicationScope</code>,这些都是要通过<code>@Scope</code>来自定义。Dagger2默认只提供<code>@Singleton</code>的Scope注解。</p>
-<p>##Scope实践<br>我们要实现比Application/Activity Scope更加复杂的Scope。用GithubClient项目做为解释，项目中用到了三个Scope：</p>
+<h2 id="Scope实践"><a href="#Scope实践" class="headerlink" title="Scope实践"></a>Scope实践</h2><p>我们要实现比Application/Activity Scope更加复杂的Scope。用GithubClient项目做为解释，项目中用到了三个Scope：</p>
 <blockquote>
 <ul>
 <li>@Singleton - ApplicationScope</li>
@@ -274,8 +274,8 @@
 </ul>
 </blockquote>
 <p>引入的<code>@UserScope</code>跟前一篇文章的方案有不同之处。从用户体验的角度来说他没有提供任何帮助。但是从架构角度来说，他帮助我们在不需要传入任何intent参数的情况下为我们提供<code>User</code>实例。<br>并且那些需要user数据的类（<code>RepositoriesManager</code>类在这个例子中）能通过把<code>User</code>作为构造器函数拿到<code>User</code>。并且是在需要的时候去初始化，而不是在App启动的时候去初始化。这意味着：<code>RepositoriesManager</code>会在我们通过GithubApi拿到用户之后去做初始化（在<code>RepositoriesListActivity</code>呈现之前）。<br>这是简单的一个我们应用的Scopes和Component的示意图：<br><img src="http://frogermcs.github.io/images/15/dagger-scopes.png" alt=""><br>Singleton(ApplicationScope)是存活周期最长的Scope。<br>UserScope作为ApplicationScope的子Scope，他可以访问访问父Scope的对象。<br>ActivityScope也是如此，可以拿到UserScope跟ApplicationScope的对象。</p>
-<p>##Scope 生命周期示例<br><img src="http://frogermcs.github.io/images/15/scopes-lifecycle.png" alt=""><br>单例的生命周期是从app启动后的App的存活时间。<br>UserScope的创建是从我们通过GithubApi拿到<code>User</code>开始（真实情况下，实在用户登录后），并在我们回到SplashActivity后被销毁（真实情况下，是在用户登出后）。当新登录一个用户，会产生另外一个UserScope.<br>每个<code>ActivityScope</code>存活时间跟他所对应的Activity是一样的。</p>
-<p>##实现<br>在Dagger2中，Scope的实现归结于对Component的正确设置。一般情况下有两种设置：</p>
+<h2 id="Scope-生命周期示例"><a href="#Scope-生命周期示例" class="headerlink" title="Scope 生命周期示例"></a>Scope 生命周期示例</h2><p><img src="http://frogermcs.github.io/images/15/scopes-lifecycle.png" alt=""><br>单例的生命周期是从app启动后的App的存活时间。<br>UserScope的创建是从我们通过GithubApi拿到<code>User</code>开始（真实情况下，实在用户登录后），并在我们回到SplashActivity后被销毁（真实情况下，是在用户登出后）。当新登录一个用户，会产生另外一个UserScope.<br>每个<code>ActivityScope</code>存活时间跟他所对应的Activity是一样的。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>在Dagger2中，Scope的实现归结于对Component的正确设置。一般情况下有两种设置：</p>
 <blockquote>
 <p><em>1.使用<code>Subcomponent</code>注解
 </em>2.使用Component依赖</p>
@@ -301,7 +301,7 @@
         <p><span>本文标题:</span><a href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
         <p><span>发布时间:</span>2017年02月04日 - 14时09分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 14时14分</p>
+        <p><span>最后更新:</span>2017年02月04日 - 14时57分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/04/Dagger2-Scope/" title="Dagger2-Scope">https://github.com/iBotasky/2017/02/04/Dagger2-Scope/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Dagger2-Scope/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -339,7 +339,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope–能为我们提供什么"><span class="toc-number">1.</span> <span class="toc-text">Scope–能为我们提供什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope实践"><span class="toc-number">2.</span> <span class="toc-text">Scope实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope-生命周期示例"><span class="toc-number">3.</span> <span class="toc-text">Scope 生命周期示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">4.</span> <span class="toc-text">实现</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
