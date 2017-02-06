@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-02-06T06:11:49.000Z</updated>
+  <updated>2017-02-06T06:47:46.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="https://github.com/iBotasky/2017/02/06/Mac-OS-%E6%98%BE%E7%A4%BA-%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     <id>https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/</id>
     <published>2017-02-06T03:56:19.000Z</published>
-    <updated>2017-02-06T06:11:49.000Z</updated>
+    <updated>2017-02-06T06:47:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>Mac显示/隐藏文件夹<br><a id="more"></a><br>显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool TRUE ; killall Finder</code><br>停止显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool FALSE ; killall Finder</code></p>
 <p>隐藏一个文件夹：<br><code>chflags hidden 文件绝对路径/ 相对路径</code><br>取消隐藏一个文件夹：<br><code>chflags nohidden 文件绝对路径/ 相对路径</code></p>
 <p>注：重启Finder的方法：<br>按住option+command，dock上右键-&gt;“Relanch”/“重新开启”。</p>
-<p><img src="http://www.howtogeek.com/211496/how-to-hide-files-and-view-hidden-files-on-mac-os-x/" alt="参考网址"></p>
+<p><a href="http://www.howtogeek.com/211496/how-to-hide-files-and-view-hidden-files-on-mac-os-x/" target="_blank" rel="external">参考网址</a></p>
 ]]></content>
     
     <summary type="html">
