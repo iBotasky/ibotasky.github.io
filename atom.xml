@@ -112,7 +112,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Android%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
     <id>https://github.com/iBotasky/2017/02/04/Android系统架构/</id>
     <published>2017-02-04T06:34:45.000Z</published>
-    <updated>2017-02-04T07:01:00.000Z</updated>
+    <updated>2017-02-07T05:52:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>Android系统架构</p>
 <p><a id="more"></a>##Android框架分层自顶向下</p>
@@ -122,9 +122,7 @@
 </em>Linux内核                        (Linux Kernel)</p>
 </blockquote>
 <hr>
-<h2 id="Android结构示意图"><a href="#Android结构示意图" class="headerlink" title="Android结构示意图"></a>Android结构示意图</h2><p><img src="http://image.jeepshoe.org/upload/6/99/699fad32a21b5526c76c97ea74f1395e.png" alt="Android结构示意图"></p>
-<hr>
-<h2 id="1-应用程序层-Applications"><a href="#1-应用程序层-Applications" class="headerlink" title="1.应用程序层(Applications)"></a>1.应用程序层(Applications)</h2><p>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
+<h2 id="Android结构示意图"><a href="#Android结构示意图" class="headerlink" title="Android结构示意图"></a>Android结构示意图</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://oktzkaa8p.bkt.clouddn.com/201702071873018203746-970e2cbe223e4c1c9ca129e7a2feb6c6.jpg" alt="Android结构示意图"></h2><h2 id="1-应用程序层-Applications"><a href="#1-应用程序层-Applications" class="headerlink" title="1.应用程序层(Applications)"></a>1.应用程序层(Applications)</h2><p>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
 <h2 id="2-Application-Framework"><a href="#2-Application-Framework" class="headerlink" title="2.Application Framework"></a>2.Application Framework</h2><p>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
 <p>开发者可以完全使用核心应用程序所使用的框架APIs。应用程序的体系结构旨在简化组件的重用，任何应用程序都能发布他的功能且任何其他应用程序可以使用这些功能（需要服从框架执行的安全限制）。这一机制允许用户替换组件。</p>
 <p>所有的应用程序其实是一组服务和系统，包括：</p>
