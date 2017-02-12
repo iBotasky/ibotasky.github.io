@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-02-12T09:38:35.000Z</updated>
+  <updated>2017-02-12T09:54:19.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="https://github.com/iBotasky/2017/02/12/WebView%E9%81%87%E5%88%B0%E7%9A%84%E7%94%A8%E6%B3%95/"/>
     <id>https://github.com/iBotasky/2017/02/12/WebView遇到的用法/</id>
     <published>2017-02-12T09:19:46.000Z</published>
-    <updated>2017-02-12T09:38:35.000Z</updated>
+    <updated>2017-02-12T09:54:19.000Z</updated>
     
     <content type="html"><![CDATA[<p>这里总结一些项目中遇到的WebView的一些用法:)</p>
-<p>&lt;!—more—&gt;</p>
+<a id="more"></a>
 <hr>
 <h2 id="1-CyberBlack项目中遇到的"><a href="#1-CyberBlack项目中遇到的" class="headerlink" title="1.CyberBlack项目中遇到的"></a>1.CyberBlack项目中遇到的</h2><h3 id="1-1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析-。"><a href="#1-1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析-。" class="headerlink" title="1.1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析 。"></a>1.1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：<a href="https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90">知乎日报API分析</a> 。</h3><p>项目里面用了<code>http://news-at.zhihu.com/api/4/news/3892357</code>这个接口，里面是拿到了html内容的<code>css</code>文件跟<code>body</code>，然后App端要用WebView做显示。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://oktzkaa8p.bkt.clouddn.com/20170212148689169013360.png" alt="20170212148689169013360.png"></h3><h3 id="很迷惑怎么做显示的。"><a href="#很迷惑怎么做显示的。" class="headerlink" title="很迷惑怎么做显示的。"></a>很迷惑怎么做显示的。</h3><h3 id="1-2-解决：在网上查看资料找到这篇-知乎日报四-（http-krelve-com-android-127-html）看了一下，用了博主的方法，顺利显示内容："><a href="#1-2-解决：在网上查看资料找到这篇-知乎日报四-（http-krelve-com-android-127-html）看了一下，用了博主的方法，顺利显示内容：" class="headerlink" title="1.2 解决：在网上查看资料找到这篇[知乎日报四]（http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容："></a>1.2 解决：在网上查看资料找到这篇[知乎日报四]（<a href="http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容：" target="_blank" rel="external">http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容：</a></h3><p>做法：</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://oktzkaa8p.bkt.clouddn.com/20170212148689169013360.png" alt="20170212148689169013360.png"></h3><p>对如何显示内容有一点迷惑。</p>
+<h3 id="1-2-解决：在网上查看资料找到这篇-知乎日报四-（http-krelve-com-android-127-html）看了一下，用了博主的方法，顺利显示内容："><a href="#1-2-解决：在网上查看资料找到这篇-知乎日报四-（http-krelve-com-android-127-html）看了一下，用了博主的方法，顺利显示内容：" class="headerlink" title="1.2 解决：在网上查看资料找到这篇[知乎日报四]（http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容："></a>1.2 解决：在网上查看资料找到这篇[知乎日报四]（<a href="http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容：" target="_blank" rel="external">http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容：</a></h3><p>做法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadData</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpHelper httpHelper = <span class="keyword">new</span> HttpHelper();</div><div class="line">        httpHelper.setEnd_points(Urls.ZHI_HU_HOST);</div><div class="line">        httpHelper.getService(ZhiHuDailyApi.class)</div><div class="line">                .getNewsDetail(id)</div><div class="line">                .subscribeOn(Schedulers.newThread())</div><div class="line">                .observeOn(AndroidSchedulers.mainThread())</div><div class="line">                .subscribe(dailyDetailResponse -&gt; &#123;</div><div class="line">                    loadView(dailyDetailResponse);</div><div class="line">                &#125;, throwable -&gt; &#123;</div><div class="line"></div><div class="line">                &#125;, () -&gt; &#123;</div><div class="line"></div><div class="line">                &#125;);</div><div class="line">    &#125;</div><div class="line">	<span class="comment">//这边是拿到了css路径跟html的body，然后用拼接起来放到html中，最后用webview显示。很简单。</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadView</span><span class="params">(DailyDetailResponse dailyDetailResponse)</span> </span>&#123;</div><div class="line">        wvContent.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</div><div class="line">        String css = <span class="string">"&lt;link rel=\"stylesheet\" href=\""</span> + dailyDetailResponse.getCss().get(<span class="number">0</span>) + <span class="string">"\" type=\"text/css\"&gt;"</span>;</div><div class="line">        String html = <span class="string">"&lt;html&gt;&lt;head&gt;"</span> + css + <span class="string">"&lt;/head&gt;&lt;body&gt;"</span> + dailyDetailResponse.getBody() + <span class="string">"&lt;/body&gt;&lt;/html&gt;"</span>;</div><div class="line">        html = html.replace(<span class="string">"&lt;div class=\"img-place-holder\"&gt;"</span>, <span class="string">""</span>);</div><div class="line">        wvContent.loadDataWithBaseURL(<span class="string">"x-data://base"</span>, html, <span class="string">"text/html"</span>, <span class="string">"UTF-8"</span>, <span class="keyword">null</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>最后用了这个方法调试几次后成功让webview显示出来正确的格式内容。</p>
 ]]></content>
@@ -34,9 +35,6 @@
     <summary type="html">
     
       &lt;p&gt;这里总结一些项目中遇到的WebView的一些用法:)&lt;/p&gt;
-&lt;p&gt;&amp;lt;!—more—&amp;gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;1-CyberBlack项目中遇到的&quot;&gt;&lt;a href=&quot;#1-CyberBlack项目中遇到的&quot; class=&quot;headerlink&quot; t
     
     </summary>
     
@@ -52,9 +50,10 @@
     <link href="https://github.com/iBotasky/2017/02/06/Mac-OS-%E6%98%BE%E7%A4%BA-%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     <id>https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/</id>
     <published>2017-02-06T03:56:19.000Z</published>
-    <updated>2017-02-06T06:47:46.000Z</updated>
+    <updated>2017-02-12T09:52:39.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Mac显示/隐藏文件夹<br><a id="more"></a><br>显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool TRUE ; killall Finder</code><br>停止显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool FALSE ; killall Finder</code></p>
+    <content type="html"><![CDATA[<p>Mac显示/隐藏文件夹<br><a id="more"></a></p>
+<p>显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool TRUE ; killall Finder</code><br>停止显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool FALSE ; killall Finder</code></p>
 <p>隐藏一个文件夹：<br><code>chflags hidden 文件绝对路径/ 相对路径</code><br>取消隐藏一个文件夹：<br><code>chflags nohidden 文件绝对路径/ 相对路径</code></p>
 <p>注：重启Finder的方法：<br>按住option+command，dock上右键-&gt;“Relanch”/“重新开启”。</p>
 <p><a href="http://www.howtogeek.com/211496/how-to-hide-files-and-view-hidden-files-on-mac-os-x/" target="_blank" rel="external">参考网址</a></p>
