@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-02-12T09:54:19.000Z</updated>
+  <updated>2017-02-13T01:23:59.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Studio插件</title>
+    <link href="https://github.com/iBotasky/2017/02/13/Android-Studio%E6%8F%92%E4%BB%B6/"/>
+    <id>https://github.com/iBotasky/2017/02/13/Android-Studio插件/</id>
+    <published>2017-02-13T01:14:00.000Z</published>
+    <updated>2017-02-13T01:23:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于Android Studio上比较好用的插件整理</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.Android ButterKnife Zelezny</td>
+<td>ButterKnife快速生成View对象</td>
+</tr>
+<tr>
+<td>1.GsonFormat</td>
+<td>Json字符串转成JAVA Bean</td>
+</tr>
+<tr>
+<td>2.Android Parcelable code generator</td>
+<td>JavaBean序列化，快速实现Parcelable接口。</td>
+</tr>
+<tr>
+<td>3.Translation</td>
+<td>翻译插件</td>
+</tr>
+<tr>
+<td>4.Android Code Generator</td>
+<td>根据布局文件快速生成对应的Activity，Fragment，Adapter，Menu</td>
+</tr>
+<tr>
+<td>5.Lifecycle Sorter</td>
+<td>Activity/Fragment生命周期排序快捷键Ctrl + alt + K</td>
+</tr>
+<tr>
+<td>6.JsonOnlineViewer</td>
+<td>在Android Studio中请求、调试接口</td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://www.jianshu.com/p/c76b0d8a642d" target="_blank" rel="external">参考</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于Android Studio上比较好用的插件整理&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Andrioid" scheme="https://github.com/iBotasky/tags/Andrioid/"/>
+    
+      <category term="Android Studio" scheme="https://github.com/iBotasky/tags/Android-Studio/"/>
+    
+  </entry>
   
   <entry>
     <title>WebView遇到的用法</title>
@@ -210,9 +273,9 @@
     </summary>
     
     
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -256,9 +319,9 @@
     </summary>
     
     
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -312,9 +375,9 @@
     </summary>
     
     
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
