@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Botasky的博客</title>
+  <title>Android权限之shareUserId | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Botasky iBotasky botasky ibotasky">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Botasky的博客">
-<meta property="og:url" content="https://github.com/iBotasky/page/3/index.html">
+  <meta name="description" content="项目中看到过shareUserId，了解了这个配置特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android权限之shareUserId">
+<meta property="og:url" content="https://github.com/iBotasky/2017/04/07/Android权限之shareUserId/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Botasky iBotasky botasky ibotasky">
+<meta property="og:description" content="项目中看到过shareUserId，了解了这个配置特性">
+<meta property="og:updated_time" content="2017-04-07T03:11:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Botasky的博客">
-<meta name="twitter:description" content="Botasky iBotasky botasky ibotasky">
+<meta name="twitter:title" content="Android权限之shareUserId">
+<meta name="twitter:description" content="项目中看到过shareUserId，了解了这个配置特性">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -27,9 +28,6 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
-    
-    
-  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -41,8 +39,8 @@
           rootUrl: '/',
           fancybox: true,
           animate: true,
-          isHome: true,
-          isPost: false,
+          isHome: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -224,13 +222,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Dagger2-Scope" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android权限之shareUserId" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/Dagger2-Scope/" class="article-date">
-      <time datetime="2017-02-04T06:09:32.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/04/07/Android权限之shareUserId/" class="article-date">
+      <time datetime="2017-04-07T02:27:33.000Z" itemprop="datePublished">2017-04-07</time>
 </a>
     </div>
   
@@ -242,239 +238,186 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a>
+    <h1 class="article-title" itemprop="name">
+      Android权限之shareUserId
     </h1>
   
 
       </header>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Dagger2的<code>@Scope</code>的用法介绍<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+      <div class="article-info article-info-post">
+        
 
-      
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android框架/">Android框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dagger2/">Dagger2</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Dagger2-Scope/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Markdown语法/" class="article-date">
-      <time datetime="2017-02-04T03:34:01.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Markdown语法/">Markdown语法</a>
-    </h1>
-  
-
-      </header>
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+        <p>项目中看到过shareUserId，了解了这个配置特性</p>
+<a id="more"></a>
+<h2 id="1-关于shareUserId"><a href="#1-关于shareUserId" class="headerlink" title="1.关于shareUserId"></a>1.关于shareUserId</h2><p>每一个APK在安装到设备上的时候，设备都会为其分配一个单独的空间，mainfest中的userid就是对应一个Linux用户都会被分配到一个属于自己的统一的Linux用户ID，并且为他创建一个沙箱，以防止影响其他程序。用户ID在应用程序安装到设备中时被分配。</p>
+<p>通过在AndroidMainfest.xml设置<code>android:shareUserId</code>可以让拥有同一个Userid的多个应用运行在统一进程，或者不同进程。<strong>多个相同UserId的应用可以互相随意访问数据。</strong></p>
+<h2 id="2-共享UID步骤"><a href="#2-共享UID步骤" class="headerlink" title="2.共享UID步骤"></a>2.共享UID步骤</h2><blockquote>
+<p>1.在AndroidMainfest.xml设置相同的<code>android:shareUserId</code></p>
+<p>2.在Android.mk中增加LOCAL_CERTIFICATE的定义。</p>
+</blockquote>
+<p>如果增加了上面的属性但没有定义与之对应的LOCAL_CERTIFICATE的话，APK是安装不上去的。提示错误是：Package com.test.MyTest has no signatures that match those in shared user android.uid.system; ignoring!也就是说，仅有相同签名和相同sharedUserID标签的两个应用程序签名都会被分配相同的用户ID。例如所有和media/download相关的APK都使用android.media作为sharedUserId的话，那么它们必须有相同的签名media。</p>
+<blockquote>
+<p>3.把apk的源码放到package/apps/目录下，用mm进行编译</p>
+</blockquote>
+<h2 id="3-使用shareUserId-”android-uid-system“的好处"><a href="#3-使用shareUserId-”android-uid-system“的好处" class="headerlink" title="3.使用shareUserId=”android.uid.system“的好处"></a>3.使用shareUserId=”android.uid.system“的好处</h2><p>提升app的优先级，内存不足少被杀</p>
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Markdown语法/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/04/07/Android权限之shareUserId/">Android权限之shareUserId</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
+        <p><span>发布时间:</span>2017年04月07日 - 10时27分</p>
+        <p><span>最后更新:</span>2017年04月07日 - 11时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/07/Android权限之shareUserId/" title="Android权限之shareUserId">https://github.com/iBotasky/2017/04/07/Android权限之shareUserId/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/04/07/Android权限之shareUserId/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/06/Android消息机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android消息机制</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-关于shareUserId"><span class="toc-number">1.</span> <span class="toc-text">1.关于shareUserId</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-共享UID步骤"><span class="toc-number">2.</span> <span class="toc-text">2.共享UID步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-使用shareUserId-”android-uid-system“的好处"><span class="toc-number">3.</span> <span class="toc-text">3.使用shareUserId=”android.uid.system“的好处</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
 
 
 
 
 
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 
 
 
-  
-    <article id="post-Hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/Hello-world/" class="article-date">
-      <time datetime="2017-02-04T03:33:49.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
+
     
-      <input type="hidden" class="isFancy" />
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/04/07/Android权限之shareUserId/" data-title="Android权限之shareUserId" data-url="https://github.com/iBotasky/2017/04/07/Android权限之shareUserId/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ibotasky"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
     
-    
-      <header class="article-header">
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/Hello-world/">Hello world</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Hello world!</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/Hello-world/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-‘2017新希望’" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/04/‘2017新希望’/" class="article-date">
-      <time datetime="2017-02-04T03:33:34.000Z" itemprop="datePublished">2017-02-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/‘2017新希望’/">2017新希望</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>新的一年开始了，希望大家2017一切顺利！<br>
-          
-      
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/04/06/Android消息机制/" title="下一篇: Android消息机制">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/02/04/‘2017新希望’/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/Android权限之shareUserId/">Android权限之shareUserId</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/Android消息机制/">Android消息机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/RxJava遇到的问题整理/">RxJava遇到的问题整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/关于集成ShareSDK/">关于集成ShareSDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/23/Android-Modeule/">Android Modeule</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/Android-Studio插件/">Android Studio插件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/WebView遇到的用法/">WebView遇到的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/Mac-OS-显示-隐藏文件夹/">Mac OS 显示/隐藏文件夹</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android进程优先级/">Android进程优先级</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android保活/">Android保活</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android动画相关/">Android动画相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android系统架构/">Android系统架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Activity-Service的生命周期/">Activity/Service的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Android常见的内存泄漏/">Android常见的内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/AndroidStudio-Mac环境下面的配置流程/">Android Studio Mac环境下面的配置流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java内存区域与Java垃圾回收/">Java内存区域与Java垃圾回收</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Java垃圾回收机制/">Java垃圾回收机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2/">Dagger2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-依赖注入/">Dagger2-依赖注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Dagger-API/">Dagger2-Dagger API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Hello-world/">Hello world</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/‘2017新希望’/">2017新希望</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
