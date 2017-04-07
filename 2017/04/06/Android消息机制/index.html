@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello world | Botasky的博客</title>
+  <title>Android消息机制 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello world!">
+  <meta name="description" content="关于Android消息机制的源码分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello world">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Hello-world/index.html">
+<meta property="og:title" content="Android消息机制">
+<meta property="og:url" content="https://github.com/iBotasky/2017/04/06/Android消息机制/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Hello world!">
-<meta property="og:updated_time" content="2017-02-04T03:39:47.000Z">
+<meta property="og:description" content="关于Android消息机制的源码分析">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5affdc7e6c.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5b282509cd.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5b2de61799.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5b38e7a18e.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5b4e08f7e6.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5ba6c7b791.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5baf15d1d6.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/06/58e5bacc9d2ee.png">
+<meta property="og:updated_time" content="2017-04-06T07:59:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello world">
-<meta name="twitter:description" content="Hello world!">
+<meta name="twitter:title" content="Android消息机制">
+<meta name="twitter:description" content="关于Android消息机制的源码分析">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/04/06/58e5affdc7e6c.png">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -222,11 +231,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android消息机制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/Hello-world/" class="article-date">
-      <time datetime="2017-02-04T03:33:49.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/04/06/Android消息机制/" class="article-date">
+      <time datetime="2017-04-06T01:55:13.000Z" itemprop="datePublished">2017-04-06</time>
 </a>
     </div>
   
@@ -239,7 +248,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello world
+      Android消息机制
     </h1>
   
 
@@ -249,6 +258,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android进阶/">Android进阶</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -256,8 +269,60 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Hello world!</p>
+        <p>关于Android消息机制的源码分析</p>
 <a id="more"></a>
+<h2 id="1-应用程序入口分析"><a href="#1-应用程序入口分析" class="headerlink" title="1.应用程序入口分析"></a>1.应用程序入口分析</h2><p>应用程序入口是在<code>ActivityThread</code>类里<code>main</code>方法，（当应用启动后，底层通过C/C++调用main方法）。</p>
+<p>核心代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Environment.initForCurrentUser();</div><div class="line">        EventLogger.setReporter(<span class="keyword">new</span> EventLoggingReporter());</div><div class="line">        Looper.prepareMainLooper();</div><div class="line">        ActivityThread thread = <span class="keyword">new</span> ActivityThread();</div><div class="line">        thread.attach(<span class="keyword">false</span>);</div><div class="line">        <span class="keyword">if</span> (sMainThreadHandler == <span class="keyword">null</span>) &#123;</div><div class="line">            sMainThreadHandler = thread.getHandler();</div><div class="line">        &#125;</div><div class="line">        Looper.loop();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>1.1 初始化了Environment对象，然后创建了Lopper，然后开始消息循环。如果程序没有死循环，执行完main函数就会立马退出。之所以App可以一直运行是因为<code>Looper.loop()</code>是一个死循环。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (;;) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里用<code>for(;;)</code>而不是<code>while(true)</code>是为了防止一些人通过黑科技修改这个标志位（通过反射机制）（这里不是很懂）！</p>
+<p><strong>在非主线程里面我们也可以创建一个Handler，但是需要我们主动去为当前的子线程绑定一个Looper，并且启动消息循环</strong></p>
+<p>Looper有两个核心方法：prepare()与loop()。通过Looper、Handle、Message、MessageQueue等组成了Android的消息处理机制。</p>
+<h2 id="2-为什么需要这样一个消息机制"><a href="#2-为什么需要这样一个消息机制" class="headerlink" title="2.为什么需要这样一个消息机制"></a>2.为什么需要这样一个消息机制</h2><h2 id="2-1-不阻塞主线程"><a href="#2-1-不阻塞主线程" class="headerlink" title="2.1 不阻塞主线程"></a>2.1 不阻塞主线程</h2><p>Android应用启动时，会创主线程， 负责与UI组件（widget，view）进行交互， 比如控制UI界面显示，更新等。这种单线程模型导致运行性大大降低，只能处理简单、短暂的操作。过重的任务比如下载访问数据库等都会导致ANR。<strong>Android大部分耗时操作都应该放到子线程，不要在主线程做操作</strong></p>
+<h2 id="2-2-并发程序的有序性"><a href="#2-2-并发程序的有序性" class="headerlink" title="2.2 并发程序的有序性"></a>2.2 并发程序的有序性</h2><p>单线程模型的UI主线程也是不安全的，会造成不可确定的结果。</p>
+<blockquote>
+<p>线程不安全简单理解为：多线程访问资源时，有可能出现多个线程先后更改数据造成数据不一致。比如，A工作线程（也称为子线程）访问某个公共UI资源，B工作线程在某个时候也访问了该公共资源，当B线程正访问时，公共资源的属性已经被A改变了，这样B得到的结果不是所需要的的，造成了数据不一致的混乱情况。</p>
+<p>线程安全简单理解为：当一个线程访问功能资源时，对该资源进程了保护，比如加了锁机制，当前线程在没有访问结束释放锁之前，其他线程只能等待直到释放锁才能访问，这样的线程就是安全的。</p>
+</blockquote>
+<p> <strong>Android只允许主线程更新UI界面，子线程处理后的结果无法和主线程交互，即无法直接访问主线程，这就要用到Handler机制来解决此问题。基于Handler机制，在子线程先获得Handler对象，该对象将数据发送到主线程消息队列，主线程通过Loop循环获取消息交给Handler处理。</strong></p>
+<p>有了消息机制，我们可以发送消息，然后Looper把消息发给主线程，然后就可以执行了。</p>
+<p>消息包括：</p>
+<blockquote>
+<p>我们自己的操作消息，即客户端的Handler</p>
+<p>操作系统的操作消息，系统的Handler，例如来电话跳出界面，就需要。</p>
+</blockquote>
+<p>先分析系统的Handler，再去深入理解消息机制里面各个组件</p>
+<h2 id="3-系统的Handler"><a href="#3-系统的Handler" class="headerlink" title="3.系统的Handler"></a>3.系统的Handler</h2><p>ActivityThread的成员变量有这样一个H（继承自Handler），这个就是系统的Handler。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> H mH = <span class="keyword">new</span> H();</div></pre></td></tr></table></figure>
+<p>回顾一下ActivityThread的初始化，在main方法中<code>ActivityThread thread = new ActivityThread();</code>在new的时候就已经完成了初始化成员变量，单例饿加载。</p>
+<p>在H中定义了大量的常量，然后用case做操作。</p>
+<p>从系统的Handler中，在handlerMessage我们可以看到四大组件的生命周期操作，创建，销毁，切换等。跨进程通信及Application进程的销毁。</p>
+<p>比如说我们有一个 应用程序A 通过 Binder 去跨进程启动另外一个 应用程序B 的 Service（或者同一个应用程序中不同进程的Service），如图：AMS是四大组件的生命周期的一个比较重要的类，IPC机制会涉及</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5affdc7e6c.png" alt="58e5affdc7e6c.png"></p>
+<p>最后AMS接收到消息后，发送消息到MessageQueue里面，最后由系统的Handler处理启动Service的操作：</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5b282509cd.png" alt="58e5b282509cd.png"></p>
+<p>在handlerCreateService()里通过反射的方式去newInstance(),并且毁掉了Service的Oncreate方法。</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5b2de61799.png" alt="58e5b2de61799.png"></p>
+<p>又例如我们可以通过发SUICIDE消息可以自杀，这样来退出应用程序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">case</span> SUICIDE:</div><div class="line">    Process.killProcess(Process.myPid());</div><div class="line">    <span class="keyword">break</span>;</div></pre></td></tr></table></figure>
+<p><strong>应用程序退出</strong></p>
+<p>实际上我们要退出应用程序的话，就是让主线程结束，换句话说就是要让 Looper 的循环结束。这里是直接结束 Looper 循环，因此我们四大组件的生命周期方法可能就不会执行了，因为四大组件的生命周期方法就是通过 Handler 去处理的，Looper 循环都没有了，四大组件还玩毛线！因此我们平常写程序的时候就要注意了，onDestroy 方法是不一定能够回调的。</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5b38e7a18e.png" alt="58e5b38e7a18e.png"></p>
+<p>这里实际上是调用了 MessageQueue 的 quit，清空所有 Message。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quit</span><span class="params">()</span> </span>&#123;</div><div class="line">    mQueue.quit(<span class="keyword">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-消息机制的分析"><a href="#4-消息机制的分析" class="headerlink" title="4.消息机制的分析"></a>4.消息机制的分析</h2><h3 id="4-1-消息对象Message的分析"><a href="#4-1-消息对象Message的分析" class="headerlink" title="4.1 消息对象Message的分析"></a>4.1 消息对象Message的分析</h3><p>提到消息机制，在MessageQueue里面存在的就是我们Message对象。</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5b4e08f7e6.png" alt="58e5b4e08f7e6.png"></p>
+<p>Message 里面有一些我们常见的参数，arg1 arg2 obj callback when 等等。这里要提一下的就是这个 target 对象，这个对象就是发送这个消息的 Handler对象，最终这条消息也是通过这个 Handler 去处理掉的。</p>
+<h3 id="4-2-消息的循环过程分析"><a href="#4-2-消息的循环过程分析" class="headerlink" title="4.2 消息的循环过程分析"></a>4.2 消息的循环过程分析</h3><p>1.拿到Looper()对象（me），如果当前线程没有Looper，那么就抛出异常。这就是为什么在子线程里面创建Handler如果不手动创建启动Looper会报错的原因。</p>
+<p>2.拿到Looper的成员变量MessageQueue,在MessageQueue里面不断地去区消息，关于MessageQueue的next用法如下：</p>
+<p>这里可以看到消息的取出用到了一些native方法，这样做是为了获得更高的效率，消息的去取出并不是直接就从队列的头部取出的，而是根据了消息的when时间参数有关的，因为我们可以发送延时消息、也可以发送一个指定时间点的消息。因此这个函数有点复杂，我们点到为止即可。</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5ba6c7b791.png" alt="58e5ba6c7b791.png"></p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5baf15d1d6.png" alt="58e5baf15d1d6.png"></p>
+<p><strong>3、</strong>继续分析 loop方法：如果已经没有消息了，那么就可以退出循环，那么整个应用程序就退出了。什么情况下会发生呢？还记得我们分析应用退出吗？</p>
+<p>在 系统Handler 收到 EXIT_APPLICATION 消息的时候，就会调用 Looper 的 quit方法：</p>
+<p><img src="https://ooo.0o0.ooo/2017/04/06/58e5bacc9d2ee.png" alt="58e5bacc9d2ee.png"></p>
+
       
     </div>
     
@@ -265,13 +330,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/04/Hello-world/">Hello world</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/06/Android消息机制/">Android消息机制</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 11时33分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 11时39分</p>
+        <p><span>发布时间:</span>2017年04月06日 - 09时55分</p>
+        <p><span>最后更新:</span>2017年04月06日 - 15时59分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Hello-world/" title="Hello world">https://github.com/iBotasky/2017/02/04/Hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Hello-world/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/06/Android消息机制/" title="Android消息机制">https://github.com/iBotasky/2017/04/06/Android消息机制/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/04/06/Android消息机制/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -284,18 +349,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/04/Markdown语法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Markdown语法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/04/‘2017新希望’/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017新希望</div>
+    <a href="/2017/03/07/RxJava遇到的问题整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RxJava遇到的问题整理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -306,7 +362,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-应用程序入口分析"><span class="toc-number">1.</span> <span class="toc-text">1.应用程序入口分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-为什么需要这样一个消息机制"><span class="toc-number">2.</span> <span class="toc-text">2.为什么需要这样一个消息机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-不阻塞主线程"><span class="toc-number">3.</span> <span class="toc-text">2.1 不阻塞主线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-并发程序的有序性"><span class="toc-number">4.</span> <span class="toc-text">2.2 并发程序的有序性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-系统的Handler"><span class="toc-number">5.</span> <span class="toc-text">3.系统的Handler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-消息机制的分析"><span class="toc-number">6.</span> <span class="toc-text">4.消息机制的分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-消息对象Message的分析"><span class="toc-number">6.1.</span> <span class="toc-text">4.1 消息对象Message的分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-消息的循环过程分析"><span class="toc-number">6.2.</span> <span class="toc-text">4.2 消息的循环过程分析</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -354,7 +410,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/04/Hello-world/" data-title="Hello world" data-url="https://github.com/iBotasky/2017/02/04/Hello-world/"></div>
+    <div class="ds-thread" data-thread-key="2017/04/06/Android消息机制/" data-title="Android消息机制" data-url="https://github.com/iBotasky/2017/04/06/Android消息机制/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -377,13 +433,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/04/Markdown语法/" title="上一篇: Markdown语法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/04/‘2017新希望’/" title="下一篇: 2017新希望">
+            <a href="/2017/03/07/RxJava遇到的问题整理/" title="下一篇: RxJava遇到的问题整理">
                 <i class="fa fa-angle-right"></i>
             </a>
         
