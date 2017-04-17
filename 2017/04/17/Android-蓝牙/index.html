@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mac OS 显示/隐藏文件夹 | Botasky的博客</title>
+  <title>Android 蓝牙 | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mac显示/隐藏文件夹">
+  <meta name="description" content="关于Android下BLE(Bluetooth Low Energy)开发的一些积累">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac OS 显示/隐藏文件夹">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/index.html">
+<meta property="og:title" content="Android 蓝牙">
+<meta property="og:url" content="https://github.com/iBotasky/2017/04/17/Android-蓝牙/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Mac显示/隐藏文件夹">
-<meta property="og:updated_time" content="2017-02-12T09:52:39.000Z">
+<meta property="og:description" content="关于Android下BLE(Bluetooth Low Energy)开发的一些积累">
+<meta property="og:updated_time" content="2017-04-17T06:56:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac OS 显示/隐藏文件夹">
-<meta name="twitter:description" content="Mac显示/隐藏文件夹">
+<meta name="twitter:title" content="Android 蓝牙">
+<meta name="twitter:description" content="关于Android下BLE(Bluetooth Low Energy)开发的一些积累">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -222,11 +222,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Mac-OS-显示-隐藏文件夹" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Android-蓝牙" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/06/Mac-OS-显示-隐藏文件夹/" class="article-date">
-      <time datetime="2017-02-06T03:56:19.000Z" itemprop="datePublished">2017-02-06</time>
+      <a href="/2017/04/17/Android-蓝牙/" class="article-date">
+      <time datetime="2017-04-17T06:34:53.000Z" itemprop="datePublished">2017-04-17</time>
 </a>
     </div>
   
@@ -239,7 +239,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mac OS 显示/隐藏文件夹
+      Android 蓝牙
     </h1>
   
 
@@ -250,7 +250,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/">Mac</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BLE/">BLE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -260,11 +260,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Mac显示/隐藏文件夹<br><a id="more"></a></p>
-<p>显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool TRUE ; killall Finder</code><br>停止显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool FALSE ; killall Finder</code></p>
-<p>隐藏一个文件夹：<br><code>chflags hidden 文件绝对路径/ 相对路径</code><br>取消隐藏一个文件夹：<br><code>chflags nohidden 文件绝对路径/ 相对路径</code></p>
-<p>注：重启Finder的方法：<br>按住option+command，dock上右键-&gt;“Relanch”/“重新开启”。</p>
-<p><a href="http://www.howtogeek.com/211496/how-to-hide-files-and-view-hidden-files-on-mac-os-x/" target="_blank" rel="external">参考网址</a></p>
+        <p>关于Android下BLE(Bluetooth Low Energy)开发的一些积累<br><a id="more"></a></p>
+<h2 id="1-创建BLE基本步骤"><a href="#1-创建BLE基本步骤" class="headerlink" title="1.创建BLE基本步骤"></a>1.创建BLE基本步骤</h2><h2 id="1-1获取BluethoothAdapter"><a href="#1-1获取BluethoothAdapter" class="headerlink" title="1.1获取BluethoothAdapter"></a>1.1获取BluethoothAdapter</h2><p>所有的蓝牙活动都需要蓝牙适配器。BluetoothAdapter代表设备本身的蓝牙适配器(蓝牙无线）。整个系统只有一个蓝牙适配器，而且你的app使用它与系统交互。下面的代码片段显示了如何得到适配器。注意该方法使用getSystemService（）返回BluetoothManager，然后将其用于获取适配器的一个实例。<strong>Android 4.3（API 18）引入BluetoothManager。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> BluetoothAdapter mBluetoothAdapter;</div><div class="line">...</div><div class="line"><span class="comment">// Initializes Bluetooth adapter.</span></div><div class="line"><span class="keyword">final</span> BluetoothManager bluetoothManager =</div><div class="line">        (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);</div><div class="line">mBluetoothAdapter = bluetoothManager.getAdapter();</div></pre></td></tr></table></figure>
+<h2 id="1-2-开启蓝牙"><a href="#1-2-开启蓝牙" class="headerlink" title="1.2 开启蓝牙"></a>1.2 开启蓝牙</h2><p>接下来，你需要确认蓝牙是否开启。调用isEnabled())去检测蓝牙当前是否开启。如果该方法返回false,蓝牙被禁用。下面的代码检查蓝牙是否开启，如果没有开启，将显示错误提示用户去设置开启蓝牙。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 确保蓝牙在设备上可以开启</span></div><div class="line"><span class="keyword">if</span> (mBluetoothAdapter == <span class="keyword">null</span> || !mBluetoothAdapter.isEnabled()) &#123;</div><div class="line">   Intent enableBtIntent = <span class="keyword">new</span> Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);</div><div class="line">   startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="1-3-发现设备"><a href="#1-3-发现设备" class="headerlink" title="1.3 发现设备"></a>1.3 发现设备</h2><p>为了发现BLE设备，使用startLeScan()方法。这个方法需要一个参数BluetoothAdapter.LeScanCallback。你必须实现它的回调函数，那就是返回的扫描结果。因为扫描非常消耗电量，你应当遵守以下准则：</p>
+<p>只要找到所需的设备，停止扫描。<br>不要在循环里扫描，并且对扫描设置时间限制。以前可用的设备可能已经移出范围，继续扫描消耗电池电量。<br>下面代码显示了如何开始和停止一个扫描：</p>
+<blockquote>
+<p>JellyBean —API18及以上：直接用BlueAdapter.startLeScan(), 这里有个坑，传入的阐述UUID… serviceUUIDs传入这个参数搜索的BLEDevice都要满足这些UUIDS才能被搜到，这些UUID不是或关系，而是与关系。</p>
+<p>Lollipop —API21及以上：用BluetoothAdapter获取到:BluetoothAdapter.getBluetoothLeScanner(),获取到一个BluetoothLeScanner对象，在用这个调用<code>startScan(List&lt;ScanFilter&gt; filter , ScanSetting setting, ScanCallback scancallbacn)</code>来查找设备。这里的fileter就是或关系了。可以把UUID转成ScanFilter。</p>
+</blockquote>
+<h2 id="1-4-连接到GATT服务端"><a href="#1-4-连接到GATT服务端" class="headerlink" title="1.4 连接到GATT服务端"></a>1.4 连接到GATT服务端</h2><p>与一个BLE设备交互的第一步就是连接它——更具体的，连接到BLE设备上的GATT服务端。为了连接到BLE设备上的GATT服务端，需要使用connectGatt( )方法。这个方法需要三个参数：一个Context对象，自动连接（boolean值,表示只要BLE设备可用是否自动连接到它），和BluetoothGattCallback调用。</p>
+<p><code>mBluetoothGatt = device.connectGatt(this, false, mGattCallback);</code><br>连接到GATT服务端时，由BLE设备做主机，并返回一个BluetoothGatt实例，然后你可以使用这个实例来进行GATT客户端操作。请求方（Android app)是GATT客户端。BluetoothGattCallback用于传递结果给用户，例如连接状态，以及任何进一步GATT客户端操作。</p>
+<h2 id="1-5-读取BLE变量"><a href="#1-5-读取BLE变量" class="headerlink" title="1.5 读取BLE变量"></a>1.5 读取BLE变量</h2><p>你的android app完成与GATT服务端连接和发现services后，就可以读写支持的属性。例如，这段代码通过服务端的services和 characteristics迭代，并且将它们显示在UI上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeviceControlActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="comment">// Demonstrates how to iterate through the supported GATT</span></div><div class="line">    <span class="comment">// Services/Characteristics.</span></div><div class="line">    <span class="comment">// In this sample, we populate the data structure that is bound to the</span></div><div class="line">    <span class="comment">// ExpandableListView on the UI.</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">displayGattServices</span><span class="params">(List&lt;BluetoothGattService&gt; gattServices)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (gattServices == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        String uuid = <span class="keyword">null</span>;</div><div class="line">        String unknownServiceString = getResources().</div><div class="line">                getString(R.string.unknown_service);</div><div class="line">        String unknownCharaString = getResources().</div><div class="line">                getString(R.string.unknown_characteristic);</div><div class="line">        ArrayList&lt;HashMap&lt;String, String&gt;&gt; gattServiceData =</div><div class="line">                <span class="keyword">new</span> ArrayList&lt;HashMap&lt;String, String&gt;&gt;();</div><div class="line">        ArrayList&lt;ArrayList&lt;HashMap&lt;String, String&gt;&gt;&gt; gattCharacteristicData</div><div class="line">                = <span class="keyword">new</span> ArrayList&lt;ArrayList&lt;HashMap&lt;String, String&gt;&gt;&gt;();</div><div class="line">        mGattCharacteristics =</div><div class="line">                <span class="keyword">new</span> ArrayList&lt;ArrayList&lt;BluetoothGattCharacteristic&gt;&gt;();</div><div class="line"></div><div class="line">        <span class="comment">// Loops through available GATT Services.</span></div><div class="line">        <span class="keyword">for</span> (BluetoothGattService gattService : gattServices) &#123;</div><div class="line">            HashMap&lt;String, String&gt; currentServiceData =</div><div class="line">                    <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">            uuid = gattService.getUuid().toString();</div><div class="line">            currentServiceData.put(</div><div class="line">                    LIST_NAME, SampleGattAttributes.</div><div class="line">                            lookup(uuid, unknownServiceString));</div><div class="line">            currentServiceData.put(LIST_UUID, uuid);</div><div class="line">            gattServiceData.add(currentServiceData);</div><div class="line"></div><div class="line">            ArrayList&lt;HashMap&lt;String, String&gt;&gt; gattCharacteristicGroupData =</div><div class="line">                    <span class="keyword">new</span> ArrayList&lt;HashMap&lt;String, String&gt;&gt;();</div><div class="line">            List&lt;BluetoothGattCharacteristic&gt; gattCharacteristics =</div><div class="line">                    gattService.getCharacteristics();</div><div class="line">            ArrayList&lt;BluetoothGattCharacteristic&gt; charas =</div><div class="line">                    <span class="keyword">new</span> ArrayList&lt;BluetoothGattCharacteristic&gt;();</div><div class="line">           <span class="comment">// Loops through available Characteristics.</span></div><div class="line">            <span class="keyword">for</span> (BluetoothGattCharacteristic gattCharacteristic :</div><div class="line">                    gattCharacteristics) &#123;</div><div class="line">                charas.add(gattCharacteristic);</div><div class="line">                HashMap&lt;String, String&gt; currentCharaData =</div><div class="line">                        <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">                uuid = gattCharacteristic.getUuid().toString();</div><div class="line">                currentCharaData.put(</div><div class="line">                        LIST_NAME, SampleGattAttributes.lookup(uuid,</div><div class="line">                                unknownCharaString));</div><div class="line">                currentCharaData.put(LIST_UUID, uuid);</div><div class="line">                gattCharacteristicGroupData.add(currentCharaData);</div><div class="line">            &#125;</div><div class="line">            mGattCharacteristics.add(charas);</div><div class="line">            gattCharacteristicData.add(gattCharacteristicGroupData);</div><div class="line">         &#125;</div><div class="line">    ...</div><div class="line">    &#125;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="1-6开启通知"><a href="#1-6开启通知" class="headerlink" title="1.6开启通知"></a>1.6开启通知</h2><p>当设备上的特性改变时会通知BLE应用程序。这段代码显示了如何使用setCharacteristicNotification( )给一个特性设置通知。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> BluetoothGatt mBluetoothGatt;</div><div class="line">BluetoothGattCharacteristic characteristic;</div><div class="line"><span class="keyword">boolean</span> enabled;</div><div class="line">...</div><div class="line">mBluetoothGatt.setCharacteristicNotification(characteristic, enabled);</div><div class="line">...</div><div class="line">BluetoothGattDescriptor descriptor = characteristic.getDescriptor(</div><div class="line">        UUID.fromString(SampleGattAttributes.CLIENT_CHARACTERISTIC_CONFIG));</div><div class="line">descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);</div><div class="line">mBluetoothGatt.writeDescriptor(descriptor);</div></pre></td></tr></table></figure>
+<h2 id="1-7关闭App客户端"><a href="#1-7关闭App客户端" class="headerlink" title="1.7关闭App客户端"></a>1.7关闭App客户端</h2><p>当你的app完成BLE设备的使用后，应该调用close( ))，系统可以合理释放占用资源。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mBluetoothGatt == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    mBluetoothGatt.close();</div><div class="line">    mBluetoothGatt = <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​    </p>
 
       
     </div>
@@ -273,13 +288,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/06/Mac-OS-显示-隐藏文件夹/">Mac OS 显示/隐藏文件夹</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/17/Android-蓝牙/">Android 蓝牙</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月06日 - 11时56分</p>
-        <p><span>最后更新:</span>2017年02月12日 - 17时52分</p>
+        <p><span>发布时间:</span>2017年04月17日 - 14时34分</p>
+        <p><span>最后更新:</span>2017年04月17日 - 14时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/06/Mac-OS-显示-隐藏文件夹/" title="Mac OS 显示/隐藏文件夹">https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/17/Android-蓝牙/" title="Android 蓝牙">https://github.com/iBotasky/2017/04/17/Android-蓝牙/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/04/17/Android-蓝牙/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -292,18 +307,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/12/WebView遇到的用法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          WebView遇到的用法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/04/Android进程优先级/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android进程优先级</div>
+    <a href="/2017/04/07/Android权限之shareUserId/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android权限之shareUserId</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -314,7 +320,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建BLE基本步骤"><span class="toc-number">1.</span> <span class="toc-text">1.创建BLE基本步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1获取BluethoothAdapter"><span class="toc-number">2.</span> <span class="toc-text">1.1获取BluethoothAdapter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-开启蓝牙"><span class="toc-number">3.</span> <span class="toc-text">1.2 开启蓝牙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-发现设备"><span class="toc-number">4.</span> <span class="toc-text">1.3 发现设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-连接到GATT服务端"><span class="toc-number">5.</span> <span class="toc-text">1.4 连接到GATT服务端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-读取BLE变量"><span class="toc-number">6.</span> <span class="toc-text">1.5 读取BLE变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6开启通知"><span class="toc-number">7.</span> <span class="toc-text">1.6开启通知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7关闭App客户端"><span class="toc-number">8.</span> <span class="toc-text">1.7关闭App客户端</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -362,7 +368,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/06/Mac-OS-显示-隐藏文件夹/" data-title="Mac OS 显示/隐藏文件夹" data-url="https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/"></div>
+    <div class="ds-thread" data-thread-key="2017/04/17/Android-蓝牙/" data-title="Android 蓝牙" data-url="https://github.com/iBotasky/2017/04/17/Android-蓝牙/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -385,13 +391,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/12/WebView遇到的用法/" title="上一篇: WebView遇到的用法">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/04/Android进程优先级/" title="下一篇: Android进程优先级">
+            <a href="/2017/04/07/Android权限之shareUserId/" title="下一篇: Android权限之shareUserId">
                 <i class="fa fa-angle-right"></i>
             </a>
         
