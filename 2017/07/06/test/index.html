@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Dagger2-Scope | Botasky的博客</title>
+  <title>test | Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Dagger2的@Scope的用法介绍">
+  <meta name="description" content="Whta the fuck">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dagger2-Scope">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Dagger2-Scope/index.html">
+<meta property="og:title" content="test">
+<meta property="og:url" content="https://github.com/iBotasky/2017/07/06/test/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Dagger2的@Scope的用法介绍">
-<meta property="og:image" content="http://frogermcs.github.io/images/15/dagger-scopes.png">
-<meta property="og:image" content="http://frogermcs.github.io/images/15/scopes-lifecycle.png">
-<meta property="og:updated_time" content="2017-02-04T06:57:49.000Z">
+<meta property="og:description" content="Whta the fuck">
+<meta property="og:updated_time" content="2017-07-06T06:36:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dagger2-Scope">
-<meta name="twitter:description" content="Dagger2的@Scope的用法介绍">
-<meta name="twitter:image" content="http://frogermcs.github.io/images/15/dagger-scopes.png">
+<meta name="twitter:title" content="test">
+<meta name="twitter:description" content="Whta the fuck">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -225,11 +222,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Dagger2-Scope" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/Dagger2-Scope/" class="article-date">
-      <time datetime="2017-02-04T06:09:32.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/07/06/test/" class="article-date">
+      <time datetime="2017-07-06T06:36:25.000Z" itemprop="datePublished">2017-07-06</time>
 </a>
     </div>
   
@@ -242,7 +239,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Dagger2-Scope
+      test
     </h1>
   
 
@@ -252,10 +249,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android框架/">Android框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dagger2/">Dagger2</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -263,35 +256,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Dagger2的<code>@Scope</code>的用法介绍<br><a id="more"></a></p>
-<h2 id="Scope–能为我们提供什么"><a href="#Scope–能为我们提供什么" class="headerlink" title="Scope–能为我们提供什么"></a>Scope–能为我们提供什么</h2><p>几乎所有的项目都会使用单例-比如API Client，DatabaseHelper，Analytic Manager等。因为依赖注入，所以我们不用关心实例化。我们不应该在代码里考虑如何获取这些对象。取而代之的是<code>@Inject</code>会给我们提供应该要提供的实例。<br>在Dagger2的Scope机制使得让一个类保持单例让他的存活周期跟Scope一样长。例如在实际中一个在<code>@ApplicationScope</code>的实例的存货周期跟Application的生命周期是一样的。<code>@ActivityScope</code>的存活周期跟Activity的生命周期相同（比如我们可以在同一个Activity下所有的Fragment共享单例）。</p>
-<p>简单说：Scopes给我们创建了一种”局部单例“，生命周期取决于Scope自己。</p>
-<p>但是，Dagger2并没有提供<code>@ActivityScope</code>和<code>@ApplicationScope</code>,这些都是要通过<code>@Scope</code>来自定义。Dagger2默认只提供<code>@Singleton</code>的Scope注解。</p>
-<h2 id="Scope实践"><a href="#Scope实践" class="headerlink" title="Scope实践"></a>Scope实践</h2><p>我们要实现比Application/Activity Scope更加复杂的Scope。用GithubClient项目做为解释，项目中用到了三个Scope：</p>
-<blockquote>
-<ul>
-<li>@Singleton - ApplicationScope</li>
-<li>@UserScope - 用来联系用户的实例类的Scope（已经登录的用户）</li>
-<li>@ActivityScope - 用来做与Activity生命周期相同的类的Scope（presenters 在我们的例子中）</li>
-</ul>
-</blockquote>
-<p>引入的<code>@UserScope</code>跟前一篇文章的方案有不同之处。从用户体验的角度来说他没有提供任何帮助。但是从架构角度来说，他帮助我们在不需要传入任何intent参数的情况下为我们提供<code>User</code>实例。<br>并且那些需要user数据的类（<code>RepositoriesManager</code>类在这个例子中）能通过把<code>User</code>作为构造器函数拿到<code>User</code>。并且是在需要的时候去初始化，而不是在App启动的时候去初始化。这意味着：<code>RepositoriesManager</code>会在我们通过GithubApi拿到用户之后去做初始化（在<code>RepositoriesListActivity</code>呈现之前）。<br>这是简单的一个我们应用的Scopes和Component的示意图：<br><img src="http://frogermcs.github.io/images/15/dagger-scopes.png" alt=""><br>Singleton(ApplicationScope)是存活周期最长的Scope。<br>UserScope作为ApplicationScope的子Scope，他可以访问访问父Scope的对象。<br>ActivityScope也是如此，可以拿到UserScope跟ApplicationScope的对象。</p>
-<h2 id="Scope-生命周期示例"><a href="#Scope-生命周期示例" class="headerlink" title="Scope 生命周期示例"></a>Scope 生命周期示例</h2><p><img src="http://frogermcs.github.io/images/15/scopes-lifecycle.png" alt=""><br>单例的生命周期是从app启动后的App的存活时间。<br>UserScope的创建是从我们通过GithubApi拿到<code>User</code>开始（真实情况下，实在用户登录后），并在我们回到SplashActivity后被销毁（真实情况下，是在用户登出后）。当新登录一个用户，会产生另外一个UserScope.<br>每个<code>ActivityScope</code>存活时间跟他所对应的Activity是一样的。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>在Dagger2中，Scope的实现归结于对Component的正确设置。一般情况下有两种设置：</p>
-<blockquote>
-<p><em>1.使用<code>Subcomponent</code>注解
-</em>2.使用Component依赖</p>
-</blockquote>
-<p>两者最大的区别在于对象图的共享。Subcomponent可以访问他们Parenent Component的所有对象图，而Component依赖只能通过Component暴露对象接口来访问。<br>这里选择第一种实现<code>AppComponent</code>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Singleton</span></div><div class="line"><span class="meta">@Component</span>(</div><div class="line">        modules = &#123;</div><div class="line">                AppModule.class,</div><div class="line">                GithubApiModule.class</div><div class="line">        &#125;</div><div class="line">)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AppComponent</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function">UserComponent <span class="title">plus</span><span class="params">(UserModule userModule)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">SplashActivityComponent <span class="title">plus</span><span class="params">(SplashActivityModule splashActivityModule)</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>他会是其他SubComponent的根Component：UserComponent跟ActivitysComponents。我们去掉了上一章的依赖对象的接口暴露。Subcomponent可以直接访问全部的对象。<br>作为代替，我们新增了两个方法：</p>
-<blockquote>
-<p><em><code>UserComponent plus(UserModule userModule);</code>
-</em><code>SplashActivityComponent plus(SplashActivityModule splashActivityModule);</code></p>
-</blockquote>
-<p>这表示我们可以从<code>AppComponent</code>创建两个子Components：<code>UserComponent</code>与<code>SplashActivityComponent</code>。两个子Components都可以访问<code>AppComponent</code>的Module的依赖。<br><em>这些方法的命名规则是：返回类型是subcomponent类，方法名字随意，参数是这个subcomponent的module</em><br>比如：<code>UserComponent</code>需要一个module(他通过plus传入)。这样，我们通过增加一个新生成的对象module，集成<code>AppComponent</code>图标：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@UserScope</span></div><div class="line"><span class="meta">@Subcomponent</span>(</div><div class="line">        modules = &#123;</div><div class="line">                UserModule.class</div><div class="line">        &#125;</div><div class="line">)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserComponent</span> </span>&#123;</div><div class="line">    <span class="function">RepositoriesListActivityComponent <span class="title">plus</span><span class="params">(RepositoriesListActivityModule repositoriesListActivityModule)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">RepositoryDetailsActivityComponent <span class="title">plus</span><span class="params">(RepositoryDetailsActivityModule repositoryDetailsActivityModule)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>UserComponent从AppComonent引用的对象都是单例，但是UserModule即UserComponent的那部分，创建的对象是”局部单例“。</p>
-<p>在这里比较重要的是我们要负责<code>UserComponent</code>的生命周期。所以我们应该关心他的初始化和释放，在<code>GithubClient</code>的例子中，我们新增两个方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GithubClientApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> AppComponent appComponent;</div><div class="line">    <span class="keyword">private</span> UserComponent userComponent;</div><div class="line"></div><div class="line">    <span class="comment">//...</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> UserComponent <span class="title">createUserComponent</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        userComponent = appComponent.plus(<span class="keyword">new</span> UserModule(user));</div><div class="line">        <span class="keyword">return</span> userComponent;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">releaseUserComponent</span><span class="params">()</span> </span>&#123;</div><div class="line">        userComponent = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><code>createUserComponent()</code>方法我们会从GithubApi（在<code>SpliashActivity</code>中）获取到<code>User</code>对象时调用；<code>releaseUserComponent()</code>方法会在我们从<code>RepositoriesListActivity</code>（这个时候我们不再需要user scope了）中退出时调用。</p>
+        <p>Whta the fuck</p>
 
       
     </div>
@@ -300,13 +265,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/04/Dagger2-Scope/">Dagger2-Scope</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/06/test/">test</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 14时09分</p>
-        <p><span>最后更新:</span>2017年02月04日 - 14时57分</p>
+        <p><span>发布时间:</span>2017年07月06日 - 14时36分</p>
+        <p><span>最后更新:</span>2017年07月06日 - 14时36分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Dagger2-Scope/" title="Dagger2-Scope">https://github.com/iBotasky/2017/02/04/Dagger2-Scope/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Dagger2-Scope/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/06/test/" title="test">https://github.com/iBotasky/2017/07/06/test/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/07/06/test/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -319,18 +284,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/04/Dagger2-Dagger-API/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Dagger2-Dagger API
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/04/Markdown语法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Markdown语法</div>
+    <a href="/2017/04/17/Android-蓝牙/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android 蓝牙</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -341,7 +297,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope–能为我们提供什么"><span class="toc-number">1.</span> <span class="toc-text">Scope–能为我们提供什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope实践"><span class="toc-number">2.</span> <span class="toc-text">Scope实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scope-生命周期示例"><span class="toc-number">3.</span> <span class="toc-text">Scope 生命周期示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">4.</span> <span class="toc-text">实现</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -389,7 +345,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/04/Dagger2-Scope/" data-title="Dagger2-Scope" data-url="https://github.com/iBotasky/2017/02/04/Dagger2-Scope/"></div>
+    <div class="ds-thread" data-thread-key="2017/07/06/test/" data-title="test" data-url="https://github.com/iBotasky/2017/07/06/test/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -412,13 +368,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/04/Dagger2-Dagger-API/" title="上一篇: Dagger2-Dagger API">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/04/Markdown语法/" title="下一篇: Markdown语法">
+            <a href="/2017/04/17/Android-蓝牙/" title="下一篇: Android 蓝牙">
                 <i class="fa fa-angle-right"></i>
             </a>
         
