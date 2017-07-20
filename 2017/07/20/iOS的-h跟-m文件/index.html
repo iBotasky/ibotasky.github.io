@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://github.com/iBotasky/2017/07/20/iOS的-h跟-m文件/index.html">
 <meta property="og:site_name" content="Botasky的博客">
 <meta property="og:description" content="iOS开发中OC的.h文件跟.m文件">
-<meta property="og:updated_time" content="2017-07-20T01:47:30.000Z">
+<meta property="og:updated_time" content="2017-07-20T01:49:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS的.h跟.m文件">
 <meta name="twitter:description" content="iOS开发中OC的.h文件跟.m文件">
@@ -264,7 +264,7 @@
 <a id="more"></a>
 <h2 id="1-文件"><a href="#1-文件" class="headerlink" title="1.文件"></a>1.文件</h2><h3 id="1-1-h文件"><a href="#1-1-h文件" class="headerlink" title="1.1.h文件"></a>1.1.h文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@interface ClassName&#123;</div><div class="line">    NSString* _value1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@property(nonatomic,assign)NSString* value1;</div><div class="line"></div><div class="line">-(void)func1;</div></pre></td></tr></table></figure>
 <h3 id="1-2-m文件"><a href="#1-2-m文件" class="headerlink" title="1.2 .m文件"></a>1.2 .m文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface ClassName()&#123;</div><div class="line">&#125;</div><div class="line">@end</div><div class="line"></div><div class="line">@synthesize value1;</div><div class="line"></div><div class="line">@implementation ClassName</div><div class="line"></div><div class="line">-(void)func1&#123;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<h3 id="2-问题"><a href="#2-问题" class="headerlink" title="2. 问题"></a>2. 问题</h3><h3 id="2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？"><a href="#2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？" class="headerlink" title="2.1 为什么.h文件和.m文件里各有1个@interface?它们分别有什么用？"></a>2.1 为什么.h文件和.m文件里各有1个<code>@interface</code>?它们分别有什么用？</h3><p>.h里面的<code>@interface</code>，不消说，是典型的头文件，它是供其它Class调用的。它的<code>@property</code>和functions，都能够被其它Class“看到”。</p>
+<h2 id="2-问题"><a href="#2-问题" class="headerlink" title="2. 问题"></a>2. 问题</h2><h3 id="2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？"><a href="#2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？" class="headerlink" title="2.1 为什么.h文件和.m文件里各有1个@interface?它们分别有什么用？"></a>2.1 为什么.h文件和.m文件里各有1个<code>@interface</code>?它们分别有什么用？</h3><p>.h里面的<code>@interface</code>，不消说，是典型的头文件，它是供其它Class调用的。它的<code>@property</code>和functions，都能够被其它Class“看到”。</p>
 <p><strong><em>用我的话理解就是，如果写在了.h的<code>@interface</code>的属性和方法就是<code>public</code>可以被外面调用的。写在了.m的<code>@interface</code>里面就是<code>private</code>。</em></strong></p>
 <p>因此，我们将对外开放的方法、变量放到.h文件中，而将不想要对外开放的变量放到.m文件中（.m文件的方法可以不声明，直接用）。</p>
 <h3 id="2-2-h中，value1为什么要定义2遍？"><a href="#2-2-h中，value1为什么要定义2遍？" class="headerlink" title="2.2.h中，value1为什么要定义2遍？"></a>2.2.h中，value1为什么要定义2遍？</h3><p>当然，现在<code>@interface{}</code>里的定义也可以省略掉了，不过原理还是要搞清楚。</p>
@@ -285,7 +285,7 @@
         <p><span>本文标题:</span><a href="/2017/07/20/iOS的-h跟-m文件/">iOS的.h跟.m文件</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
         <p><span>发布时间:</span>2017年07月20日 - 09时31分</p>
-        <p><span>最后更新:</span>2017年07月20日 - 09时47分</p>
+        <p><span>最后更新:</span>2017年07月20日 - 09时49分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/20/iOS的-h跟-m文件/" title="iOS的.h跟.m文件">https://github.com/iBotasky/2017/07/20/iOS的-h跟-m文件/</a>
             <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/07/20/iOS的-h跟-m文件/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -314,7 +314,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件"><span class="toc-number">1.</span> <span class="toc-text">1.文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-h文件"><span class="toc-number">1.1.</span> <span class="toc-text">1.1.h文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-m文件"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 .m文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-问题"><span class="toc-number">1.3.</span> <span class="toc-text">2. 问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？"><span class="toc-number">1.4.</span> <span class="toc-text">2.1 为什么.h文件和.m文件里各有1个@interface?它们分别有什么用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-h中，value1为什么要定义2遍？"><span class="toc-number">1.5.</span> <span class="toc-text">2.2.h中，value1为什么要定义2遍？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-synthesize有什么用？"><span class="toc-number">1.6.</span> <span class="toc-text">2.3@synthesize有什么用？</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-文件"><span class="toc-number">1.</span> <span class="toc-text">1.文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-h文件"><span class="toc-number">1.1.</span> <span class="toc-text">1.1.h文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-m文件"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 .m文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-问题"><span class="toc-number">2.</span> <span class="toc-text">2. 问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 为什么.h文件和.m文件里各有1个@interface?它们分别有什么用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-h中，value1为什么要定义2遍？"><span class="toc-number">2.2.</span> <span class="toc-text">2.2.h中，value1为什么要定义2遍？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-synthesize有什么用？"><span class="toc-number">2.3.</span> <span class="toc-text">2.3@synthesize有什么用？</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-07-20T01:47:30.000Z</updated>
+  <updated>2017-07-20T01:49:05.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -20,13 +20,13 @@
     <link href="https://github.com/iBotasky/2017/07/20/iOS%E7%9A%84-h%E8%B7%9F-m%E6%96%87%E4%BB%B6/"/>
     <id>https://github.com/iBotasky/2017/07/20/iOS的-h跟-m文件/</id>
     <published>2017-07-20T01:31:02.000Z</published>
-    <updated>2017-07-20T01:47:30.000Z</updated>
+    <updated>2017-07-20T01:49:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>iOS开发中OC的.h文件跟.m文件</p>
 <a id="more"></a>
 <h2 id="1-文件"><a href="#1-文件" class="headerlink" title="1.文件"></a>1.文件</h2><h3 id="1-1-h文件"><a href="#1-1-h文件" class="headerlink" title="1.1.h文件"></a>1.1.h文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@interface ClassName&#123;</div><div class="line">    NSString* _value1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@property(nonatomic,assign)NSString* value1;</div><div class="line"></div><div class="line">-(void)func1;</div></pre></td></tr></table></figure>
 <h3 id="1-2-m文件"><a href="#1-2-m文件" class="headerlink" title="1.2 .m文件"></a>1.2 .m文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface ClassName()&#123;</div><div class="line">&#125;</div><div class="line">@end</div><div class="line"></div><div class="line">@synthesize value1;</div><div class="line"></div><div class="line">@implementation ClassName</div><div class="line"></div><div class="line">-(void)func1&#123;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<h3 id="2-问题"><a href="#2-问题" class="headerlink" title="2. 问题"></a>2. 问题</h3><h3 id="2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？"><a href="#2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？" class="headerlink" title="2.1 为什么.h文件和.m文件里各有1个@interface?它们分别有什么用？"></a>2.1 为什么.h文件和.m文件里各有1个<code>@interface</code>?它们分别有什么用？</h3><p>.h里面的<code>@interface</code>，不消说，是典型的头文件，它是供其它Class调用的。它的<code>@property</code>和functions，都能够被其它Class“看到”。</p>
+<h2 id="2-问题"><a href="#2-问题" class="headerlink" title="2. 问题"></a>2. 问题</h2><h3 id="2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？"><a href="#2-1-为什么-h文件和-m文件里各有1个-interface-它们分别有什么用？" class="headerlink" title="2.1 为什么.h文件和.m文件里各有1个@interface?它们分别有什么用？"></a>2.1 为什么.h文件和.m文件里各有1个<code>@interface</code>?它们分别有什么用？</h3><p>.h里面的<code>@interface</code>，不消说，是典型的头文件，它是供其它Class调用的。它的<code>@property</code>和functions，都能够被其它Class“看到”。</p>
 <p><strong><em>用我的话理解就是，如果写在了.h的<code>@interface</code>的属性和方法就是<code>public</code>可以被外面调用的。写在了.m的<code>@interface</code>里面就是<code>private</code>。</em></strong></p>
 <p>因此，我们将对外开放的方法、变量放到.h文件中，而将不想要对外开放的变量放到.m文件中（.m文件的方法可以不声明，直接用）。</p>
 <h3 id="2-2-h中，value1为什么要定义2遍？"><a href="#2-2-h中，value1为什么要定义2遍？" class="headerlink" title="2.2.h中，value1为什么要定义2遍？"></a>2.2.h中，value1为什么要定义2遍？</h3><p>当然，现在<code>@interface{}</code>里的定义也可以省略掉了，不过原理还是要搞清楚。</p>
