@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android系统架构 | Botasky的博客</title>
+  <title>Botasky的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android系统架构">
+  <meta name="description" content="title: iOS模态视图.mddate: 2017-08-15 14:17:54tags:[iOS]
+iOS的模态视图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android系统架构">
-<meta property="og:url" content="https://github.com/iBotasky/2017/02/04/Android系统架构/index.html">
+<meta property="og:title" content="Botasky的博客">
+<meta property="og:url" content="https://github.com/iBotasky/2017/08/15/iOS模态视图/index.html">
 <meta property="og:site_name" content="Botasky的博客">
-<meta property="og:description" content="Android系统架构">
-<meta property="og:image" content="http://oktzkaa8p.bkt.clouddn.com/201702071873018203746-970e2cbe223e4c1c9ca129e7a2feb6c6.jpg">
-<meta property="og:updated_time" content="2017-02-07T05:52:02.000Z">
+<meta property="og:description" content="title: iOS模态视图.mddate: 2017-08-15 14:17:54tags:[iOS]
+iOS的模态视图">
+<meta property="og:updated_time" content="2017-08-15T07:51:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android系统架构">
-<meta name="twitter:description" content="Android系统架构">
-<meta name="twitter:image" content="http://oktzkaa8p.bkt.clouddn.com/201702071873018203746-970e2cbe223e4c1c9ca129e7a2feb6c6.jpg">
+<meta name="twitter:title" content="Botasky的博客">
+<meta name="twitter:description" content="title: iOS模态视图.mddate: 2017-08-15 14:17:54tags:[iOS]
+iOS的模态视图">
   
     <link rel="alternative" href="/atom.xml" title="Botasky的博客" type="application/atom+xml">
   
@@ -224,11 +225,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Android系统架构" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iOS模态视图" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/04/Android系统架构/" class="article-date">
-      <time datetime="2017-02-04T06:34:45.000Z" itemprop="datePublished">2017-02-04</time>
+      <a href="/2017/08/15/iOS模态视图/" class="article-date">
+      <time datetime="2017-08-15T07:41:58.000Z" itemprop="datePublished">2017-08-15</time>
 </a>
     </div>
   
@@ -237,64 +238,27 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Android系统架构
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android面试/">Android面试</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Android系统架构</p>
-<p><a id="more"></a>##Android框架分层自顶向下</p>
+        <p>title: iOS模态视图.md<br>date: 2017-08-15 14:17:54<br>tags:[iOS]</p>
+<p>iOS的模态视图<br><a id="more"></a></p>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>iOS开发中，在当前视图上弹出一个视图(模态视图)例如登录视图，分享视图，注册视图等等。</p>
+<h2 id="2-说明"><a href="#2-说明" class="headerlink" title="2.说明"></a>2.说明</h2><p>实现一个简单的多视图应用，视图控制器都会有一个<code>presentViewController</code>方法，用来显示模态视图窗口，在一些特别的环境下，例如登录，注册，分享等我们尤其希望使用这种方式去展现视图。</p>
+<h3 id="2-1-具体设置和使用"><a href="#2-1-具体设置和使用" class="headerlink" title="2.1 具体设置和使用"></a>2.1 具体设置和使用</h3><h4 id="1-弹出模态视图窗口-presentViewController-方法"><a href="#1-弹出模态视图窗口-presentViewController-方法" class="headerlink" title="1.弹出模态视图窗口(presentViewController)方法"></a>1.弹出模态视图窗口(presentViewController)方法</h4><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RegisterViewContrller *registerVc = [RegisterViewController alloc]init];</div><div class="line">[self presentViewController:registerVc animated:YES];</div></pre></td></tr></table></figure>
+<h4 id="2-弹出时动画风格"><a href="#2-弹出时动画风格" class="headerlink" title="2.弹出时动画风格"></a>2.弹出时动画风格</h4><p>弹出模态窗口时，如果我们选择了动画，那么我们可以通过modalTranslationStyle属性设置动画风格</p>
+<p><strong>UIModalTransitionStyleCoverVertical</strong>  // 底部滑入。<br><strong>UIModalTransitionStyleFlipHorizontal</strong> // 水平翻转。<br><strong>UIModalTransitionStyleCrossDissolve</strong> // 交叉溶解。<br><strong>UIModalTransitionStylePartialCurl</strong> // 翻页。</p>
+<h4 id="3-回收模态视图"><a href="#3-回收模态视图" class="headerlink" title="3.回收模态视图"></a>3.回收模态视图</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self dissmissViewControllerAnimated:YES completion:nil];</div></pre></td></tr></table></figure>
+<h4 id="4-presentingViewController"><a href="#4-presentingViewController" class="headerlink" title="4.presentingViewController"></a>4.presentingViewController</h4><p>presentingViewController是UIViewController的属性，官方文档上这么解释</p>
 <blockquote>
-<p><em>应用程序层                       (Applications)
-</em>应用程序框架                     (Application Frameworks)<br><em>系统运行库与Android运行环境      (Library&amp;Runtime)
-</em>Linux内核                        (Linux Kernel)</p>
+<p><a href="https://developer.apple.com/reference/uikit/uiviewcontroller/1621430-presentingviewcontroller?language=objc" target="_blank" rel="external">presentingViewController </a><br>The view controller that presented this view controller.</p>
 </blockquote>
-<hr>
-<h2 id="Android结构示意图"><a href="#Android结构示意图" class="headerlink" title="Android结构示意图"></a>Android结构示意图</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://oktzkaa8p.bkt.clouddn.com/201702071873018203746-970e2cbe223e4c1c9ca129e7a2feb6c6.jpg" alt="Android结构示意图"></h2><h2 id="1-应用程序层-Applications"><a href="#1-应用程序层-Applications" class="headerlink" title="1.应用程序层(Applications)"></a>1.应用程序层(Applications)</h2><p>Android装配一个核心应用程序集合，包括电子邮件客户端、SMS程序、日历、地图、浏览器、联系人和其他设置。所有应用程序都是用Java编程语言写的。更加丰富的应用程序有待我们去开发！</p>
-<h2 id="2-Application-Framework"><a href="#2-Application-Framework" class="headerlink" title="2.Application Framework"></a>2.Application Framework</h2><p>通过提供开放的开发平台，Android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、设置闹钟、向状态栏添加通知等等，很多很多。</p>
-<p>开发者可以完全使用核心应用程序所使用的框架APIs。应用程序的体系结构旨在简化组件的重用，任何应用程序都能发布他的功能且任何其他应用程序可以使用这些功能（需要服从框架执行的安全限制）。这一机制允许用户替换组件。</p>
-<p>所有的应用程序其实是一组服务和系统，包括：</p>
-<blockquote>
-<p>*视图（View）——丰富的、可扩展的视图集合，可用于构建一个应用程序。包括包括列表、网格、文本框、按钮，甚至是内嵌的网页浏览器</p>
-<ul>
-<li>内容提供者（Content Providers）——使应用程序能访问其他应用程序（如通讯录）的数据，或共享自己的数据<br><em>资源管理器（Resource Manager）——提供访问非代码资源，如本地化字符串、图形和布局文件
-</em>通知管理器（Notification Manager）——使所有的应用程序能够在状态栏显示自定义警告<br>*活动管理器（Activity Manager）——管理应用程序生命周期,提供通用的导航回退功能</li>
-</ul>
-</blockquote>
-<h2 id="3-Library"><a href="#3-Library" class="headerlink" title="3.Library"></a>3.Library</h2><p>Android包含一个C/C++库的集合，供Android系统的各个组件使用。这些功能通过Android的应用程序框架（application framework）暴露给开发者。下面列出一些核心库：</p>
-<blockquote>
-<p><em>系统C库——标准C系统库（libc）的BSD衍生，调整为基于嵌入式Linux设备
-</em>媒体库——基于PacketVideo的OpenCORE。这些库支持播放和录制许多流行的音频和视频格式，以及静态图像文件，包括MPEG4、 H.264、 MP3、 AAC、 AMR、JPG、 PNG<br><em>界面管理——管理访问显示子系统和无缝组合多个应用程序的二维和三维图形层
-</em>LibWebCore——新式的Web浏览器引擎,驱动Android 浏览器和内嵌的web视图<br><em>SGL——基本的2D图形引擎
-</em>3D库——基于OpenGL ES 1.0 APIs的实现。库使用硬件3D加速或包含高度优化的3D软件光栅<br><em>FreeType ——位图和矢量字体渲染
-</em>SQLite ——所有应用程序都可以使用的强大而轻量级的关系数据库引擎</p>
-</blockquote>
-<h2 id="4-Runtime"><a href="#4-Runtime" class="headerlink" title="4.Runtime"></a>4.Runtime</h2><p>Android包含一个核心库的集合，提供大部分在Java编程语言核心类库中可用的功能。每一个Android应用程序是Dalvik虚拟机中的实例，运行在他们自己的进程中。Dalvik虚拟机设计成，在一个设备可以高效地运行多个虚拟机。Dalvik虚拟机可执行文件格式是.dex，dex格式是专为Dalvik设计的一种压缩格式，适合内存和处理器速度有限的系统。</p>
-<p>大多数虚拟机包括JVM都是基于栈的，而Dalvik虚拟机则是基于寄存器的。两种架构各有优劣，一般而言，基于栈的机器需要更多指令，而基于寄存器的机器指令更大。dx 是一套工具，可以將 Java .class 转换成 .dex 格式。一个dex文件通常会有多个.class。由于dex有時必须进行最佳化，会使文件大小增加1-4倍，以ODEX结尾。</p>
-<p>Dalvik虚拟机依赖于Linux 内核提供基本功能，如线程和底层内存管理。</p>
-<h2 id="5-Linux-Kernel"><a href="#5-Linux-Kernel" class="headerlink" title="5.Linux Kernel"></a>5.Linux Kernel</h2><p>Android基于Linux 2.6提供核心系统服务，例如：安全、内存管理、进程管理、网络堆栈、驱动模型。Linux Kernel也作为硬件和软件之间的抽象层，它隐藏具体硬件细节而为上层提供统一的服务。</p>
-<p>如果你学过计算机网络知道OSI/RM，就会知道分层的好处就是使用下层提供的服务而为上层提供统一的服务，屏蔽本层及以下层的差异，当本层及以下层发生了变化不会影响到上层。也就是说各层各司其职，各层提供固定的SAP（Service Access Point），专业点可以说是高内聚、低耦合。</p>
-<p>如果你只是做应用开发，就不需要深入了解Linux Kernel层。</p>
+<p>A 视图present了B视图，B视图的presentingViewContrller就是A视图 </p>
+<h2 id="3-视图控制容器（ViewController-Container"><a href="#3-视图控制容器（ViewController-Container" class="headerlink" title="3.视图控制容器（ViewController Container)"></a>3.视图控制容器（ViewController Container)</h2><p><code>UINavigationController</code>/ <code>UITabBarController</code>/<code>UISlipViewController</code>等都属于ViewController Container，这些类的共性是都有一个类型为<code>ViewController</code>的对象数组,属性叫<code>viewControllers</code>，用于保存一组ViewControlller, ViewController Container会有自己默认的外观。</p>
+<p>任何的<code>ViewController Container</code>对象都可以通过属性<code>viewControllers</code>访问子对象，而子对象也可以通过<code>navigationController</code>/<code>tabbarController</code>/<code>slipViewController</code>/<code>presentViewController</code>找到相应的<code>viewController Container</code>。</p>
+<p><strong>- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion；</strong></p>
+<p>A present B，那么A就有责任dismiss B，如果在B中调用<strong>[self  dismissViewControllerAnimated…]</strong>就会A中发送dismiss，最终会由有A进行dismiss,相当于在B中执行<strong>[self.presentingViewController dismissViewControllerAnimated…]</strong></p>
 
       
     </div>
@@ -303,13 +267,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/04/Android系统架构/">Android系统架构</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/15/iOS模态视图/"></a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Botasky 的个人博客">Botasky</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 14时34分</p>
-        <p><span>最后更新:</span>2017年02月07日 - 13时52分</p>
+        <p><span>发布时间:</span>2017年08月15日 - 15时41分</p>
+        <p><span>最后更新:</span>2017年08月15日 - 15时51分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Android系统架构/" title="Android系统架构">https://github.com/iBotasky/2017/02/04/Android系统架构/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/02/04/Android系统架构/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/15/iOS模态视图/" title="">https://github.com/iBotasky/2017/08/15/iOS模态视图/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://github.com/iBotasky/2017/08/15/iOS模态视图/　　作者: Botasky" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -322,18 +286,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/04/Android动画相关/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Android动画相关
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/04/Activity-Service的生命周期/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Activity/Service的生命周期</div>
+    <a href="/2017/07/20/iOS的-h跟-m文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS的.h跟.m文件</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -344,7 +299,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android结构示意图"><span class="toc-number">1.</span> <span class="toc-text">Android结构示意图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-应用程序层-Applications"><span class="toc-number">3.</span> <span class="toc-text">1.应用程序层(Applications)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Application-Framework"><span class="toc-number">4.</span> <span class="toc-text">2.Application Framework</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Library"><span class="toc-number">5.</span> <span class="toc-text">3.Library</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Runtime"><span class="toc-number">6.</span> <span class="toc-text">4.Runtime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Linux-Kernel"><span class="toc-number">7.</span> <span class="toc-text">5.Linux Kernel</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概念"><span class="toc-number">1.</span> <span class="toc-text">1.概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-说明"><span class="toc-number">2.</span> <span class="toc-text">2.说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-具体设置和使用"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 具体设置和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-弹出模态视图窗口-presentViewController-方法"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.弹出模态视图窗口(presentViewController)方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-弹出时动画风格"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.弹出时动画风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-回收模态视图"><span class="toc-number">2.1.3.</span> <span class="toc-text">3.回收模态视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-presentingViewController"><span class="toc-number">2.1.4.</span> <span class="toc-text">4.presentingViewController</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-视图控制容器（ViewController-Container"><span class="toc-number">3.</span> <span class="toc-text">3.视图控制容器（ViewController Container)</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -392,7 +347,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/04/Android系统架构/" data-title="Android系统架构" data-url="https://github.com/iBotasky/2017/02/04/Android系统架构/"></div>
+    <div class="ds-thread" data-thread-key="2017/08/15/iOS模态视图/" data-title="" data-url="https://github.com/iBotasky/2017/08/15/iOS模态视图/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -415,13 +370,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/04/Android动画相关/" title="上一篇: Android动画相关">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/04/Activity-Service的生命周期/" title="下一篇: Activity/Service的生命周期">
+            <a href="/2017/07/20/iOS的-h跟-m文件/" title="下一篇: iOS的.h跟.m文件">
                 <i class="fa fa-angle-right"></i>
             </a>
         
