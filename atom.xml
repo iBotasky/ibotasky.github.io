@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-07-20T01:49:05.000Z</updated>
+  <updated>2017-08-26T16:00:50.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>更新于2017/08/27</title>
+    <link href="https://github.com/iBotasky/2017/08/26/%E6%9B%B4%E6%96%B0%E4%BA%8E2017-08-27/"/>
+    <id>https://github.com/iBotasky/2017/08/26/更新于2017-08-27/</id>
+    <published>2017-08-26T15:56:36.000Z</published>
+    <updated>2017-08-26T16:00:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天更新了博客主题</p>
+<a id="more"></a>
+<p>今天更新了Hexo博客的主题，是一个以Material设计为主的模板，看着很好，就用了这个主题。推荐给大家</p>
+<p><a href="https://github.com/viosey/hexo-theme-material">Material</a></p>
+<p><a href="https://material.viosey.com/" target="_blank" rel="external">Material配置及教程</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天更新了博客主题&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://github.com/iBotasky/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS的.h跟.m文件</title>
@@ -646,9 +671,9 @@
     </summary>
     
     
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -692,9 +717,9 @@
     </summary>
     
     
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -748,9 +773,9 @@
     </summary>
     
     
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -809,85 +834,6 @@
     <summary type="html">
     
       &lt;p&gt;阐述Java内存区域与Java回收机制的关联&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java基础" scheme="https://github.com/iBotasky/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java垃圾回收机制</title>
-    <link href="https://github.com/iBotasky/2017/02/04/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/"/>
-    <id>https://github.com/iBotasky/2017/02/04/Java垃圾回收机制/</id>
-    <published>2017-02-04T06:23:49.000Z</published>
-    <updated>2017-02-04T07:05:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>详细阐述Java垃圾回收机制</p>
-<a id="more"></a>
-<p><strong><em>开投注：JAVA的GC主要区域是堆区。JVM有堆、栈、方法区，详情参考基础另一篇文章</em></strong></p>
-<p>##垃圾回收的意义</p>
-<p>垃圾回收可以有效的防止内存泄露，有效的使用空闲的内存。<br>内存泄露：内存使用完后没有进行回收，Java的内存泄漏表现为一个内存对象的生命周期超出了程序需要他的时间长度，也叫“对象游离”。</p>
-<p>PS: <a href="https://github.com/xitu/gold-miner/blob/master/TODO/Eight-Ways-Your-Android-App-Can-Leak-Memory.md">关于Android常见的内存泄漏</a></p>
-<hr>
-<h2 id="垃圾回收机制的算法"><a href="#垃圾回收机制的算法" class="headerlink" title="垃圾回收机制的算法"></a>垃圾回收机制的算法</h2><h3 id="1-引用计数器"><a href="#1-引用计数器" class="headerlink" title="1.引用计数器"></a><strong>1.引用计数器</strong></h3><p>1.1算法分析<br>    垃圾收集器早起的策略，堆中每个对象实例都有一个引用计数，当一个对象被创建时，并且该对象实例被赋值给另一个变量，该变量计数设置为1， 当任何其他变量被赋值为这个对象的引用时，计数加1，例如（<code>a = b; //b的引用计数+1</code>）；但是当一个对象的某个引用超过了生命周期或者被设置为一个新值时，对象实例的引用计数器-1。任何引用计数器为0的对象实例可以被当做垃圾收集，例如（a引用b，a=c,b的引用计数器-1）；当一个对象实例被垃圾收集时，他引用的任何对象实例的引用计数器-1，例如（a引用b,a被回收，b的计数器-1）。<br>1.2优缺点<br>优点：</p>
-<blockquote>
-<ul>
-<li>引用计数收集器可以很快执行，交织在程序运行中，对程序不需要长时间被打断的实现环境比较有利。</li>
-</ul>
-</blockquote>
-<p>缺点:</p>
-<blockquote>
-<ul>
-<li><strong><em>无法检测出循环引用</em></strong>。 如父对象有一个子对象的引用，子对象反过来引用父对象。这样，他们的引用计数永远不肯能为0。</li>
-</ul>
-</blockquote>
-<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buidDog</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Dog newDog = <span class="keyword">new</span> Dog();</div><div class="line">    Tail newTail = <span class="keyword">new</span> Tail();</div><div class="line">    newDog.tail = newTail;</div><div class="line">    newTail.dog = newDog;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong><em>在上面，newTail中拿着对newDog的引用，newDog反过来拿着newTail的引用，如果newDog要被回收，前提是newTail要先被回收，这样才能释放newDog对象。反过来，newTail要被回收前提是释放newDog对象。当bulidDog()方法执行完后，引用计数器无法回收这两个对象。</em></strong></p>
-<hr>
-<h3 id="2-标记-清除算法"><a href="#2-标记-清除算法" class="headerlink" title="2.标记-清除算法"></a><strong>2.标记-清除算法</strong></h3><p>2.1 根搜索算法<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141050566294022.jpg" alt="根搜索算法"><br>根搜索算法是从离散数学中的图论引入的， 程序把所有的引用看做一张图， 从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。</p>
-<p>Java中可被作为GC ROOT的对象有：</p>
-<blockquote>
-<ul>
-<li>虚拟机栈中引用的对象（本地变量表）</li>
-<li>方法区中静态属性引用的对象</li>
-<li>方法区中常量的引用对象 </li>
-<li>本地方法栈中引用的对象（Naive对象）</li>
-</ul>
-</blockquote>
-<p>2.2 标记-清除算法的示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141048430359736.jpg" alt="标记清除算法"></p>
-<p>2.3 标记清除算法分析<br>    标记-清除算法采用从根集合进行扫描，对存活的对象进行标记，标记完毕后再扫描整个空间中未被标记的对象，进行回收， 如上图所示， 标记清除算法不需要进行对象的移动，并且仅对不存活的对象进行处理， 在存活对象比较多的情况下极为高效，但由于标记清除算法直接回收不存活的对象，会造成内存碎片。</p>
-<hr>
-<h3 id="3-标记-整理算法"><a href="#3-标记-整理算法" class="headerlink" title="3.标记-整理算法"></a><strong>3.标记-整理算法</strong></h3><p>3.1 标记整理算法示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141120037076681.jpg" alt="标记整理算法"></p>
-<p>3.2 标记整理算法分析<br>    标记整理算法采用标记清除算法的方式进行对象的标记，但在清除时不同，再回收不存活的对象占用的空间后，会将所有的存活对象往左端空间移动， 并更新对应的指针。标记整理算法是在标记清除的基础上，又进行了对象的移动，因此成本更高，但是解决了内存碎片的问题。在实现上，一般增加句柄和句柄表。</p>
-<hr>
-<h3 id="4-Copying算法"><a href="#4-Copying算法" class="headerlink" title="4.Copying算法"></a><strong>4.Copying算法</strong></h3><p>4.1 Copying算法示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141112115351233.jpg" alt="Copying算法"></p>
-<p>4.2 Copying算法分析<br>    Copying算法是为了克服句柄的开销和解决堆碎片的垃圾回收。它开始时把堆分为一个对象面和多个空闲面，程序从对象面为对象分配空间，当对象面满了，基于copying算法的垃圾收集就从根集扫描活动对象，并将每个活动对象复制到空闲面，这样空闲变成了对象面，原来的对象面变成了空闲面，程序会在新的对象面中分配内存。一种典型的基于copying算法的垃圾回收是stop-and-copy算法，他将堆分成对象面和空闲区域面，在对象面与空闲区域面的切换过程中，程序暂停执行。</p>
-<hr>
-<h3 id="5-分代收集器"><a href="#5-分代收集器" class="headerlink" title="5.分代收集器"></a><strong>5.分代收集器</strong></h3><p>5.1 分代收集器示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141332429573819.jpg" alt="分代收集器"></p>
-<p>5.2 分代收集器分析<br>分代的垃圾回收策略，是基于这样一个事实：<strong><em>不同的对象的生命周期是不一样的。</em></strong>因此，不同生命周期的对象可以采取不同的回收算法，以便提高回收效率。</p>
-<p>5.2.1 年轻代（Young Generation）<br>1.<strong><em>所有的新生成的对象首先都是放在新生代。</em></strong>年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。<br>2.新生代的内存按照<strong><em>8:1:1</em></strong>的比例分为一个Eden区和两个Survivor(survivor0,survivor1)区。大部分对象在Eden区生成。回收时先将Eden区存活的对象复制到一个survivor0区，然后清空eden，当这个survivor0区也存满了，则将eden与survivor0存活的对象复制到另一个survivor1，然后清空eden与survivor0，此时survivor0是空的，然后将survivor0与survivor1交换，即保持survivor1为空，如此往复。<br>3.当survivor1区域不足以存放eden和survivor0的存活对象时，就将存活的对象放到老年代。若是老年代也满了就会触发一次Full GC, 也就是新生代，旧生代都进行回收。<br>4.新生代的GC也叫作Minor GC，Minor GC发生的频率比较高（不一定等Eden满了才触发）。</p>
-<p>5.2.2 老年代（Old Generation）<br>1.在年轻代经历了N次回收还存活的对象会被放到老年代。因此，可以认为老年代中存放的都是一些生命周期较长的对象。<br>2.<strong><em>内存也比新生代大很多（大概是1：2）</em></strong>，当老年代内存满了会触发Full GC， Full Gc发生频率比较低，老年代存活时间比较长，存活率标记高。</p>
-<p>5.2.3 持久代（Permanent Generation）<br><strong><em>用于存放静态文件，如Java类、方法等。</em></strong></p>
-<hr>
-<h2 id="GC（垃圾收集器）"><a href="#GC（垃圾收集器）" class="headerlink" title="GC（垃圾收集器）"></a>GC（垃圾收集器）</h2><h3 id="新生代收集器："><a href="#新生代收集器：" class="headerlink" title="新生代收集器："></a>新生代收集器：</h3><blockquote>
-<p><em>Serial收集器（复制算法):单线程收集器，标记和清理都是单线程，优点是简单高效。
-</em>ParNew收集器(停止-复制算法):Serial收集器的多线程版本,在多核CPU环境下有着比Serial更好的表现。<br>*Parallel Scavenge收集器(停止-复制算法):并行收集器，追求高吞吐量，高效利用CPU。吞吐量一般为99%， 吞吐量= 用户线程时间/(用户线程时间+GC线程时间)。适合后台应用等对交互相应要求不高的场景。</p>
-</blockquote>
-<h3 id="老年代收集器："><a href="#老年代收集器：" class="headerlink" title="老年代收集器："></a>老年代收集器：</h3><blockquote>
-<p><em>Serial Old收集器(标记-整理算法):老年代单线程收集器，Serial收集器的老年代版本。
-</em>Parallel Old收集器(停止-复制算法):Parallel Scavenge收集器的老年代版本，并行收集器，吞吐量优先<br>*CMS(Concurrent Mark Sweep)收集器（标记-清理算法）:高并发、低停顿，追求最短GC回收停顿时间，cpu占用比较高，响应时间快，停顿时间短，多核cpu 追求高响应时间的选择</p>
-</blockquote>
-<hr>
-<h2 id="GC的执行"><a href="#GC的执行" class="headerlink" title="GC的执行"></a>GC的执行</h2><p>系统空闲的时候会进行GC<br>由于对象进行了分代处理，因此垃圾回收区域、时间也不一样。GC有两种类型：Scavenge GC和Full GC。</p>
-<h3 id="Scavenge-GC"><a href="#Scavenge-GC" class="headerlink" title="Scavenge GC"></a>Scavenge GC</h3><p>一般情况下，当新对象生成，并且在Eden区申请空间失败时，就会触发Scavenge Gc,对Eden区进行GC，然后整理Survivor区。因为Eden区不会分配很大，所以Eden的GC会频繁进行。因而，一般在这里需要使用速度快，效率高的算法，使Eden尽快空闲。</p>
-<h3 id="Full-GC"><a href="#Full-GC" class="headerlink" title="Full GC"></a>Full GC</h3><p>对整个堆进行整理，包括Young，Old，Perm。因为工作量大，所以更加耗时，要尽可能减少FUll Gc次数。触发Full GC的有下面的原因：<br>1.老年代被写满<br>2.持久代被写满<br>3.System.gc()被显示调用<br>4.上一次GC后Heap的各域分配策略动态变化</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;详细阐述Java垃圾回收机制&lt;/p&gt;
     
     </summary>
     
