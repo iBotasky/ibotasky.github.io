@@ -102,10 +102,6 @@
     
 
     
-        
-            <link rel="stylesheet" href="/css/fontawesome.min.css">
-        
-    
 
     <!-- Config CSS -->
 
@@ -183,7 +179,7 @@
 
     <style>
       body{
-        background-image: url(/img/bg-3.jpg);
+        background-image: url(/img/bg.jpg);
       }
     </style>
 
@@ -302,109 +298,8 @@
 
 
     
-        <body id="scheme-Isolation" class="lazy">
+        <body id="scheme-Paradox" class="lazy">
             <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                
-                    <!-- Isolation Header -->
-                    <header class="header">
-    <div class="header-wrapper">
-        <!-- Header Copyright -->
-        <div class="header-copyright">
-            <div class="header-site">
-                ©&nbsp;
-                <script type="text/javascript">
-                    var fd = new Date();
-                    document.write(fd.getFullYear());
-                </script>
-                &nbsp;Botasky的博客
-            </div>
-            <!--
-            I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-            It will not impact the appearance and can give developers a lot of support :)
-
-            很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-            它不会影响美观并可以给开发者很大的支持。 :)
-            -->
-            <div>
-                Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>
-                <br>
-                Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>
-            </div>
-        </div>
-
-        <!-- Header Title -->
-        <span class="header-title header-item">
-            <a href="/" title="Botasky的博客">
-                Botasky的博客
-            </a>
-        </span>
-
-        <p class="header-slogan header-item">
-        
-            
-                我<br>巨他妈<br>勇敢！<br><br><br>野蛮生长。
-            
-        
-        </p>
-
-        <!-- Header Nav -->
-        <nav class="header-nav header-item">
-            <span class="header-nav-item">
-                <a href="/" title="Home">
-                    <span>主页</span>
-                </a>
-            </span>
-
-            <!-- Pages  -->
-            
-            
-        </nav>
-
-        <!-- Header SNS -->
-        <div class="header-item header-sns_list">
-    <!-- Twitter -->
-    
-
-    <!-- Facebook -->
-    
-        <a href="https://www.facebook.com/siriusabo" target="_blank">
-            <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-        </a>
-    
-
-    <!-- Google + -->
-    
-
-    <!-- Weibo -->
-    
-        <a href="http://weibo.com/2309486597" target="_blank">
-            <i class="fa fa-weibo fa-lg" aria-hidden="true"></i>
-        </a>
-    
-
-    <!-- Instagram -->
-    
-
-    <!-- Tumblr -->
-    
-
-    <!-- Github -->
-    
-        <a href="https://github.com/iBotasky" target="_blank">
-            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
-        </a>
-    
-
-    <!-- LinkedIn -->
-    
-
-    <!-- Telegram -->
-    
-</div>
-
-    </div>
-</header>
-
                 
 
                 <!-- Main Container -->
@@ -414,10 +309,45 @@
                     <div id="top"></div>
 
                     
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
 
                     <!-- Post TOC -->
 
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CyberBlack项目中遇到的"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.CyberBlack项目中遇到的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析-。"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析 。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-解决：在网上查看资料找到这篇-知乎日报四-（http-krelve-com-android-127-html）看了一下，用了博主的方法，顺利显示内容："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1.2 解决：在网上查看资料找到这篇[知乎日报四]（http://krelve.com/android/127.html）看了一下，用了博主的方法，顺利显示内容：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Podoon项目的WebView"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.Podoon项目的WebView</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1描述"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2用法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2用法</span></a></li></ol></li></ol>
+    </ul>
+    
+
 
 
 
@@ -431,37 +361,125 @@
 
                 <!-- Post Header(Thumbnail & Title) -->
                 
-
-
-    <!-- Isolation Post Header -->
-    <!-- Post thumbnail -->
+    <!-- Paradox Post Header -->
     
-        <!-- Post Header Info -->
-        <div class="post-header_info without-thumbnail">
-            <!-- Author Avatar & Name -->
-            <img src="/img/avatar.jpg" class="avatar-img" width="44px" height="44px" alt="Botasky's avatar">
-            <span class="name-span">Botasky</span>
-        </div>
-
-        <!-- Null Thumbnail -->
-        <div class="post_thumbnail-null">
+        
+            <!-- Pure Thumbnail -->
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#2B2B35 !important">
+        
     
+            <p class="article-headline-p">
+                WebView遇到的用法
+            </p>
         </div>
 
 
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Botasky</strong>
+        <span>2月 12, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/AndroidView/">AndroidView</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=WebView遇到的用法&url=https://github.com/iBotasky/2017/02/12/WebView遇到的用法/index.html&pic=https://github.com/iBotasky/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=WebView遇到的用法&url=https://github.com/iBotasky/2017/02/12/WebView遇到的用法/index.html&via=Botasky" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/iBotasky/2017/02/12/WebView遇到的用法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://github.com/iBotasky/2017/02/12/WebView遇到的用法/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
 
                 
 
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-
-    
-        <div class="post-content_wrapper">
-            <p class="post-title">
-                WebView遇到的用法
-            </p>
-            <p>这里总结一些项目中遇到的WebView的一些用法:)</p>
+        <p>这里总结一些项目中遇到的WebView的一些用法:)</p>
 <a id="more"></a>
 <hr>
 <h2 id="1-CyberBlack项目中遇到的"><a href="#1-CyberBlack项目中遇到的" class="headerlink" title="1.CyberBlack项目中遇到的"></a>1.CyberBlack项目中遇到的</h2><h3 id="1-1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析-。"><a href="#1-1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析-。" class="headerlink" title="1.1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：知乎日报API分析 。"></a>1.1描述：CyberBlack是自己利用空闲时间做的App，里面调用了知乎的API，关于知乎API请看这篇文章：<a href="https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90">知乎日报API分析</a> 。</h3><p>项目里面用了<code>http://news-at.zhihu.com/api/4/news/3892357</code>这个接口，里面是拿到了html内容的<code>css</code>文件跟<code>body</code>，然后App端要用WebView做显示。</p>
@@ -473,15 +491,13 @@
 <h2 id="2-Podoon项目的WebView"><a href="#2-Podoon项目的WebView" class="headerlink" title="2.Podoon项目的WebView"></a>2.Podoon项目的WebView</h2><h3 id="2-1描述"><a href="#2-1描述" class="headerlink" title="2.1描述"></a>2.1描述</h3><p>选鞋详细界面需要展示鞋子的详细信息，这个界面是用WebView展示的。但是里面包含了一些<code>js</code>的方法。</p>
 <h3 id="2-2用法"><a href="#2-2用法" class="headerlink" title="2.2用法"></a>2.2用法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">mWebView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</div><div class="line">        mWebView.setWebViewClient(<span class="keyword">new</span> WebViewClient() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, String url)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageStarted</span><span class="params">(WebView view, String url, Bitmap favicon)</span> </span>&#123;</div><div class="line">                <span class="keyword">super</span>.onPageStarted(view, url, favicon);</div><div class="line">                ShoeRecordActivity.<span class="keyword">this</span>.showDialog(<span class="keyword">null</span>, <span class="string">"载入中,请稍后..."</span>);</div><div class="line">                logger.info(<span class="string">"onPageStarted() called with: "</span> + <span class="string">"view = ["</span> + view + <span class="string">"], url = ["</span> + url + <span class="string">"], favicon = ["</span> + favicon + <span class="string">"]"</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;</div><div class="line">              <span class="comment">//这里放javaScript代码，webview加载</span></div><div class="line">                String javaScript = <span class="string">"javascript:function annotationData()&#123;"</span> +</div><div class="line">                        <span class="string">"var x=document.getElementById(\"accomTotalDistance\"); x.innerHTML="</span> + <span class="string">"'"</span> + dis + <span class="string">"km"</span> + <span class="string">"'"</span> + <span class="string">";"</span> +</div><div class="line">                        <span class="string">"var y=document.getElementById(\"accomPace\"); y.innerHTML="</span> + <span class="string">"'"</span> + pace2 + <span class="string">"'"</span> + <span class="string">";"</span> +</div><div class="line">                        <span class="string">"var z=document.getElementById(\"accomRecordAccount\"); z.innerHTML="</span> + <span class="string">"'"</span> + record + <span class="string">"'"</span> + <span class="string">";"</span> +</div><div class="line">                        <span class="string">"var a=document.getElementById(\"processDiv\"); a.style.width="</span> + <span class="string">"'"</span> + progress + <span class="string">"%"</span> + <span class="string">"'"</span> + <span class="string">";"</span> +</div><div class="line">                        <span class="string">"&#125;"</span>;</div><div class="line">                logger.error(<span class="string">"onPageFinished() returned: "</span> + javaScript);</div><div class="line">                mWebView.loadUrl(javaScript);</div><div class="line">                mWebView.loadUrl(<span class="string">"javascript:annotationData()"</span>);</div><div class="line">                <span class="keyword">super</span>.onPageFinished(view, url);</div><div class="line">                <span class="keyword">if</span> (dialog.isShowing() &amp;&amp; dialog != <span class="keyword">null</span>) &#123;</div><div class="line">                    dialog.cancel();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedHttpAuthRequest</span><span class="params">(WebView view, HttpAuthHandler handler, String host, String realm)</span> </span>&#123;</div><div class="line">                <span class="keyword">super</span>.onReceivedHttpAuthRequest(view, handler, host, realm);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        mWebView.loadUrl(mURL);</div></pre></td></tr></table></figure>
 
-            
-        </div>
+        
+    
+
     
 </div>
 
 
-                
-                    <!-- Paradox Post Info -->
-                    
                 
 
                 <!-- Post Comments -->
@@ -524,11 +540,254 @@
 
 
                     
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Botasky's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        siriusabo@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">21</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/siriusabo" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/2309486597" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/iBotasky" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/lu-kuo-si/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="https://space.bilibili.com/19972131/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Botasky的博客
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
     
 </footer>
 
