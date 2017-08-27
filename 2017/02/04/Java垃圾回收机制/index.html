@@ -233,7 +233,7 @@
 
     
         <meta property="article:published_time" content="Sat Feb 04 2017 14:23:49 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Feb 04 2017 15:05:15 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Aug 27 2017 17:20:14 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -260,7 +260,7 @@
     "mainEntityOfPage": "https://github.com/iBotasky/2017/02/04/Java垃圾回收机制/index.html",
     "headline": "Java垃圾回收机制",
     "datePublished": "Sat Feb 04 2017 14:23:49 GMT+0800",
-    "dateModified": "Sat Feb 04 2017 15:05:15 GMT+0800",
+    "dateModified": "Sun Aug 27 2017 17:20:14 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Botasky",
@@ -519,14 +519,17 @@
 </ul>
 </blockquote>
 <p>2.2 标记-清除算法的示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141048430359736.jpg" alt="标记清除算法"></p>
-<p>2.3 标记清除算法分析<br>    标记-清除算法采用从根集合进行扫描，对存活的对象进行标记，标记完毕后再扫描整个空间中未被标记的对象，进行回收， 如上图所示， 标记清除算法不需要进行对象的移动，并且仅对不存活的对象进行处理， 在存活对象比较多的情况下极为高效，但由于标记清除算法直接回收不存活的对象，会造成内存碎片。</p>
-<hr>
+<p>2.3 标记清除算法分析</p>
+<pre><code>标记-清除算法采用从根集合进行扫描，对存活的对象进行标记，标记完毕后再扫描整个空间中未被标记的对象，进行回收， 如上图所示， 标记清除算法不需要进行对象的移动，并且仅对不存活的对象进行处理， 在存活对象比较多的情况下极为高效，但由于标记清除算法直接回收不存活的对象，会造成内存碎片。
+</code></pre><hr>
 <h3 id="3-标记-整理算法"><a href="#3-标记-整理算法" class="headerlink" title="3.标记-整理算法"></a><strong>3.标记-整理算法</strong></h3><p>3.1 标记整理算法示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141120037076681.jpg" alt="标记整理算法"></p>
-<p>3.2 标记整理算法分析<br>    标记整理算法采用标记清除算法的方式进行对象的标记，但在清除时不同，再回收不存活的对象占用的空间后，会将所有的存活对象往左端空间移动， 并更新对应的指针。标记整理算法是在标记清除的基础上，又进行了对象的移动，因此成本更高，但是解决了内存碎片的问题。在实现上，一般增加句柄和句柄表。</p>
-<hr>
+<p>3.2 标记整理算法分析</p>
+<pre><code>标记整理算法采用标记清除算法的方式进行对象的标记，但在清除时不同，再回收不存活的对象占用的空间后，会将所有的存活对象往左端空间移动， 并更新对应的指针。标记整理算法是在标记清除的基础上，又进行了对象的移动，因此成本更高，但是解决了内存碎片的问题。在实现上，一般增加句柄和句柄表。
+</code></pre><hr>
 <h3 id="4-Copying算法"><a href="#4-Copying算法" class="headerlink" title="4.Copying算法"></a><strong>4.Copying算法</strong></h3><p>4.1 Copying算法示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141112115351233.jpg" alt="Copying算法"></p>
-<p>4.2 Copying算法分析<br>    Copying算法是为了克服句柄的开销和解决堆碎片的垃圾回收。它开始时把堆分为一个对象面和多个空闲面，程序从对象面为对象分配空间，当对象面满了，基于copying算法的垃圾收集就从根集扫描活动对象，并将每个活动对象复制到空闲面，这样空闲变成了对象面，原来的对象面变成了空闲面，程序会在新的对象面中分配内存。一种典型的基于copying算法的垃圾回收是stop-and-copy算法，他将堆分成对象面和空闲区域面，在对象面与空闲区域面的切换过程中，程序暂停执行。</p>
-<hr>
+<p>4.2 Copying算法分析</p>
+<pre><code>Copying算法是为了克服句柄的开销和解决堆碎片的垃圾回收。它开始时把堆分为一个对象面和多个空闲面，程序从对象面为对象分配空间，当对象面满了，基于copying算法的垃圾收集就从根集扫描活动对象，并将每个活动对象复制到空闲面，这样空闲变成了对象面，原来的对象面变成了空闲面，程序会在新的对象面中分配内存。一种典型的基于copying算法的垃圾回收是stop-and-copy算法，他将堆分成对象面和空闲区域面，在对象面与空闲区域面的切换过程中，程序暂停执行。
+</code></pre><hr>
 <h3 id="5-分代收集器"><a href="#5-分代收集器" class="headerlink" title="5.分代收集器"></a><strong>5.分代收集器</strong></h3><p>5.1 分代收集器示意图<br><img src="http://images0.cnblogs.com/blog2015/694841/201506/141332429573819.jpg" alt="分代收集器"></p>
 <p>5.2 分代收集器分析<br>分代的垃圾回收策略，是基于这样一个事实：<strong><em>不同的对象的生命周期是不一样的。</em></strong>因此，不同生命周期的对象可以采取不同的回收算法，以便提高回收效率。</p>
 <p>5.2.1 年轻代（Young Generation）<br>1.<strong><em>所有的新生成的对象首先都是放在新生代。</em></strong>年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。<br>2.新生代的内存按照<strong><em>8:1:1</em></strong>的比例分为一个Eden区和两个Survivor(survivor0,survivor1)区。大部分对象在Eden区生成。回收时先将Eden区存活的对象复制到一个survivor0区，然后清空eden，当这个survivor0区也存满了，则将eden与survivor0存活的对象复制到另一个survivor1，然后清空eden与survivor0，此时survivor0是空的，然后将survivor0与survivor1交换，即保持survivor1为空，如此往复。<br>3.当survivor1区域不足以存放eden和survivor0的存活对象时，就将存活的对象放到老年代。若是老年代也满了就会触发一次Full GC, 也就是新生代，旧生代都进行回收。<br>4.新生代的GC也叫作Minor GC，Minor GC发生的频率比较高（不一定等Eden满了才触发）。</p>
@@ -671,7 +674,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">21</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">21</span></a>
             </ul>
         </li>
         
@@ -689,7 +692,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                
+                <a class="sidebar_archives-link" href="/categories/Andrioid/">Andrioid<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Andrioid/Android-Studio/">Android Studio<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/AndroidView/">AndroidView<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/BLE/">BLE<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/Lambda/">Lambda<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/RxJava/">RxJava<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/Social/">Social<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android框架/">Android框架<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android框架/Dagger2/">Dagger2<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android进阶/">Android进阶<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android进阶/Dagger2/">Dagger2<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android面试/">Android面试<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android面试/Android/">Android<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java基础/">Java基础<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Mac/">Mac<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Markdown/">Markdown<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/">iOS<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/iOS/iOS基础/">iOS基础<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         

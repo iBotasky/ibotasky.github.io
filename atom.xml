@@ -41,11 +41,50 @@
   </entry>
   
   <entry>
+    <title>iOS模态视图.md</title>
+    <link href="https://github.com/iBotasky/2017/08/15/iOS%E6%A8%A1%E6%80%81%E8%A7%86%E5%9B%BE/"/>
+    <id>https://github.com/iBotasky/2017/08/15/iOS模态视图/</id>
+    <published>2017-08-15T06:17:54.000Z</published>
+    <updated>2017-08-27T09:19:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>iOS的模态视图<br><a id="more"></a></p>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>iOS开发中，在当前视图上弹出一个视图(模态视图)例如登录视图，分享视图，注册视图等等。</p>
+<h2 id="2-说明"><a href="#2-说明" class="headerlink" title="2.说明"></a>2.说明</h2><p>实现一个简单的多视图应用，视图控制器都会有一个<code>presentViewController</code>方法，用来显示模态视图窗口，在一些特别的环境下，例如登录，注册，分享等我们尤其希望使用这种方式去展现视图。</p>
+<h3 id="2-1-具体设置和使用"><a href="#2-1-具体设置和使用" class="headerlink" title="2.1 具体设置和使用"></a>2.1 具体设置和使用</h3><h4 id="1-弹出模态视图窗口-presentViewController-方法"><a href="#1-弹出模态视图窗口-presentViewController-方法" class="headerlink" title="1.弹出模态视图窗口(presentViewController)方法"></a>1.弹出模态视图窗口(presentViewController)方法</h4><p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RegisterViewContrller *registerVc = [RegisterViewController alloc]init];</div><div class="line">[self presentViewController:registerVc animated:YES];</div></pre></td></tr></table></figure>
+<h4 id="2-弹出时动画风格"><a href="#2-弹出时动画风格" class="headerlink" title="2.弹出时动画风格"></a>2.弹出时动画风格</h4><p>弹出模态窗口时，如果我们选择了动画，那么我们可以通过modalTranslationStyle属性设置动画风格</p>
+<p><strong>UIModalTransitionStyleCoverVertical</strong>  // 底部滑入。<br><strong>UIModalTransitionStyleFlipHorizontal</strong> // 水平翻转。<br><strong>UIModalTransitionStyleCrossDissolve</strong> // 交叉溶解。<br><strong>UIModalTransitionStylePartialCurl</strong> // 翻页。</p>
+<h4 id="3-回收模态视图"><a href="#3-回收模态视图" class="headerlink" title="3.回收模态视图"></a>3.回收模态视图</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self dissmissViewControllerAnimated:YES completion:nil];</div></pre></td></tr></table></figure>
+<h4 id="4-presentingViewController"><a href="#4-presentingViewController" class="headerlink" title="4.presentingViewController"></a>4.presentingViewController</h4><p>presentingViewController是UIViewController的属性，官方文档上这么解释</p>
+<blockquote>
+<p><a href="https://developer.apple.com/reference/uikit/uiviewcontroller/1621430-presentingviewcontroller?language=objc" target="_blank" rel="external">presentingViewController </a><br>The view controller that presented this view controller.</p>
+</blockquote>
+<p>A 视图present了B视图，B视图的presentingViewContrller就是A视图 </p>
+<h2 id="3-视图控制容器（ViewController-Container"><a href="#3-视图控制容器（ViewController-Container" class="headerlink" title="3.视图控制容器（ViewController Container)"></a>3.视图控制容器（ViewController Container)</h2><p><code>UINavigationController</code>/ <code>UITabBarController</code>/<code>UISlipViewController</code>等都属于ViewController Container，这些类的共性是都有一个类型为<code>ViewController</code>的对象数组,属性叫<code>viewControllers</code>，用于保存一组ViewControlller, ViewController Container会有自己默认的外观。</p>
+<p>任何的<code>ViewController Container</code>对象都可以通过属性<code>viewControllers</code>访问子对象，而子对象也可以通过<code>navigationController</code>/<code>tabbarController</code>/<code>slipViewController</code>/<code>presentViewController</code>找到相应的<code>viewController Container</code>。</p>
+<p><strong>- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion；</strong></p>
+<p>A present B，那么A就有责任dismiss B，如果在B中调用<strong>[self  dismissViewControllerAnimated…]</strong>就会A中发送dismiss，最终会由有A进行dismiss,相当于在B中执行<strong>[self.presentingViewController dismissViewControllerAnimated…]</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS的模态视图&lt;br&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="https://github.com/iBotasky/categories/iOS/"/>
+    
+    
+      <category term="iOS" scheme="https://github.com/iBotasky/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS的.h跟.m文件</title>
     <link href="https://github.com/iBotasky/2017/07/20/iOS%E7%9A%84-h%E8%B7%9F-m%E6%96%87%E4%BB%B6/"/>
     <id>https://github.com/iBotasky/2017/07/20/iOS的-h跟-m文件/</id>
     <published>2017-07-20T01:31:02.000Z</published>
-    <updated>2017-07-20T01:49:05.000Z</updated>
+    <updated>2017-08-27T09:19:39.000Z</updated>
     
     <content type="html"><![CDATA[<p>iOS开发中OC的.h文件跟.m文件</p>
 <a id="more"></a>
@@ -69,6 +108,10 @@
     
     </summary>
     
+      <category term="iOS" scheme="https://github.com/iBotasky/categories/iOS/"/>
+    
+      <category term="iOS基础" scheme="https://github.com/iBotasky/categories/iOS/iOS%E5%9F%BA%E7%A1%80/"/>
+    
     
       <category term="iOS" scheme="https://github.com/iBotasky/tags/iOS/"/>
     
@@ -81,7 +124,7 @@
     <link href="https://github.com/iBotasky/2017/07/06/Lambda%E5%9C%A8Android%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://github.com/iBotasky/2017/07/06/Lambda在Android中的使用/</id>
     <published>2017-07-06T06:41:59.000Z</published>
-    <updated>2017-07-06T06:43:04.000Z</updated>
+    <updated>2017-08-27T09:20:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>Lambda语法在Android中的应用</p>
 <a id="more"></a>
@@ -139,6 +182,10 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
+      <category term="Lambda" scheme="https://github.com/iBotasky/categories/Android/Lambda/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -151,7 +198,7 @@
     <link href="https://github.com/iBotasky/2017/04/17/Android-%E8%93%9D%E7%89%99/"/>
     <id>https://github.com/iBotasky/2017/04/17/Android-蓝牙/</id>
     <published>2017-04-17T06:34:53.000Z</published>
-    <updated>2017-04-17T06:56:49.000Z</updated>
+    <updated>2017-08-27T09:14:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>关于Android下BLE(Bluetooth Low Energy)开发的一些积累<br><a id="more"></a></p>
 <h2 id="1-创建BLE基本步骤"><a href="#1-创建BLE基本步骤" class="headerlink" title="1.创建BLE基本步骤"></a>1.创建BLE基本步骤</h2><h2 id="1-1获取BluethoothAdapter"><a href="#1-1获取BluethoothAdapter" class="headerlink" title="1.1获取BluethoothAdapter"></a>1.1获取BluethoothAdapter</h2><p>所有的蓝牙活动都需要蓝牙适配器。BluetoothAdapter代表设备本身的蓝牙适配器(蓝牙无线）。整个系统只有一个蓝牙适配器，而且你的app使用它与系统交互。下面的代码片段显示了如何得到适配器。注意该方法使用getSystemService（）返回BluetoothManager，然后将其用于获取适配器的一个实例。<strong>Android 4.3（API 18）引入BluetoothManager。</strong></p>
@@ -181,6 +228,10 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
+      <category term="BLE" scheme="https://github.com/iBotasky/categories/Android/BLE/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -193,7 +244,7 @@
     <link href="https://github.com/iBotasky/2017/04/07/Android%E6%9D%83%E9%99%90%E4%B9%8BshareUserId/"/>
     <id>https://github.com/iBotasky/2017/04/07/Android权限之shareUserId/</id>
     <published>2017-04-07T02:27:33.000Z</published>
-    <updated>2017-04-07T03:11:16.000Z</updated>
+    <updated>2017-08-27T09:16:49.000Z</updated>
     
     <content type="html"><![CDATA[<p>项目中看到过shareUserId，了解了这个配置特性</p>
 <a id="more"></a>
@@ -216,6 +267,8 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -226,7 +279,7 @@
     <link href="https://github.com/iBotasky/2017/04/06/Android%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/"/>
     <id>https://github.com/iBotasky/2017/04/06/Android消息机制/</id>
     <published>2017-04-06T01:55:13.000Z</published>
-    <updated>2017-04-06T07:59:30.000Z</updated>
+    <updated>2017-08-27T09:17:07.000Z</updated>
     
     <content type="html"><![CDATA[<p>关于Android消息机制的源码分析</p>
 <a id="more"></a>
@@ -289,6 +342,8 @@
     
     </summary>
     
+      <category term="Android进阶" scheme="https://github.com/iBotasky/categories/Android%E8%BF%9B%E9%98%B6/"/>
+    
     
       <category term="Android进阶" scheme="https://github.com/iBotasky/tags/Android%E8%BF%9B%E9%98%B6/"/>
     
@@ -299,7 +354,7 @@
     <link href="https://github.com/iBotasky/2017/03/07/RxJava%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>https://github.com/iBotasky/2017/03/07/RxJava遇到的问题整理/</id>
     <published>2017-03-07T07:27:37.000Z</published>
-    <updated>2017-03-09T07:42:13.000Z</updated>
+    <updated>2017-08-27T09:21:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>编程中遇到的RxJava的错<br><a id="more"></a></p>
 <h2 id="1-Subject与toList-操作符"><a href="#1-Subject与toList-操作符" class="headerlink" title="1.Subject与toList()操作符"></a>1.Subject与toList()操作符</h2><p>一个项目钟一个页面用<code>PublistEvent</code>发送消息（消息的内容是一个CalendarDay日期值），通知另一个页面，另一个页面在去数据库取数据，原来的代码是这样，但是打过log后，<code>toList()</code>后面的数据都没出来。</p>
@@ -325,6 +380,10 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
+      <category term="RxJava" scheme="https://github.com/iBotasky/categories/Android/RxJava/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -337,7 +396,7 @@
     <link href="https://github.com/iBotasky/2017/02/24/%E5%85%B3%E4%BA%8E%E9%9B%86%E6%88%90ShareSDK/"/>
     <id>https://github.com/iBotasky/2017/02/24/关于集成ShareSDK/</id>
     <published>2017-02-24T07:09:19.000Z</published>
-    <updated>2017-02-24T07:20:28.000Z</updated>
+    <updated>2017-08-27T09:21:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>整理项目中集成ShareSDK遇到的问题</p>
 <a id="more"></a>
@@ -355,6 +414,10 @@
       &lt;p&gt;整理项目中集成ShareSDK遇到的问题&lt;/p&gt;
     
     </summary>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
+      <category term="Social" scheme="https://github.com/iBotasky/categories/Android/Social/"/>
     
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
@@ -415,7 +478,7 @@
     <link href="https://github.com/iBotasky/2017/02/13/Android-Studio%E6%8F%92%E4%BB%B6/"/>
     <id>https://github.com/iBotasky/2017/02/13/Android-Studio插件/</id>
     <published>2017-02-13T01:14:00.000Z</published>
-    <updated>2017-02-13T01:23:59.000Z</updated>
+    <updated>2017-08-27T09:14:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>关于Android Studio上比较好用的插件整理</p>
 <a id="more"></a>
@@ -466,6 +529,10 @@
     
     </summary>
     
+      <category term="Andrioid" scheme="https://github.com/iBotasky/categories/Andrioid/"/>
+    
+      <category term="Android Studio" scheme="https://github.com/iBotasky/categories/Andrioid/Android-Studio/"/>
+    
     
       <category term="Andrioid" scheme="https://github.com/iBotasky/tags/Andrioid/"/>
     
@@ -478,7 +545,7 @@
     <link href="https://github.com/iBotasky/2017/02/12/WebView%E9%81%87%E5%88%B0%E7%9A%84%E7%94%A8%E6%B3%95/"/>
     <id>https://github.com/iBotasky/2017/02/12/WebView遇到的用法/</id>
     <published>2017-02-12T09:19:46.000Z</published>
-    <updated>2017-02-13T02:36:24.000Z</updated>
+    <updated>2017-08-27T09:21:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>这里总结一些项目中遇到的WebView的一些用法:)</p>
 <a id="more"></a>
@@ -499,6 +566,10 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
+      <category term="AndroidView" scheme="https://github.com/iBotasky/categories/Android/AndroidView/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -511,7 +582,7 @@
     <link href="https://github.com/iBotasky/2017/02/06/Mac-OS-%E6%98%BE%E7%A4%BA-%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     <id>https://github.com/iBotasky/2017/02/06/Mac-OS-显示-隐藏文件夹/</id>
     <published>2017-02-06T03:56:19.000Z</published>
-    <updated>2017-02-12T09:52:39.000Z</updated>
+    <updated>2017-08-27T09:20:39.000Z</updated>
     
     <content type="html"><![CDATA[<p>Mac显示/隐藏文件夹<br><a id="more"></a></p>
 <p>显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool TRUE ; killall Finder</code><br>停止显示隐藏文件：<br><code>defaults write com.apple.finder AppleShowAllFiles -bool FALSE ; killall Finder</code></p>
@@ -526,6 +597,8 @@
     
     </summary>
     
+      <category term="Mac" scheme="https://github.com/iBotasky/categories/Mac/"/>
+    
     
       <category term="Mac" scheme="https://github.com/iBotasky/tags/Mac/"/>
     
@@ -536,7 +609,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Android%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/"/>
     <id>https://github.com/iBotasky/2017/02/04/Android进程优先级/</id>
     <published>2017-02-04T06:40:37.000Z</published>
-    <updated>2017-02-04T06:41:27.000Z</updated>
+    <updated>2017-08-27T09:17:41.000Z</updated>
     
     <content type="html"><![CDATA[<p>进程优先级介绍<br><a id="more"></a><br>查看命令当前进程优先级：adb shell cat /proc/<strong><em>process_id</em></strong>/oom_adj</p>
 <p><a href="http://blog.csdn.net/wangliang198901/article/details/12342845" target="_blank" rel="external">文章地址</a><br>一个进程可以做一个前台的ForegroundService做通知栏，或<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
@@ -548,6 +621,8 @@
     
     </summary>
     
+      <category term="Android进阶" scheme="https://github.com/iBotasky/categories/Android%E8%BF%9B%E9%98%B6/"/>
+    
     
       <category term="Android进阶" scheme="https://github.com/iBotasky/tags/Android%E8%BF%9B%E9%98%B6/"/>
     
@@ -558,7 +633,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Android%E4%BF%9D%E6%B4%BB/"/>
     <id>https://github.com/iBotasky/2017/02/04/Android保活/</id>
     <published>2017-02-04T06:38:22.000Z</published>
-    <updated>2017-02-04T06:39:59.000Z</updated>
+    <updated>2017-08-27T09:15:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>平常接触到的保活<br><a id="more"></a><br>自启动保活 系统通知权限<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyNotificationService</span> <span class="keyword">extends</span> <span class="title">NotificationListenerService</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String TAG = MyNotificationService.class.getName();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationPosted</span><span class="params">(StatusBarNotification sbn)</span> </span>&#123;</div><div class="line">        Log.d(TAG, <span class="string">"onNotificationPosted: "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationRemoved</span><span class="params">(StatusBarNotification sbn)</span> </span>&#123;</div><div class="line">        Log.d(TAG, <span class="string">"onNotificationRemoved: "</span>);</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, BackgroundService.class);</div><div class="line">        startService(intent);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>跳转<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">goNLPermission</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           Intent intent = <span class="keyword">new</span> Intent(<span class="string">"android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"</span>);</div><div class="line">           context.startActivity(intent);</div><div class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   </div><div class="line">   <span class="comment">/**</span></div><div class="line">        * Notification keep live</div><div class="line">        */</div><div class="line">       goNLPermission(<span class="keyword">this</span>);</div><div class="line">       Intent notificationService = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyNotificationService.class);</div><div class="line">       startService(notificationService);</div></pre></td></tr></table></figure></p>
@@ -570,6 +645,8 @@
     
     </summary>
     
+      <category term="Android进阶" scheme="https://github.com/iBotasky/categories/Android%E8%BF%9B%E9%98%B6/"/>
+    
     
       <category term="Android进阶" scheme="https://github.com/iBotasky/tags/Android%E8%BF%9B%E9%98%B6/"/>
     
@@ -580,7 +657,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Android%E5%8A%A8%E7%94%BB%E7%9B%B8%E5%85%B3/"/>
     <id>https://github.com/iBotasky/2017/02/04/Android动画相关/</id>
     <published>2017-02-04T06:37:15.000Z</published>
-    <updated>2017-02-09T02:48:58.000Z</updated>
+    <updated>2017-08-27T09:16:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>平常用到的一些比较机智的动画</p>
 <a id="more"></a>
@@ -616,6 +693,8 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -626,7 +705,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Android%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
     <id>https://github.com/iBotasky/2017/02/04/Android系统架构/</id>
     <published>2017-02-04T06:34:45.000Z</published>
-    <updated>2017-02-07T05:52:02.000Z</updated>
+    <updated>2017-08-27T09:17:22.000Z</updated>
     
     <content type="html"><![CDATA[<p>Android系统架构</p>
 <p><a id="more"></a>##Android框架分层自顶向下</p>
@@ -670,6 +749,10 @@
     
     </summary>
     
+      <category term="Android面试" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -682,7 +765,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Activity-Service%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     <id>https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/</id>
     <published>2017-02-04T06:33:13.000Z</published>
-    <updated>2017-02-12T09:09:56.000Z</updated>
+    <updated>2017-08-27T09:12:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>Android Activity/Service 生命周期介绍<br><a id="more"></a></p>
 <h2 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h2><h3 id="1-Activity生命周期图"><a href="#1-Activity生命周期图" class="headerlink" title="1.Activity生命周期图"></a>1.Activity生命周期图</h3><p><img src="http://stormzhang.com/image/activity_lifecycle.png" alt="生命周期"></p>
@@ -716,6 +799,10 @@
     
     </summary>
     
+      <category term="Android面试" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -728,7 +815,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/Android%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
     <id>https://github.com/iBotasky/2017/02/04/Android常见的内存泄漏/</id>
     <published>2017-02-04T06:31:30.000Z</published>
-    <updated>2017-02-04T07:00:35.000Z</updated>
+    <updated>2017-08-27T09:16:36.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://github.com/xitu/gold-miner/blob/master/TODO/Eight-Ways-Your-Android-App-Can-Leak-Memory.md">原文地址</a></p>
 <a id="more"></a>
@@ -772,6 +859,10 @@
     
     </summary>
     
+      <category term="Android面试" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
@@ -784,7 +875,7 @@
     <link href="https://github.com/iBotasky/2017/02/04/AndroidStudio-Mac%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%9D%A2%E7%9A%84%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/"/>
     <id>https://github.com/iBotasky/2017/02/04/AndroidStudio-Mac环境下面的配置流程/</id>
     <published>2017-02-04T06:29:58.000Z</published>
-    <updated>2017-02-04T06:59:30.000Z</updated>
+    <updated>2017-08-27T09:14:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>Android Studio配置<br><a id="more"></a></p>
 <h3 id="0-到Google中国开发者网站下载最新的AndroidStudio"><a href="#0-到Google中国开发者网站下载最新的AndroidStudio" class="headerlink" title="0.到Google中国开发者网站下载最新的AndroidStudio"></a>0.到<a href="https://developer.android.google.cn/index.html" target="_blank" rel="external">Google中国开发者网站</a>下载最新的AndroidStudio</h3><h3 id="1-下载jdk-是jdk不是jre"><a href="#1-下载jdk-是jdk不是jre" class="headerlink" title="1.下载jdk 是jdk不是jre"></a>1.下载jdk 是jdk不是jre</h3><h3 id="2-导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入-gradlew-clean会重新下载gradle，然后在打开AndroidStudio，重新载入项目。"><a href="#2-导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入-gradlew-clean会重新下载gradle，然后在打开AndroidStudio，重新载入项目。" class="headerlink" title="2.导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入  ./gradlew clean会重新下载gradle，然后在打开AndroidStudio，重新载入项目。"></a>2.导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入  <code>./gradlew clean</code>会重新下载gradle，然后在打开AndroidStudio，重新载入项目。</h3><h3 id="3-点击SDK的按钮，需要下载ndk就在SDK-Tools上面选择，查找然后装NDK。"><a href="#3-点击SDK的按钮，需要下载ndk就在SDK-Tools上面选择，查找然后装NDK。" class="headerlink" title="3.点击SDK的按钮，需要下载ndk就在SDK Tools上面选择，查找然后装NDK。"></a>3.点击SDK的按钮，需要下载ndk就在SDK Tools上面选择，查找然后装NDK。</h3><h3 id="3-关于Android安装谷歌"><a href="#3-关于Android安装谷歌" class="headerlink" title="3.关于Android安装谷歌"></a>3.关于Android安装谷歌</h3><p>0.去应用市场查找<code>谷歌服务框架</code>的应用然后安装。<br>1.翻墙</p>
@@ -796,49 +887,10 @@
     
     </summary>
     
+      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
+    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java内存区域与Java垃圾回收</title>
-    <link href="https://github.com/iBotasky/2017/02/04/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8EJava%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
-    <id>https://github.com/iBotasky/2017/02/04/Java内存区域与Java垃圾回收/</id>
-    <published>2017-02-04T06:25:49.000Z</published>
-    <updated>2017-02-04T07:04:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>阐述Java内存区域与Java回收机制的关联</p>
-<a id="more"></a>
-<p><a href="http://www.cnblogs.com/kkcheng/archive/2011/02/25/1964521.html" target="_blank" rel="external">原文地址</a><br><a href="http://www.cnblogs.com/zhguang/p/3257367.html" target="_blank" rel="external">JavaGC与内存区域</a></p>
-<hr>
-<h2 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h2><h3 id="1-JVM管理的内存区域"><a href="#1-JVM管理的内存区域" class="headerlink" title="1.JVM管理的内存区域"></a>1.JVM管理的内存区域</h3><p><img src="http://www.2cto.com/uploadfile/Collfiles/20161118/20161118081416891.jpg" alt=""></p>
-<h4 id="1-程序计数器"><a href="#1-程序计数器" class="headerlink" title="1.程序计数器"></a>1.程序计数器</h4><p>程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行到了第几行。（线程私有）不存在内存溢出的情况，是JVM中唯一一个没有定义OOM的区域。<br>线程私有</p>
-<h4 id="2-JVM-Stack-虚拟机栈"><a href="#2-JVM-Stack-虚拟机栈" class="headerlink" title="2.JVM Stack 虚拟机栈"></a>2.JVM Stack 虚拟机栈</h4><p>一个线程每个方法执行的同时，都会创建一个栈帧（Stack Frame），栈帧中存储局部变量表，操作站，动态链接，方法出口等，当方法被调用时，栈帧在JVM中入栈，当方法执行完成，栈帧出栈。<br>局部变量表中存储着方法相关局部变量，包括基本数据类型，对象的引用，返回地址等。Java虚拟机允许动态扩展栈的大小，所以线程一直申请栈，知道内存不足，抛出OOM。<br>每个线程对应一个JVM Stack，所以也是线程私有。</p>
-<h4 id="3-Native-Method-Stack-本地方法栈"><a href="#3-Native-Method-Stack-本地方法栈" class="headerlink" title="3.Native Method Stack 本地方法栈"></a>3.Native Method Stack 本地方法栈</h4><p>本地方法栈在作用，运行机制，异常类型等方面都与虚拟机栈相同，唯一的区别是：虚拟机栈是执行Java方法的，而本地方法栈是用来执行native方法的，在很多虚拟机中（如Sun的JDK默认的HotSpot虚拟机），会将本地方法栈与虚拟机栈放在一起使用。<br>本地方法栈也是线程私有的。</p>
-<h4 id="4-Heap-堆区"><a href="#4-Heap-堆区" class="headerlink" title="4.Heap 堆区"></a>4.Heap 堆区</h4><p>Heap 是Java GC机制最重要的区域，没有之一。在JVM管理的内存中，堆区是最大的一块，堆区也是Java GC机制所管理的主要区域。<strong><em>堆区所有线程共享</em></strong>，在虚拟机启动时创建。<strong><em>堆区的纯在是为了存储对象实例</em></strong>。<br>堆内存需要在逻辑上是连续的，物理上不需要，并且可扩展，如果在执行垃圾回收之后仍没有足够内存分配就会OOM。</p>
-<h4 id="5-Method-Area-方法区"><a href="#5-Method-Area-方法区" class="headerlink" title="5.Method Area 方法区"></a>5.Method Area 方法区</h4><p><strong><em>方法区并不是堆区。</em></strong><br><strong><em>方法区是各个线程共享的，用于存储已经被虚拟机加载的类信息（加载类的信息，方法、接口、field等），final常量，静态变量等</em></strong>。<br>方法区可以选择性做GC，一般方法区上执行GC很少，因此常被称为永久代。也会抛出OOM。</p>
-<hr>
-<h2 id="Java的对象访问方式"><a href="#Java的对象访问方式" class="headerlink" title="Java的对象访问方式"></a>Java的对象访问方式</h2><p>一般来说，一个Java对象的引用访问涉及到3个区域内存区域：JVM栈， 堆区，方法区</p>
-<pre><code>Object object = new Object()
-</code></pre><blockquote>
-<p><em>Object object表示一个本地引用，存储在JVM栈的本地变量表中，表示一个reference类型数据
-</em>new Object()表示作为实例存储在堆中<br>*堆中的实例还记录了Object类型信息的地址，指向方法区中存储的类的信息</p>
-</blockquote>
-<p>目前有两种主流访问方式<br>1.通过句柄访问<br><img src="http://images.cnitblog.com/blog/406312/201309/21174354-8e55a4e6b6284153b8ac40cfeab3062d.png" alt=""></p>
-<p>通过句柄访问的实现方式中，JVM堆中会专门有一块区域用来作为句柄池，存储相关句柄所执行的实例数据地址（包括在堆中地址和在方法区中的地址）。这种实现方法由于用句柄表示地址，因此十分稳定。</p>
-<p>2.通过直接指针访问<br><img src="http://images.cnitblog.com/blog/406312/201309/21174413-e7b4a7cdec984c2881a56ad776d54354.png" alt=""></p>
-<p>通过直接指针访问的方式中，reference中存储的就是对象在堆中的实际地址，在堆中存储的对象信息中包含了在方法区中的相应类型数据。这种方法最大的优势是速度快，在HotSpot虚拟机中用的就是这种方式。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;阐述Java内存区域与Java回收机制的关联&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java基础" scheme="https://github.com/iBotasky/tags/Java%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
