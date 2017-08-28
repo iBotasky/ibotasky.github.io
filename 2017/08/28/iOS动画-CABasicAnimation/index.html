@@ -37,7 +37,7 @@
     
     <title>
         
-            iOS锚点 | 
+            iOS动画:CABasicAnimation | 
         
         Botasky&#39;s Blog
     </title>
@@ -48,7 +48,7 @@
     <meta name="format-detection" content="telephone=no"/>
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Botasky">
-    <meta name="description" itemprop="description" content="介绍iOS图层中d的锚点anchorPoint">
+    <meta name="description" itemprop="description" content="介绍iOS的Layer层的CABasicAnimataion动画">
     <meta name="keywords" content="null,iOS,iOS动画">
 
     <!-- Import lsloader -->
@@ -226,26 +226,26 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://github.com/iBotasky">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="iOS锚点 | Botasky&#39;s Blog">
+    <meta property="og:title" content="iOS动画:CABasicAnimation | Botasky&#39;s Blog">
     <meta property="og:image" content="https://github.com/iBotasky/img/favicon.png" />
-    <meta property="og:description" content="介绍iOS图层中d的锚点anchorPoint">
+    <meta property="og:description" content="介绍iOS的Layer层的CABasicAnimataion动画">
     <meta property="og:article:tag" content="iOS"> <meta property="og:article:tag" content="iOS动画"> 
 
     
-        <meta property="article:published_time" content="Mon Aug 28 2017 09:34:29 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Aug 28 2017 09:55:01 GMT+0800" />
+        <meta property="article:published_time" content="Mon Aug 28 2017 10:46:32 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Aug 28 2017 11:49:36 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="iOS锚点 | Botasky&#39;s Blog">
-    <meta name="twitter:description" content="介绍iOS图层中d的锚点anchorPoint">
+    <meta name="twitter:title" content="iOS动画:CABasicAnimation | Botasky&#39;s Blog">
+    <meta name="twitter:description" content="介绍iOS的Layer层的CABasicAnimataion动画">
     <meta name="twitter:image" content="https://github.com/iBotasky/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://github.com/iBotasky" />
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://github.com/iBotasky/2017/08/28/iOS锚点/index.html" />
+        <link rel="canonical" href="https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -257,10 +257,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://github.com/iBotasky/2017/08/28/iOS锚点/index.html",
-    "headline": "iOS锚点",
-    "datePublished": "Mon Aug 28 2017 09:34:29 GMT+0800",
-    "dateModified": "Mon Aug 28 2017 09:55:01 GMT+0800",
+    "mainEntityOfPage": "https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/index.html",
+    "headline": "iOS动画:CABasicAnimation",
+    "datePublished": "Mon Aug 28 2017 10:46:32 GMT+0800",
+    "dateModified": "Mon Aug 28 2017 11:49:36 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Botasky",
@@ -279,7 +279,7 @@
         }
     },
     "keywords": ",iOS,iOS动画null",
-    "description": "介绍iOS图层中d的锚点anchorPoint",
+    "description": "介绍iOS的Layer层的CABasicAnimataion动画",
 }
 </script>
 
@@ -344,7 +344,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AnchorPoint-锚点"><span class="post-toc-number">1.</span> <span class="post-toc-text">AnchorPoint 锚点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AnchorPoint的应用场景"><span class="post-toc-number">2.</span> <span class="post-toc-text">AnchorPoint的应用场景</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-CAAnimation"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.CAAnimation</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-CABasicAnimation"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.CABasicAnimation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1缩放"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">2.1缩放</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2移动"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.2移动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3旋转"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">2.3旋转</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4其他的KeyPath动画"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">2.4其他的KeyPath动画</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-5-组动画"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">2.5 组动画</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-CABasicAnimation中的关键属性"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.CABasicAnimation中的关键属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1keyPath"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1keyPath</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-fromValue-toValue"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2 fromValue/toValue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-autoreverse"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.3 autoreverse</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-4-fileMode"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">3.4 fileMode</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -376,7 +376,7 @@
         
     
             <p class="article-headline-p">
-                iOS锚点
+                iOS动画:CABasicAnimation
             </p>
         </div>
 
@@ -435,7 +435,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS锚点&url=https://github.com/iBotasky/2017/08/28/iOS锚点/index.html&pic=https://github.com/iBotasky/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=iOS动画:CABasicAnimation&url=https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/index.html&pic=https://github.com/iBotasky/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -444,7 +444,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS锚点&url=https://github.com/iBotasky/2017/08/28/iOS锚点/index.html&via=Botasky" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=iOS动画:CABasicAnimation&url=https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/index.html&via=Botasky" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -453,7 +453,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/iBotasky/2017/08/28/iOS锚点/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -462,7 +462,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://github.com/iBotasky/2017/08/28/iOS锚点/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -486,13 +486,179 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>介绍iOS图层中d的锚点<code>anchorPoint</code></p>
+        <p>介绍iOS的Layer层的CABasicAnimataion动画</p>
 <a id="more"></a>
-<h2 id="AnchorPoint-锚点"><a href="#AnchorPoint-锚点" class="headerlink" title="AnchorPoint 锚点"></a>AnchorPoint 锚点</h2><p>视图(View)的<code>center</code>属性跟图层(Layer)的<code>position</code>属性都指定了<code>anchorPoint</code>相对于父图层的位置。图层的<code>anchorPoint</code>通过<code>position</code>来控制它<code>frame</code>的位置. 可以说<code>anchorPoint</code>是用来移动图层的<em>把柄</em>.</p>
-<p>默认的,<code>anchorPoint</code>位于图层中点,所以图层会以这个点为中心放置. <code>anchorPoint</code>的属性在<code>UIVIew</code>没有被暴露出来,这也是View的<code>position</code>叫做<code>center</code>的原因.</p>
-<p>但是图层的<code>anchorPoint</code>可以被移动.比如,你可以把它置于图层<code>frame</code>的左上角,于是图层的内容就会向右下角的<code>position</code>移动,而不是居中了.</p>
-<p><img src="https://i.loli.net/2017/08/28/59a37615c18b9.jpg" alt="59a37615c18b9.jpg"></p>
-<h2 id="AnchorPoint的应用场景"><a href="#AnchorPoint的应用场景" class="headerlink" title="AnchorPoint的应用场景"></a>AnchorPoint的应用场景</h2><p><a href="https://zsisme.gitbooks.io/ios-/content/chapter3/anchor.html" target="_blank" rel="external">参照</a></p>
+<h2 id="1-CAAnimation"><a href="#1-CAAnimation" class="headerlink" title="1.CAAnimation"></a>1.CAAnimation</h2><p>iOS中Core Animation层的动画是依赖CAAnimation类实现的.iOS中还有其他层的动画</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1053533-6eae72f7fd9bd271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS动画"></p>
+<p>越上层,动画的封装度越高,动画实现越简洁,但是相反的,自由度更低.</p>
+<p>这里主要理解CAAnimation,CAAnimation分为几类:</p>
+<blockquote>
+<ul>
+<li>CABasicAnimation基础动画,通过设定起始点,终点,时间动画会沿着指定的设定去做动画.可以看做特殊的CAKeyFrameAniamtion</li>
+<li>CAKeyFrameAniamtion关键帧动画,可指定度度比CABasicAnimation高</li>
+<li>CAAnimationGroup组动画,可以将一系列CABasicAniamtion或者CAKeyFrameAniamtion组合起来同时执行的动画方式.</li>
+</ul>
+</blockquote>
+<h2 id="2-CABasicAnimation"><a href="#2-CABasicAnimation" class="headerlink" title="2.CABasicAnimation"></a>2.CABasicAnimation</h2><h3 id="2-1缩放"><a href="#2-1缩放" class="headerlink" title="2.1缩放"></a>2.1缩放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];</div><div class="line">    scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];</div><div class="line">    scaleAnimation.toValue = [NSNumber numberWithFloat:1.5];</div><div class="line">    scaleAnimation.autoreverses = YES;</div><div class="line">    scaleAnimation.repeatCount = MAXFLOAT;</div><div class="line">    scaleAnimation.duration = 0.8;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transform.scale</td>
+<td>对三个轴做缩放变换</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.scale.x</td>
+<td>对x轴做缩放</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.scale.y</td>
+<td>对y轴做缩放</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.scale.z</td>
+<td>对z轴做缩放</td>
+<td>NSNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2移动"><a href="#2-2移动" class="headerlink" title="2.2移动"></a>2.2移动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];</div><div class="line">    moveAnimation.fromValue = [NSValue valueWithCGPoint:groupLayer.position];</div><div class="line">    moveAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(320 - 80, groupLayer.position.y)];</div><div class="line">    moveAnimation.autoreverses = YES;</div><div class="line">    moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">    moveAnimation.duration = 2;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transform.translation.x</td>
+<td>沿着x轴平移</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.translation.y</td>
+<td>沿着y轴平移</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.translation.z</td>
+<td>沿着z轴平移</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.translation</td>
+<td>沿着x/y轴平移</td>
+<td>NSSize/CGSize</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3旋转"><a href="#2-3旋转" class="headerlink" title="2.3旋转"></a>2.3旋转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.x&quot;];</div><div class="line">    rotateAnimation.fromValue = [NSNumber numberWithFloat:0.0];</div><div class="line">    rotateAnimation.toValue = [NSNumber numberWithFloat:6.0 * M_PI];</div><div class="line">    rotateAnimation.autoreverses = YES;</div><div class="line">    rotateAnimation.repeatCount = MAXFLOAT;</div><div class="line">    rotateAnimation.duration = 2;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transform.rotation.x</td>
+<td>以x轴为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.rotation.y</td>
+<td>以Y轴为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.rotation.z</td>
+<td>以z轴为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.rotation</td>
+<td>跟rotation.z一样以z为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-4其他的KeyPath动画"><a href="#2-4其他的KeyPath动画" class="headerlink" title="2.4其他的KeyPath动画"></a>2.4其他的KeyPath动画</h3><table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>中心变化,可以用来做移动动画</td>
+<td>CGPoint</td>
+</tr>
+<tr>
+<td>position.x</td>
+<td>中心X变化</td>
+<td>CGFloat</td>
+</tr>
+<tr>
+<td>position.y</td>
+<td>中心Y变化</td>
+<td>CGFloat</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>透明度变化</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>contents</td>
+<td>内容变化,如imageView.iamge</td>
+<td>Image.CGImage</td>
+</tr>
+<tr>
+<td>cornerRadius</td>
+<td>圆角变化</td>
+<td>NSNum</td>
+</tr>
+<tr>
+<td>bounds</td>
+<td>大小变化，中心不变</td>
+<td>CGRect</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>边框宽</td>
+<td>NSNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-5-组动画"><a href="#2-5-组动画" class="headerlink" title="2.5 组动画"></a>2.5 组动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CAAnimationGroup *groupAnnimation = [CAAnimationGroup animation];</div><div class="line">    groupAnnimation.duration = 2;</div><div class="line">    groupAnnimation.autoreverses = YES;</div><div class="line">    groupAnnimation.animations = @[moveAnimation, scaleAnimation, rotateAnimation];</div><div class="line">    groupAnnimation.repeatCount = MAXFLOAT;</div></pre></td></tr></table></figure>
+<h2 id="3-CABasicAnimation中的关键属性"><a href="#3-CABasicAnimation中的关键属性" class="headerlink" title="3.CABasicAnimation中的关键属性"></a>3.CABasicAnimation中的关键属性</h2><h3 id="3-1keyPath"><a href="#3-1keyPath" class="headerlink" title="3.1keyPath"></a>3.1keyPath</h3><p>决定动画的类型,不能随便取,只能按文档上面的取值. 如改变中心位置要用<code>position</code>,改变透明度要用<code>opacity</code>,如上面的几张表所示.</p>
+<h3 id="3-2-fromValue-toValue"><a href="#3-2-fromValue-toValue" class="headerlink" title="3.2 fromValue/toValue"></a>3.2 fromValue/toValue</h3><p>动画的起始状态跟结束状态的值,根据文档中相应的ValueType提供值.</p>
+<h3 id="3-3-autoreverse"><a href="#3-3-autoreverse" class="headerlink" title="3.3 autoreverse"></a>3.3 autoreverse</h3><p>是否反向动画,即正方向播放完动画,设置是否反方向播放.</p>
+<h3 id="3-4-fileMode"><a href="#3-4-fileMode" class="headerlink" title="3.4 fileMode"></a>3.4 fileMode</h3><p>fillMode的作用就是决定当前对象过了非active时间段的行为. 非active时间段是指动画开始之前以及动画结束之后。</p>
+<p>如果是一个动画CAAnimation,则<strong>需要将其removedOnCompletion设置为NO,要不然fillMode不起作用</strong>. </p>
+<blockquote>
+<p>*kCAFillModeRemoved 这个是默认值,也就是说当动画开始前和动画结束后,动画对layer都没有影响,动画结束后,layer会恢复到之前的状态</p>
+<p>*kCAFillModeForwards 当动画结束后,layer会一直保持着动画最后的状态 </p>
+<p>*kCAFillModeBackwards 这个和kCAFillModeForwards是相对的,就是在动画开始前,你只要将动画加入了一个layer,layer便立即进入动画的初始状态。因为有可能出现fromValue不是目前layer的初始状态的情况，如果fromValue就是layer当前的状态，则这个参数就没太大意义。</p>
+<p>*kCAFillModeBoth 理解了上面两个,这个就很好理解了,这个其实就是上面两个的合成.动画加入后开始之前,layer便处于动画初始状态,动画结束后layer保持动画最后的状态.</p>
+</blockquote>
+<p>## </p>
 
         
     
@@ -513,21 +679,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/08/28/iOS动画-CABasicAnimation/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/08/26/更新于2017-08-27/" id="post_nav-older" class="next-content">
+        <a href="/2017/08/28/iOS锚点/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

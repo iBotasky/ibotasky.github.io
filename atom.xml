@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-08-28T01:55:01.000Z</updated>
+  <updated>2017-08-28T03:49:36.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -14,6 +14,205 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS动画:CABasicAnimation</title>
+    <link href="https://github.com/iBotasky/2017/08/28/iOS%E5%8A%A8%E7%94%BB-CABasicAnimation/"/>
+    <id>https://github.com/iBotasky/2017/08/28/iOS动画-CABasicAnimation/</id>
+    <published>2017-08-28T02:46:32.000Z</published>
+    <updated>2017-08-28T03:49:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>介绍iOS的Layer层的CABasicAnimataion动画</p>
+<a id="more"></a>
+<h2 id="1-CAAnimation"><a href="#1-CAAnimation" class="headerlink" title="1.CAAnimation"></a>1.CAAnimation</h2><p>iOS中Core Animation层的动画是依赖CAAnimation类实现的.iOS中还有其他层的动画</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1053533-6eae72f7fd9bd271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS动画"></p>
+<p>越上层,动画的封装度越高,动画实现越简洁,但是相反的,自由度更低.</p>
+<p>这里主要理解CAAnimation,CAAnimation分为几类:</p>
+<blockquote>
+<ul>
+<li>CABasicAnimation基础动画,通过设定起始点,终点,时间动画会沿着指定的设定去做动画.可以看做特殊的CAKeyFrameAniamtion</li>
+<li>CAKeyFrameAniamtion关键帧动画,可指定度度比CABasicAnimation高</li>
+<li>CAAnimationGroup组动画,可以将一系列CABasicAniamtion或者CAKeyFrameAniamtion组合起来同时执行的动画方式.</li>
+</ul>
+</blockquote>
+<h2 id="2-CABasicAnimation"><a href="#2-CABasicAnimation" class="headerlink" title="2.CABasicAnimation"></a>2.CABasicAnimation</h2><h3 id="2-1缩放"><a href="#2-1缩放" class="headerlink" title="2.1缩放"></a>2.1缩放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@&quot;transform.scale&quot;];</div><div class="line">    scaleAnimation.fromValue = [NSNumber numberWithFloat:1.0];</div><div class="line">    scaleAnimation.toValue = [NSNumber numberWithFloat:1.5];</div><div class="line">    scaleAnimation.autoreverses = YES;</div><div class="line">    scaleAnimation.repeatCount = MAXFLOAT;</div><div class="line">    scaleAnimation.duration = 0.8;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transform.scale</td>
+<td>对三个轴做缩放变换</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.scale.x</td>
+<td>对x轴做缩放</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.scale.y</td>
+<td>对y轴做缩放</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.scale.z</td>
+<td>对z轴做缩放</td>
+<td>NSNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2移动"><a href="#2-2移动" class="headerlink" title="2.2移动"></a>2.2移动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@&quot;position&quot;];</div><div class="line">    moveAnimation.fromValue = [NSValue valueWithCGPoint:groupLayer.position];</div><div class="line">    moveAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(320 - 80, groupLayer.position.y)];</div><div class="line">    moveAnimation.autoreverses = YES;</div><div class="line">    moveAnimation.repeatCount = MAXFLOAT;</div><div class="line">    moveAnimation.duration = 2;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transform.translation.x</td>
+<td>沿着x轴平移</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.translation.y</td>
+<td>沿着y轴平移</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.translation.z</td>
+<td>沿着z轴平移</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.translation</td>
+<td>沿着x/y轴平移</td>
+<td>NSSize/CGSize</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3旋转"><a href="#2-3旋转" class="headerlink" title="2.3旋转"></a>2.3旋转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.x&quot;];</div><div class="line">    rotateAnimation.fromValue = [NSNumber numberWithFloat:0.0];</div><div class="line">    rotateAnimation.toValue = [NSNumber numberWithFloat:6.0 * M_PI];</div><div class="line">    rotateAnimation.autoreverses = YES;</div><div class="line">    rotateAnimation.repeatCount = MAXFLOAT;</div><div class="line">    rotateAnimation.duration = 2;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transform.rotation.x</td>
+<td>以x轴为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.rotation.y</td>
+<td>以Y轴为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.rotation.z</td>
+<td>以z轴为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>transform.rotation</td>
+<td>跟rotation.z一样以z为轴心旋转</td>
+<td>NSNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-4其他的KeyPath动画"><a href="#2-4其他的KeyPath动画" class="headerlink" title="2.4其他的KeyPath动画"></a>2.4其他的KeyPath动画</h3><table>
+<thead>
+<tr>
+<th>KeyPath</th>
+<th>Description</th>
+<th>ValueType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td>中心变化,可以用来做移动动画</td>
+<td>CGPoint</td>
+</tr>
+<tr>
+<td>position.x</td>
+<td>中心X变化</td>
+<td>CGFloat</td>
+</tr>
+<tr>
+<td>position.y</td>
+<td>中心Y变化</td>
+<td>CGFloat</td>
+</tr>
+<tr>
+<td>opacity</td>
+<td>透明度变化</td>
+<td>NSNumber</td>
+</tr>
+<tr>
+<td>contents</td>
+<td>内容变化,如imageView.iamge</td>
+<td>Image.CGImage</td>
+</tr>
+<tr>
+<td>cornerRadius</td>
+<td>圆角变化</td>
+<td>NSNum</td>
+</tr>
+<tr>
+<td>bounds</td>
+<td>大小变化，中心不变</td>
+<td>CGRect</td>
+</tr>
+<tr>
+<td>borderWidth</td>
+<td>边框宽</td>
+<td>NSNumber</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-5-组动画"><a href="#2-5-组动画" class="headerlink" title="2.5 组动画"></a>2.5 组动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CAAnimationGroup *groupAnnimation = [CAAnimationGroup animation];</div><div class="line">    groupAnnimation.duration = 2;</div><div class="line">    groupAnnimation.autoreverses = YES;</div><div class="line">    groupAnnimation.animations = @[moveAnimation, scaleAnimation, rotateAnimation];</div><div class="line">    groupAnnimation.repeatCount = MAXFLOAT;</div></pre></td></tr></table></figure>
+<h2 id="3-CABasicAnimation中的关键属性"><a href="#3-CABasicAnimation中的关键属性" class="headerlink" title="3.CABasicAnimation中的关键属性"></a>3.CABasicAnimation中的关键属性</h2><h3 id="3-1keyPath"><a href="#3-1keyPath" class="headerlink" title="3.1keyPath"></a>3.1keyPath</h3><p>决定动画的类型,不能随便取,只能按文档上面的取值. 如改变中心位置要用<code>position</code>,改变透明度要用<code>opacity</code>,如上面的几张表所示.</p>
+<h3 id="3-2-fromValue-toValue"><a href="#3-2-fromValue-toValue" class="headerlink" title="3.2 fromValue/toValue"></a>3.2 fromValue/toValue</h3><p>动画的起始状态跟结束状态的值,根据文档中相应的ValueType提供值.</p>
+<h3 id="3-3-autoreverse"><a href="#3-3-autoreverse" class="headerlink" title="3.3 autoreverse"></a>3.3 autoreverse</h3><p>是否反向动画,即正方向播放完动画,设置是否反方向播放.</p>
+<h3 id="3-4-fileMode"><a href="#3-4-fileMode" class="headerlink" title="3.4 fileMode"></a>3.4 fileMode</h3><p>fillMode的作用就是决定当前对象过了非active时间段的行为. 非active时间段是指动画开始之前以及动画结束之后。</p>
+<p>如果是一个动画CAAnimation,则<strong>需要将其removedOnCompletion设置为NO,要不然fillMode不起作用</strong>. </p>
+<blockquote>
+<p>*kCAFillModeRemoved 这个是默认值,也就是说当动画开始前和动画结束后,动画对layer都没有影响,动画结束后,layer会恢复到之前的状态</p>
+<p>*kCAFillModeForwards 当动画结束后,layer会一直保持着动画最后的状态 </p>
+<p>*kCAFillModeBackwards 这个和kCAFillModeForwards是相对的,就是在动画开始前,你只要将动画加入了一个layer,layer便立即进入动画的初始状态。因为有可能出现fromValue不是目前layer的初始状态的情况，如果fromValue就是layer当前的状态，则这个参数就没太大意义。</p>
+<p>*kCAFillModeBoth 理解了上面两个,这个就很好理解了,这个其实就是上面两个的合成.动画加入后开始之前,layer便处于动画初始状态,动画结束后layer保持动画最后的状态.</p>
+</blockquote>
+<p>## </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介绍iOS的Layer层的CABasicAnimataion动画&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="https://github.com/iBotasky/categories/iOS/"/>
+    
+      <category term="iOS动画" scheme="https://github.com/iBotasky/categories/iOS/iOS%E5%8A%A8%E7%94%BB/"/>
+    
+    
+      <category term="iOS" scheme="https://github.com/iBotasky/tags/iOS/"/>
+    
+      <category term="iOS动画" scheme="https://github.com/iBotasky/tags/iOS%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS锚点</title>
@@ -849,30 +1048,6 @@
     
     
       <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Studio Mac环境下面的配置流程</title>
-    <link href="https://github.com/iBotasky/2017/02/04/AndroidStudio-Mac%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%9D%A2%E7%9A%84%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B/"/>
-    <id>https://github.com/iBotasky/2017/02/04/AndroidStudio-Mac环境下面的配置流程/</id>
-    <published>2017-02-04T06:29:58.000Z</published>
-    <updated>2017-08-27T09:14:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Android Studio配置<br><a id="more"></a></p>
-<h3 id="0-到Google中国开发者网站下载最新的AndroidStudio"><a href="#0-到Google中国开发者网站下载最新的AndroidStudio" class="headerlink" title="0.到Google中国开发者网站下载最新的AndroidStudio"></a>0.到<a href="https://developer.android.google.cn/index.html" target="_blank" rel="external">Google中国开发者网站</a>下载最新的AndroidStudio</h3><h3 id="1-下载jdk-是jdk不是jre"><a href="#1-下载jdk-是jdk不是jre" class="headerlink" title="1.下载jdk 是jdk不是jre"></a>1.下载jdk 是jdk不是jre</h3><h3 id="2-导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入-gradlew-clean会重新下载gradle，然后在打开AndroidStudio，重新载入项目。"><a href="#2-导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入-gradlew-clean会重新下载gradle，然后在打开AndroidStudio，重新载入项目。" class="headerlink" title="2.导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入  ./gradlew clean会重新下载gradle，然后在打开AndroidStudio，重新载入项目。"></a>2.导入项目可能需要下载新的gradle，会很慢，需要杀死AndroidStudio，然后在命令行键入  <code>./gradlew clean</code>会重新下载gradle，然后在打开AndroidStudio，重新载入项目。</h3><h3 id="3-点击SDK的按钮，需要下载ndk就在SDK-Tools上面选择，查找然后装NDK。"><a href="#3-点击SDK的按钮，需要下载ndk就在SDK-Tools上面选择，查找然后装NDK。" class="headerlink" title="3.点击SDK的按钮，需要下载ndk就在SDK Tools上面选择，查找然后装NDK。"></a>3.点击SDK的按钮，需要下载ndk就在SDK Tools上面选择，查找然后装NDK。</h3><h3 id="3-关于Android安装谷歌"><a href="#3-关于Android安装谷歌" class="headerlink" title="3.关于Android安装谷歌"></a>3.关于Android安装谷歌</h3><p>0.去应用市场查找<code>谷歌服务框架</code>的应用然后安装。<br>1.翻墙</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Android Studio配置&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https://github.com/iBotasky/categories/Android/"/>
-    
     
       <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
