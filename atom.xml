@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-08-26T16:00:50.000Z</updated>
+  <updated>2017-08-28T01:55:01.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS锚点</title>
+    <link href="https://github.com/iBotasky/2017/08/28/iOS%E9%94%9A%E7%82%B9/"/>
+    <id>https://github.com/iBotasky/2017/08/28/iOS锚点/</id>
+    <published>2017-08-28T01:34:29.000Z</published>
+    <updated>2017-08-28T01:55:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>介绍iOS图层中d的锚点<code>anchorPoint</code></p>
+<a id="more"></a>
+<h2 id="AnchorPoint-锚点"><a href="#AnchorPoint-锚点" class="headerlink" title="AnchorPoint 锚点"></a>AnchorPoint 锚点</h2><p>视图(View)的<code>center</code>属性跟图层(Layer)的<code>position</code>属性都指定了<code>anchorPoint</code>相对于父图层的位置。图层的<code>anchorPoint</code>通过<code>position</code>来控制它<code>frame</code>的位置. 可以说<code>anchorPoint</code>是用来移动图层的<em>把柄</em>.</p>
+<p>默认的,<code>anchorPoint</code>位于图层中点,所以图层会以这个点为中心放置. <code>anchorPoint</code>的属性在<code>UIVIew</code>没有被暴露出来,这也是View的<code>position</code>叫做<code>center</code>的原因.</p>
+<p>但是图层的<code>anchorPoint</code>可以被移动.比如,你可以把它置于图层<code>frame</code>的左上角,于是图层的内容就会向右下角的<code>position</code>移动,而不是居中了.</p>
+<p><img src="https://i.loli.net/2017/08/28/59a37615c18b9.jpg" alt="59a37615c18b9.jpg"></p>
+<h2 id="AnchorPoint的应用场景"><a href="#AnchorPoint的应用场景" class="headerlink" title="AnchorPoint的应用场景"></a>AnchorPoint的应用场景</h2><p><a href="https://zsisme.gitbooks.io/ios-/content/chapter3/anchor.html" target="_blank" rel="external">参照</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介绍iOS图层中d的锚点&lt;code&gt;anchorPoint&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="iOS" scheme="https://github.com/iBotasky/categories/iOS/"/>
+    
+      <category term="iOS动画" scheme="https://github.com/iBotasky/categories/iOS/iOS%E5%8A%A8%E7%94%BB/"/>
+    
+    
+      <category term="iOS" scheme="https://github.com/iBotasky/tags/iOS/"/>
+    
+      <category term="iOS动画" scheme="https://github.com/iBotasky/tags/iOS%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>更新于2017/08/27</title>
@@ -425,55 +458,6 @@
   </entry>
   
   <entry>
-    <title>Android Modeule</title>
-    <link href="https://github.com/iBotasky/2017/02/23/Android-Modeule/"/>
-    <id>https://github.com/iBotasky/2017/02/23/Android-Modeule/</id>
-    <published>2017-02-23T02:05:40.000Z</published>
-    <updated>2017-02-24T07:09:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>对Android开发的Module的整理</p>
-<a id="more"></a>
-<h2 id="1-关于Module-模块"><a href="#1-关于Module-模块" class="headerlink" title="1.关于Module 模块"></a>1.关于Module 模块</h2><p><em>模块</em>是源文件和构建设置的集合，允许您将项目分成不同的功能单元。您的项目可以包含一个或多个模块，并且一个模块可以将其他模块用作依赖项。每个模块都可以独立构建、测试和调试。</p>
-<p>如果在自己的项目中创建代码库或者希望为不同的设备类型（例如电话和穿戴式设备）创建不同的代码和资源组，但保留相同项目内的所有文件并共享某些代码，那么增加模块数量将非常有用。</p>
-<p>您可以点击 <strong>File &gt; New &gt; New Module</strong>，向您的项目中添加新模块。</p>
-<p>Android Studio 提供了几种不同类型的模块：</p>
-<h3 id="1-1-Android-应用模块"><a href="#1-1-Android-应用模块" class="headerlink" title="1.1 Android 应用模块"></a>1.1 Android 应用模块</h3><p>为应用的源代码、资源文件和应用级设置（例如模块级构建文件和 Android 清单文件）提供容器。在您创建新项目时，默认的模块名称将是<code>app</code>。在 <strong>Create New Module</strong> 窗口中，Android Studio 提供了以下应用模块：</p>
-<blockquote>
-<ul>
-<li>Phone &amp; Table Module</li>
-<li>Android Wear Module</li>
-<li>Android TV Module </li>
-<li>Glass Module</li>
-</ul>
-</blockquote>
-<p>每种模块都提供了基础文件和代码模板，适合对应的应用或者设备。</p>
-<h3 id="1-2-库模块"><a href="#1-2-库模块" class="headerlink" title="1.2 库模块"></a>1.2 库模块</h3><p><strong>接触过得SDK开发都是用这种模式然后打成jar/aar给别人调用</strong></p>
-<p>为您的可重用代码提供容器，您可以将其用作其他应用模块的依赖项或者导入到其他项目中。库模块在结构上与应用模块相同，但在构建时，它将创建一个代码归档文件而不是 APK，因此无法安装到设备上。在 <strong>Create New Module</strong> 窗口中，Android Studio 提供了以下库模块：</p>
-<blockquote>
-<ul>
-<li>Android库：这种类型的库可以包含Android项目中支持的所有文件类型，包括源代码、资源文件跟清单文件。构建结果是一个Android归档(AAR)文件，可以作为Android应用的依赖</li>
-<li>Java 库：此类型的库只能包含 Java 源文件。构建结果是一个 Java 归档 (JAR) 文件，您可以将其作为 Andriod 应用模块或其他 Java 项目的依赖项添加。</li>
-</ul>
-</blockquote>
-<h3 id="1-3-Google-Cloud-模块"><a href="#1-3-Google-Cloud-模块" class="headerlink" title="1.3 Google Cloud 模块"></a>1.3 <strong>Google Cloud 模块</strong></h3><p>为您的 Google Cloud 后端代码提供容器。此模块可以为使用简单 HTTP、Cloud Endpoints 和云消息传递连接到您的应用的 Java App 引擎后端添加所需的代码和依赖项。您可以开发您的后端，提供应用所需的云服务。利用 Android Studio 创建和开发您的 Google Cloud 模块，您可以在同一个项目中管理应用代码和后端代码。您也可以在本地运行和测试后端代码，并使用 Android Studio 部署 Google Cloud 模块。</p>
-<h3 id="1-4-依赖模块"><a href="#1-4-依赖模块" class="headerlink" title="1.4 依赖模块"></a>1.4 依赖模块</h3><p>一些人也将模块称为子项目，完全没有问题，因为 Gradle 也将模块称为项目。例如，在创建库模块并且希望以依赖项的形式将其添加到您的 Android 应用模块时，您必须按如下所示进行声明：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">  compile project(':my-library-module')</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="1-5-项目结构"><a href="#1-5-项目结构" class="headerlink" title="1.5 项目结构"></a>1.5 项目结构</h3><p>新做的项目在考虑到ShareSDK封装的太死，出了BUG不好改，并且ShareSDK内置的文件太多，导致文件过于臃肿，单单QQ/Weibo/Wechat/Facebook/Google/Twitter文件功能就已经有1MB，但是确实ShareSDK的国内外都有，所以在考虑后面能替换的原则，所以用了<code>Module</code>单独封装了SHARESDK的登录功能，后期分享功能也放在这边。新建Module的时候也会有坑，比如Module的包名有可能不会是项目的包名。</p>
-<p><img src="http://oktzkaa8p.bkt.clouddn.com/20170223148783152840905.png" alt="某项目实例"> </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;对Android开发的Module的整理&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android Studio插件</title>
     <link href="https://github.com/iBotasky/2017/02/13/Android-Studio%E6%8F%92%E4%BB%B6/"/>
     <id>https://github.com/iBotasky/2017/02/13/Android-Studio插件/</id>
@@ -754,9 +738,9 @@
       <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
     
     
-      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
       <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
   </entry>
   
@@ -804,9 +788,9 @@
       <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
     
     
-      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
       <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
   </entry>
   
@@ -864,9 +848,9 @@
       <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
     
     
-      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
       <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
     
   </entry>
   
