@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/iBotasky/"/>
-  <updated>2017-08-30T02:01:01.000Z</updated>
+  <updated>2017-10-31T14:19:59.000Z</updated>
   <id>https://github.com/iBotasky/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ConstraintLayout介绍</title>
+    <link href="https://github.com/iBotasky/2017/10/31/ConstraintLayout%E4%BB%8B%E7%BB%8D/"/>
+    <id>https://github.com/iBotasky/2017/10/31/ConstraintLayout介绍/</id>
+    <published>2017-10-31T14:17:14.000Z</published>
+    <updated>2017-10-31T14:19:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>介绍ConstrainLayout</p>
+<a id="more"></a>
+<h1 id="ConstraintLayout"><a href="#ConstraintLayout" class="headerlink" title="ConstraintLayout"></a>ConstraintLayout</h1><h2 id="1-为什么用ConstraintLayout"><a href="#1-为什么用ConstraintLayout" class="headerlink" title="1.为什么用ConstraintLayout"></a>1.为什么用ConstraintLayout</h2><h3 id="1-1-减少嵌套，加速界面渲染"><a href="#1-1-减少嵌套，加速界面渲染" class="headerlink" title="1.1 减少嵌套，加速界面渲染"></a>1.1 减少嵌套，加速界面渲染</h3><p><strong>ConstraintLayout</strong>的基本使用方式就是这些, 兼顾LinearLayout与RelativeLayout的优点, 非常适合构建复杂布局, 降低布局的层级, 优化布局，加快渲染速度。</p>
+<h3 id="1-2-提供很多约束属性多，开发效率高"><a href="#1-2-提供很多约束属性多，开发效率高" class="headerlink" title="1.2 提供很多约束属性多，开发效率高"></a>1.2 提供很多约束属性多，开发效率高</h3><p>ConstraintLayout的属性有很多，有很多种约束属性, 熟悉之后可以高效完成界面搭建。</p>
+<h3 id="1-3-有助于界面的适配"><a href="#1-3-有助于界面的适配" class="headerlink" title="1.3 有助于界面的适配"></a>1.3 有助于界面的适配</h3><p>传统Layout经常会遇到界面在不同机型界面不统一的问题，ConstraintLayout可以配合一些辅助控件像<code>GuideLine</code>的百分比(<code>app:layout_constraintGuide_percent=&quot;0.5&quot;</code>)来对屏幕的水平和竖直方向做分割，在利用ConstraintLayout的属性对控件进行约束，可以达到让界面适配的效果。</p>
+<h2 id="2-ConstraintLayout入门"><a href="#2-ConstraintLayout入门" class="headerlink" title="2.ConstraintLayout入门"></a>2.ConstraintLayout入门</h2><h3 id="2-1-常用约束"><a href="#2-1-常用约束" class="headerlink" title="2.1 常用约束"></a>2.1 常用约束</h3><p>公式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">layout_constraint[本源控件要做约束位置]_to[目标控件相对的位置]=&quot;[目标控件ID]&quot;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>本源控件要做约束位置与目标控件的相对位置不能是随意的，是要在同一个方向上的位置，例如<code>Bottom_toBottomOf</code>,<code>Top_toBottomOf</code>, <code>Bottom_toTopOf</code>，<code>Top_toTopOf</code>是垂直方向上的一组约束，没有<code>Top_toStart</code>这样的约束。</p>
+</blockquote>
+<p><img src="http://oktzkaa8p.bkt.clouddn.com/20171031150945732850740.png" alt="20171031150945732850740.png"></p>
+<blockquote>
+<p>垂直方向有三个约束位置：Top, Bottom, BaseLine</p>
+<p>水平方向有两个约束位置：Start(Left), End(Right)</p>
+</blockquote>
+<p>可用的约束，可以搭配<code>layout_[位置]</code>做一些基础和复杂的布局：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">layout_constraintLeft_toLeftOf</div><div class="line">layout_constraintLeft_toRightOf</div><div class="line">layout_constraintRight_toLeftOf</div><div class="line">layout_constraintRight_toRightOf</div><div class="line">layout_constraintTop_toTopOf</div><div class="line">layout_constraintTop_toBottomOf</div><div class="line">layout_constraintBottom_toTopOf</div><div class="line">layout_constraintBottom_toBottomOf</div><div class="line">layout_constraintBaseline_toBaselineOf</div><div class="line">layout_constraintStart_toEndOf</div><div class="line">layout_constraintStart_toStartOf</div><div class="line">layout_constraintEnd_toStartOf</div><div class="line">layout_constraintEnd_toEndOf</div></pre></td></tr></table></figure>
+<p>###2.2一些高级用法 </p>
+<h4 id="1-GONE与Margin"><a href="#1-GONE与Margin" class="headerlink" title="1.GONE与Margin"></a>1.GONE与Margin</h4><p>有可能会遇到一个情况是，目标控件有可能会被设置为<code>GONE</code>，这时候约束还是存在，界面有可能会产生不整齐的问题，这时候就可以用<code>layout_goneMargin</code>来重新设置margin。比如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">com.common.library.simpleratingbar.SimpleRatingBar</span></span></div><div class="line">  <span class="attr">android:id</span>=<span class="string">"@id/simpleratingbar"</span></div><div class="line">  <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">  <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">  <span class="attr">android:layout_marginLeft</span>=<span class="string">"4dp"</span> //与左边控件的布局做约束，布局存在就设置到左边间距<span class="attr">4dp</span></div><div class="line">  <span class="attr">app:layout_goneMarginLeft</span>=<span class="string">"0dp"</span>//左边控件为<span class="attr">GONE</span>就会改成到左边间距为<span class="attr">0dp</span></div><div class="line">  <span class="attr">android:visibility</span>=<span class="string">"visible"</span></div><div class="line">  <span class="attr">app:layout_constraintStart_toEndOf</span>=<span class="string">"@id/text_game_score"</span></div><div class="line">  <span class="attr">app:layout_constraintTop_toBottomOf</span>=<span class="string">"@id/game_icon"</span></div><div class="line">  <span class="attr">android:layout_marginTop</span>=<span class="string">"20dp"</span></div><div class="line">  <span class="attr">app:srb_borderColor</span>=<span class="string">"@android:color/transparent"</span></div><div class="line">  <span class="attr">app:srb_fillColor</span>=<span class="string">"@color/font_darkgray"</span></div><div class="line">  <span class="attr">app:srb_isIndicator</span>=<span class="string">"true"</span></div><div class="line">  <span class="attr">app:srb_numberOfStars</span>=<span class="string">"5"</span></div><div class="line">  <span class="attr">app:srb_starBackgroundColor</span>=<span class="string">"#eeeeee"</span></div><div class="line">  <span class="attr">app:srb_starBorderWidth</span>=<span class="string">"0.1"</span></div><div class="line">  <span class="attr">app:srb_starCornerRadius</span>=<span class="string">"0"</span></div><div class="line">  <span class="attr">app:srb_starSize</span>=<span class="string">"20dp"</span></div><div class="line">  <span class="attr">app:srb_starsSeparation</span>=<span class="string">"0dp"</span></div><div class="line">  <span class="attr">app:srb_stepSize</span>=<span class="string">"0.1"</span></div><div class="line">  /&gt;</div></pre></td></tr></table></figure>
+<p>####2.Chain链式（主要是为了替代LinearLayout）<br>有一种情况是需要等分显示布局，一般用的是LinearLayout，在ConstraintLayout里面主要是要用Chain来完成平分。各个布局之前都要做一个相对的约束。即各个布局之间都要做相互的约束。</p>
+<p><img src="http://oktzkaa8p.bkt.clouddn.com/2017103115094573196056.png" alt="2017103115094573196056.png"></p>
+<p>A与B做水平的平分，则A与B要做相互约束就能产生Chain:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--伪代码--&gt;</span></div><div class="line"><span class="comment">&lt;!--A控件--&gt;</span></div><div class="line">start_toStartOf="parent"</div><div class="line">end_toStartOf="B"  //对B约束</div><div class="line"></div><div class="line"><span class="comment">&lt;!--B控件--&gt;</span></div><div class="line">start_toEndOf="A" //对A约束</div><div class="line">end_toEndOf="parent"</div></pre></td></tr></table></figure>
+<p>并且可以通过<code>layout_constraintHorizontal_chainStyle</code> 或者<code>layout_constraintVertical_chainStyle</code>在平分的第一个控件设置水平或者垂直方向上Chain的方式：</p>
+<p><img src="http://oktzkaa8p.bkt.clouddn.com/20171031150945730476198.png" alt="20171031150945730476198.png"></p>
+<h3 id="ConstraintLayout上手建议"><a href="#ConstraintLayout上手建议" class="headerlink" title="ConstraintLayout上手建议"></a>ConstraintLayout上手建议</h3><h4 id="1-尽量不要用手托控件去对控件做约束，而是用纯手打的方式去写约束"><a href="#1-尽量不要用手托控件去对控件做约束，而是用纯手打的方式去写约束" class="headerlink" title="1.尽量不要用手托控件去对控件做约束，而是用纯手打的方式去写约束"></a>1.尽量不要用手托控件去对控件做约束，而是用纯手打的方式去写约束</h4><p>AndroidStudio的手托控件功能很鸡肋，没有像Xcode的XIB那样强大，手托控件造成的一个问题是你可能会不理解Constraint的约束原理，并且手托控件会造成IDE生成一些让人琢磨不透的代码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介绍ConstrainLayout&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS集成ShareSDK</title>
@@ -969,56 +1016,6 @@
     
       &lt;p&gt;Android系统架构&lt;/p&gt;
 &lt;p&gt;
-    
-    </summary>
-    
-      <category term="Android面试" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="Android" scheme="https://github.com/iBotasky/categories/Android%E9%9D%A2%E8%AF%95/Android/"/>
-    
-    
-      <category term="Android面试" scheme="https://github.com/iBotasky/tags/Android%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="Android" scheme="https://github.com/iBotasky/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Activity/Service的生命周期</title>
-    <link href="https://github.com/iBotasky/2017/02/04/Activity-Service%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
-    <id>https://github.com/iBotasky/2017/02/04/Activity-Service的生命周期/</id>
-    <published>2017-02-04T06:33:13.000Z</published>
-    <updated>2017-10-14T02:38:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Android Activity/Service 生命周期介绍<br><a id="more"></a></p>
-<h2 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h2><h3 id="1-Activity生命周期图"><a href="#1-Activity生命周期图" class="headerlink" title="1.Activity生命周期图"></a>1.Activity生命周期图</h3><p><img src="http://stormzhang.com/image/activity_lifecycle.png" alt="生命周期"></p>
-<h3 id="2-Activity生命周期相关方法"><a href="#2-Activity生命周期相关方法" class="headerlink" title="2.Activity生命周期相关方法"></a>2.Activity生命周期相关方法</h3><p>Activity继承了ApplicationContext，可以重写方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">extends</span> <span class="title">ApplicationContext</span> </span>&#123; </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>;  </div><div class="line">       </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span></span>;     </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span></span>;  </div><div class="line">         </div><div class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;  </div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
-<p>通过重写，存为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Activity;  </div><div class="line"><span class="keyword">import</span> android.os.Bundle;  </div><div class="line"><span class="keyword">import</span> android.util.Log;  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityDemo</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;  </div><div class="line">     </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"ActivityDemo"</span>;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.main);  </div><div class="line">          </div><div class="line">        Log.e(TAG, <span class="string">"start onCreate~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onStart();  </div><div class="line">        Log.e(TAG, <span class="string">"start onStart~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onRestart();  </div><div class="line">        Log.e(TAG, <span class="string">"start onRestart~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onResume();  </div><div class="line">        Log.e(TAG, <span class="string">"start onResume~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onPause();  </div><div class="line">        Log.e(TAG, <span class="string">"start onPause~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onStop();  </div><div class="line">        Log.e(TAG, <span class="string">"start onStop~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onDestroy();  </div><div class="line">        Log.e(TAG, <span class="string">"start onDestroy~~~"</span>);  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="3-相关操作的的生命周期流程"><a href="#3-相关操作的的生命周期流程" class="headerlink" title="3.相关操作的的生命周期流程"></a>3.相关操作的的生命周期流程</h3><h4 id="3-1-启动Activity"><a href="#3-1-启动Activity" class="headerlink" title="3.1 启动Activity"></a>3.1 启动Activity</h4><p><img src="http://hi.csdn.net/attachment/201007/28/0_1280324212Y5nt.gif" alt="启动"><br>onCreate()-&gt;onStart()-&gt;onResume</p>
-<h4 id="3-2-按BACK键："><a href="#3-2-按BACK键：" class="headerlink" title="3.2 按BACK键："></a>3.2 按BACK键：</h4><p><img src="http://hi.csdn.net/attachment/201007/28/0_1280324618Bqxb.gif" alt="按返回键"><br>onPause()-&gt;onStop()-&gt;onDestory()</p>
-<h4 id="3-3-按HOME键"><a href="#3-3-按HOME键" class="headerlink" title="3.3 按HOME键:"></a>3.3 按HOME键:</h4><p><img src="http://hi.csdn.net/attachment/201007/28/0_1280325044k0c7.gif" alt="按Home键"><br>onPause()-&gt;onStop()</p>
-<h4 id="3-4-从3-3操作后，从桌面进入ActivityDemo"><a href="#3-4-从3-3操作后，从桌面进入ActivityDemo" class="headerlink" title="3.4 从3.3操作后，从桌面进入ActivityDemo:"></a>3.4 从3.3操作后，从桌面进入ActivityDemo:</h4><p>onRestart()-&gt;onStart()-&gt;onResume()</p>
-<h3 id="4-关于其他"><a href="#4-关于其他" class="headerlink" title="4.关于其他"></a>4.关于其他</h3><p>如果用户将当前的App切换为其他App，就可能会导致当前App被杀掉。所以在某些比较重要的Activity中需要做好保存数据的操作。避免Activity被系统回收，再次进入时是非正确的状态。<strong><em>这里需要关注Activity另外两个比较重要的方法，onSaveInstanceState()与onRestoreInstanceState();</em></strong> <a href="http://www.cnblogs.com/hanyonglu/archive/2012/03/28/2420515.html" target="_blank" rel="external">相关链接</a></p>
-<hr>
-<h2 id="Service的生命周期"><a href="#Service的生命周期" class="headerlink" title="Service的生命周期"></a>Service的生命周期</h2><h3 id="1-Service的概念及用途"><a href="#1-Service的概念及用途" class="headerlink" title="1.Service的概念及用途"></a>1.Service的概念及用途</h3><p>Service与Activity不同，他是不能与用户交互的，不能自己启动的，运行在后台的程序，如果我们退出应用时，Service进程并没有结束，仍在后台运行。</p>
-<h3 id="2-Service的生命周期"><a href="#2-Service的生命周期" class="headerlink" title="2.Service的生命周期"></a>2.Service的生命周期</h3><p>生命周期图：<br><img src="http://img.blog.csdn.net/20141021233945682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV1dHU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="Service生命周期"></p>
-<h4 id="2-1使用context-startService-启动Service"><a href="#2-1使用context-startService-启动Service" class="headerlink" title="2.1使用context.startService() 启动Service"></a>2.1使用context.startService() 启动Service</h4><p>其生命周期为context.startService() -&gt;onCreate()- &gt;onStart()-&gt;onStartCommand()-&gt;Service running–&gt;(如果调用context.stopService() )-&gt;onDestroy() -&gt;Service shut down</p>
-<blockquote>
-<p><em>如果Service还没有运行，则android先调用onCreate()然后调用onStart()；
-</em>如果Service已经运行，则只调用onStart()，所以一个Service的onStart方法可能会重复调用多次。 </p>
-</blockquote>
-<p><strong><em>onStartCommand()可以接收在前台startService传入的Intent参数。</em></strong></p>
-<p>调用stopService的时候直接onDestroy，如果是调用者自己直接退出而没有调用stopService的话，Service会一直在后台运行。<br>该Service的调用者再启动起来后可以通过stopService关闭Service。</p>
-<p><strong><em>所以调用startService的生命周期为：onCreate –&gt; onStart(可多次调用) –&gt; onDestroy</em></strong></p>
-<h4 id="2-2对于bindService-启动Service会经历："><a href="#2-2对于bindService-启动Service会经历：" class="headerlink" title="2.2对于bindService()启动Service会经历："></a>2.2对于bindService()启动Service会经历：</h4><p>context.bindService()-&gt;onCreate()-&gt;onBind()-&gt;Service running–&gt;onUnbind() -&gt; onDestroy() -&gt;Service stop</p>
-<p>onBind将返回给客户端一个IBind接口实例，IBind允许客户端回调服务的方法，比如得到Service运行的状态或其他操作。<br>这个时候把调用者（Context，例如Activity）会和Service绑定在一起，Context退出了，<br>Srevice就会调用onUnbind-&gt;onDestroy相应退出。 </p>
-<p><strong><em>所以调用bindService的生命周期为：onCreate –&gt; onBind(只一次，不可多次绑定) –&gt; onUnbind –&gt; onDestory。<br>一但销毁activity它就结束，如果按home把它放到后台，那他就不退出。</em></strong></p>
-<p>PS：<br>在Service每一次的开启关闭过程中，只有onStart可被多次调用(通过多次startService调用)，其他onCreate，onBind，onUnbind，onDestory在一个生命周期中只能被调用一次。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Android Activity/Service 生命周期介绍&lt;br&gt;
     
     </summary>
     
