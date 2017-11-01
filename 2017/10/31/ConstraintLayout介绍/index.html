@@ -233,7 +233,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 31 2017 22:17:14 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Nov 01 2017 22:52:03 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 01 2017 23:12:36 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -260,7 +260,7 @@
     "mainEntityOfPage": "https://github.com/iBotasky/2017/10/31/ConstraintLayout介绍/index.html",
     "headline": "ConstraintLayout介绍",
     "datePublished": "Tue Oct 31 2017 22:17:14 GMT+0800",
-    "dateModified": "Wed Nov 01 2017 22:52:03 GMT+0800",
+    "dateModified": "Wed Nov 01 2017 23:12:36 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Botasky",
@@ -506,7 +506,7 @@
 <h3 id="2-2-居中"><a href="#2-2-居中" class="headerlink" title="2.2 居中"></a>2.2 居中</h3><p>ConstraintLayout的居中是个比较不明显的功能，水平方向的居中，要对居中的控件<code>start(left)</code>和<code>end(right)</code>两个位置做好约束，垂直方向的居中要对控件<code>top</code>和<code>bottom</code>两个位置做约束就可以达到控件在约束区域的居中效果。如下</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/imageView2"</span></div><div class="line">        <span class="attr">app:layout_constraintStart_toStartOf</span>=<span class="string">"parent"</span></div><div class="line">        <span class="attr">app:layout_constraintEnd_toEndOf</span>=<span class="string">"parent"</span></div><div class="line">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"parent"</span></div><div class="line">        <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"parent"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"117dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"143dp"</span></div><div class="line">        <span class="attr">app:srcCompat</span>=<span class="string">"@drawable/icon_android_bg"</span>/&gt;</div></pre></td></tr></table></figure>
 <p><img src="http://oktzkaa8p.bkt.clouddn.com/20171101150954763071757.png" alt="20171101150954763071757.png"></p>
-<h3 id="2-3-match-parent要用0dp来替代"><a href="#2-3-match-parent要用0dp来替代" class="headerlink" title="2.3 match_parent要用0dp来替代"></a>2.3 match_parent要用0dp来替代</h3><p>ConstraintLayout中de控件如果宽高要设置成<code>match_parent</code>需要设置成<code>0dp</code>(官方建议，也可以设置成match_parent，但是有些情况下match_parent会不生效)。</p>
+<h3 id="2-3-match-parent要用0dp来替代"><a href="#2-3-match-parent要用0dp来替代" class="headerlink" title="2.3 match_parent要用0dp来替代"></a>2.3 match_parent要用0dp来替代</h3><p>ConstraintLayout中de控件如果宽高要设置成<code>match_parent</code>需要设置成<code>0dp</code>(官方建议，也可以设置成match_parent，但是有些情况下match_parent会不生效)。设置成<code>0dp</code>也需要配合相对方向的约束。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"64dp"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"注册"</span></div><div class="line">        <span class="attr">app:layout_constraintStart_toStartOf</span>=<span class="string">"parent"</span></div><div class="line">        <span class="attr">app:layout_constraintEnd_toEndOf</span>=<span class="string">"parent"</span>/&gt;</div></pre></td></tr></table></figure>
 <p><img src="http://oktzkaa8p.bkt.clouddn.com/20171101150954786245526.png" alt="20171101150954786245526.png"></p>
 <h3 id="2-4一些高级用法"><a href="#2-4一些高级用法" class="headerlink" title="2.4一些高级用法"></a>2.4一些高级用法</h3><h4 id="1-GONE与Margin"><a href="#1-GONE与Margin" class="headerlink" title="1.GONE与Margin"></a>1.GONE与Margin</h4><p>有可能会遇到一个情况是，目标控件有可能会被设置为<code>GONE</code>，这时候约束还是存在，界面有可能会产生不整齐的问题，这时候就可以用<code>layout_goneMargin</code>来重新设置margin。比如：</p>
